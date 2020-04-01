@@ -1,0 +1,2745 @@
+* articles
+** {Python} for Scientific Computing
+   key:       NumPy:paper
+   author:    T. E. Oliphant
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+** {IPython}: a System for Interactive Scientific Computing
+   key:       IPython:paper
+   author:    F. Perez, B. E. Granger
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+** {Matplotlib}: a 2D Graphics Environment
+   key:       Matplotlib:paper
+   author:    J. D. Hunter
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+** A Model of the Mechanics of the Left Ventricle
+   key:       Arts1979
+   author:    T. Arts
+   year:      1979
+   journal:   Annals of Biomedical Engineering
+   volume:    Vol. 7
+   pages:     p. 299-313.
+   status:    published
+   entrytype: article
+** Modeling the Relation Between Cardiac Pump Function and Myofiber 	mechanics
+   key:       Arts2003
+   author:    T. Arts, P. Bovendeerd, T. Delhaas, F. Prinzen
+   year:      2003
+   journal:   Journal of Biomechanics
+   volume:    36
+   pages:     731--736
+   status:    published
+   entrytype: article
+** Relating Myocardial Laminar Architecture to Shear Strain and Muscle 	fiber Orientation
+   key:       Arts2001
+   author:    T. Arts, KD Costa, JW Covell, AD McCulloch
+   year:      2001
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    280
+   pages:     H2222-H2229.
+   status:    published
+   entrytype: article
+** Adaptation of Cardiac Structure by Mechanical Feedback in the Environment 	of the Cell: a Model Study
+   key:       Arts1994
+   author:    T. Arts, FW Prinzen, LHEH Snoeckx, JM Rijcken, RS Reneman
+   year:      1994
+   journal:   Biophysical Journal
+   volume:    66
+   pages:     953-961.
+   status:    published
+   entrytype: article
+** Epicardial Deformation and Left Ventricular Wall Mechanics During 	ejection in the Dog
+   key:                Arts1982
+   author:             T. Arts, P.C. Veenstra, R.S. Reneman
+   year:               1982
+   journal:            American Journal of Physiology
+   volume:             243 (Heart and Circulatory Physiology 12)
+   pages:              H379--H390
+   status:             published
+   allowed_duplicates: Arts1982a
+   entrytype:          article
+** Epicardial Deformation and Left Ventricular Wall Mechanics During 	ejection in the Dog
+   key:                Arts1982a
+   author:             T. Arts, PC Veenstra, RS Reneman
+   year:               1982
+   journal:            Am J Physiol Heart Circ Physiol
+   volume:             
+   pages:              
+   status:             published
+   allowed_duplicates: Arts1982
+   entrytype:          article
+** Transmural Left Ventricular Mechanics Underlying Torsional Recoil 	during Relaxation
+   key:       Ashikaga2004
+   author:    H. Ashikaga, JC Criscione, JH Omens, JW Covell, NB Ingels
+   year:      2004
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    286
+   pages:     H640-H647.
+   status:    published
+   entrytype: article
+** Finite Strain - Isotropic Hyperelasticity
+   key:       Attard2003
+   author:    M.M. Attard
+   year:      2003
+   journal:   International Journal of Solids and Structures
+   volume:    40
+   pages:     4353--4378
+   status:    published
+   entrytype: article
+** Magnetic Resonance Imaging and Ventricle Mechanics
+   key:       Augenstein2001
+   author:    K.F. Augenstein, E.R. McVeigh, A.A. Young
+   year:      2001
+   journal:   Philosophical Transactions of the Royal Society London A
+   volume:    359
+   pages:     1263--1275
+   status:    published
+   entrytype: article
+** Biomechanical Dynamics of the Heart With MRI
+   key:       Axel2002
+   author:    L. Axel
+   year:      2002
+   journal:   Annu. Rev. Biomed. Eng.
+   volume:    4
+   pages:     321-347.
+   status:    published
+   entrytype: article
+** Heterogeneous Changes of Monophasic Action Potential Induced by 	Sustained Stretch in Atrium
+   key:       Babuty2001
+   author:    D. Babuty, M. Lab
+   year:      2001
+   journal:   J. of Cardiovascular Electrophysiology
+   volume:    Vol. 12
+   pages:     No. 3
+   status:    published
+   entrytype: article
+** An Explicit Formulation for an Efficient Triangular Plate-Bending 	element
+   key:       Batoz1982
+   author:    J. L. Batoz
+   year:      1982
+   journal:   Int. J. Numer. Meth. Eng.
+   volume:    18
+   number:    7
+   pages:     1077--1089
+   status:    published
+   entrytype: article
+** A Study of Three-Node Triangular Plate Bending Elements
+   key:       Batoz1980
+   author:    J. L. Batoz, K. J. Bathe, L. W. Ho
+   year:      1980
+   journal:   Int. J. Numer. Meth. Eng.
+   volume:    15
+   number:    12
+   pages:     1771--1812
+   status:    published
+   entrytype: article
+** Reconstsruction of the Action Potential of Ventricular Myocardial 	fibres
+   key:       Beeler1977
+   author:    G.W. Beeler, H. Reuter
+   year:      1977
+   journal:   Journal of Physiology
+   volume:    268
+   pages:     177--210
+   status:    published
+   entrytype: article
+** Purkinje-Muscle Reentry As a Mechanism of Plymorphic Ventricular 	Arrhythmias in a 3-Dimensional Model of the Ventricles
+   key:       Berenfeld1998
+   author:    O. Berenfeld, J. Jalife
+   year:      1998
+   journal:   Circ. Res.
+   volume:    82
+   pages:     1063-1077.
+   status:    published
+   entrytype: article
+** Cardiac Excitation - Contraction Coupling
+   key:       Bers2002
+   author:    D.M. Bers
+   year:      2002
+   journal:   Nature
+   volume:    Vol. 415
+   pages:     198-205.
+   status:    published
+   entrytype: article
+** A Microstructurally Based Orthotropic Hyperelastic Constitutive 	law
+   key:       Bischoff2002
+   author:    JE Bischoff, EA Arruda, K. Grosh
+   year:      2002
+   journal:   J. of Appl. Mechanics Trans. of the ASME
+   volume:    69
+   pages:     570-579.
+   status:    published
+   entrytype: article
+** Regional Wall Mechanics in the Ischemic Left Ventricle: Numerical 	modeling and Do Experiments
+   key:       Bovendeerd1996
+   author:    PHM Bovendeerd, T. Arts, T. Delhaas, JM Huyghe, Campen van, RS Reneman
+   year:      1996
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    270
+   pages:     H398-H410.
+   status:    published
+   entrytype: article
+** Dependence of Local Left Ventricular Wall Mechanics on Myocardial 	fiber Orientation: a Model Study
+   key:       Bovendeerd1992
+   author:    P. H. M. Bovendeerd, T. Arts, J. M. Huyghe, D. H. van Campen and R. S. Reneman
+   year:      1992
+   journal:   Journal of Biomechanics
+   volume:    25
+   number:    10
+   pages:     1129--1140
+   status:    published
+   entrytype: article
+** Cooperation Within Actin Filament in Vertebrate Skeletal Muscle
+   key:       Bremel1972
+   author:    R.D. Bremel, A. Weber
+   year:      1972
+   journal:   Nature New Biology
+   volume:    238
+   pages:     97--101
+   status:    published
+   entrytype: article
+** Do Stretch-Induced Changes in Intracellular Calcium Modify the Electrical 	activity of Cardiac Muscle?
+   key:       Calaghan2003
+   author:    SC Calaghan, A. Belus, E. White
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 81-95.
+   pages:     
+   status:    published
+   entrytype: article
+** The Role of Calcium in the Response of Cardiac Muscle to Stretch
+   key:       Calaghan1999
+   author:    S.C. Calaghan, E. White
+   year:      1999
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    71
+   pages:     59-90.
+   status:    published
+   entrytype: article
+** Fiber Orientation in Hypertrophied Canine Left Ventricle
+   key:       Carew1979
+   author:    T.E. Carew, J.W. Covell
+   year:      1979
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    236
+   pages:     H487--H493
+   status:    published
+   entrytype: article
+** The Collagen Network of the Heart
+   key:       Caulfield1979
+   author:    JB Caulfield, TK Borg
+   year:      1979
+   journal:   Laboratory Investigation
+   volume:    40
+   pages:     364-372.
+   status:    published
+   entrytype: article
+** Structure and Function of Myocardial Fibrillar Collagen
+   key:       Caulfield1997
+   author:    JB Caulfield, JS Janicki
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     95-113.
+   status:    published
+   entrytype: article
+** Modulation of Ions Channels and Membrane Receptors Activities by 	mechanical Interventions in Cardiomyocytes: Possible Mechanisms for 	mechanosensitivity
+   key:       Cazorla1998
+   author:    O. Cazorla, C. Pascarel, F. Brette, J.-Y. Guennec
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    71
+   pages:     29-58.
+   status:    published
+   entrytype: article
+** Mechanics of the Left Ventricle
+   key:       Chadwick1982
+   author:    RS Chadwick
+   year:      1982
+   journal:   Biophysical Journal
+   volume:    39
+   pages:     279-288.
+   status:    published
+   entrytype: article
+** Fluid-Structure Coupled {CFD} Simulations of the Left Ventricle Flow 	during Filling Phase
+   key:       Cheng2005
+   author:    Y. Cheng, H. Oertel, T. Schenkel
+   year:      2005
+   journal:   Annals of Biomedical Engineering
+   volume:    Vol. 33
+   pages:     No. 5
+   status:    published
+   entrytype: article
+** Nuclear Medicine and the Heart: a Concise Review
+   key:       Chengazi1997
+   author:    VU Chengazi, RE O'Mara
+   year:      1997
+   journal:   Applied Radiology
+   volume:    October
+   pages:     10-22.
+   status:    published
+   entrytype: article
+** Motion Visualization of Human Left Ventricle With a Time-Varying 	deformable Model for Cardiac Diagnosis
+   key:       Choi2001
+   author:    S-M Choi, M-H Kim
+   year:      2001
+   journal:   The J of visualization and computer animation
+   volume:    12
+   pages:     55-66.
+   status:    published
+   entrytype: article
+** Modelling and Visualising the Heart
+   key:       Christie2002
+   author:    G.R. Christie, D.P. Bullivant, S.A. Blackett, P.J. Hunter
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    4
+   pages:     227-235.
+   status:    published
+   entrytype: article
+** Wave Propagation in Cardiac Tissue and Effects of Intracellular 	calcium Dynamics (computer Simulation Study)
+   key:       Chudin1998
+   author:    E. Chudin, A. Garfinkel, J. Weiss, W. Karplus, B. Kogan
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     225-236.
+   status:    published
+   entrytype: article
+** Spread of Excitation in 3-\uppercase{D} Models of the Anisotropic 	cardiac Tissue. \uppercase{II} \uppercase{E}ffects of Fiber Architecture 	and Ventricular Geometry
+   key:       Colli-Franzone1998
+   author:    P. Colli-Franzone, L. Guerri, M. Pennacchio, B. Taccardi
+   year:      1998
+   journal:   Mathematical Biosciences
+   volume:    147
+   pages:     131--171
+   status:    published
+   entrytype: article
+** A Three-Dimensional Finite Element Method for Large Elastic Deformations
+   key:       Costa1996
+   author:    KD Costa, PJ Hunter, JM Rogers, JM Guccione, LK Waldman and AD McCulloch
+   year:      1996
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Three-Dimensional Residual Strain in Midanterior Canine Left Ventricle
+   key:       Costa1997
+   author:    KD Costa, K. May-Newman, D. Farr, WG O'Dell, AD McCulloch and JH Omens
+   year:      1997
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    273
+   pages:     H1968-H1976.
+   status:    published
+   entrytype: article
+** Laminar Fiber Architecture and Three-Dimensional Systolic Mechanics 	in Canine Ventricular Myocardium
+   key:       Costa1999
+   author:    K.D. Costa, Y. Takayama, A.D. McCulloch, J.W. Covell
+   year:      1999
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    276
+   pages:     H595--H607
+   status:    published
+   entrytype: article
+** Computation of the Alignment of Myocardial Contractile Pathways 	using a Magnetic Tablet and an Optical Method
+   key:       Cryer1997
+   author:    CW Cryer, H. Navidi-Kasmai, PP Lunkenheimer, K. Redmann
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     79-93.
+   status:    published
+   entrytype: article
+** Directional Differences in Excitability Ad Margin of Safety for
+   key:       Delgado1990
+   author:    C. Delgado, B. Steinhaus, M. Delmar, DR Chialvo, J. Jalife
+   year:      1990
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Subepicardial Fiber Strain and Stress As Related to Left Ventricular 	pressure and Volume
+   key:       Delhaas1993
+   author:    T. Delhaas, T. Arts, PHM Bovendeerd, FW Prinzen, RS Reneman
+   year:      1993
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    264
+   pages:     H1548-H1559.
+   status:    published
+   entrytype: article
+** Estimates of Regional Work in the Canine Left Ventricle
+   key:       Delhaas1998
+   author:    T. Delhaas, T. Arts, F.W. Prinzen, R.S. Reneman
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     273-287.
+   status:    published
+   entrytype: article
+** Regional Electrical Activation and Mechanical Function in the Partially 	ischemic Left Ventricle of Dogs
+   key:       Delhaas1996
+   author:    T. Delhaas, T. Arts, FW Prinzen, RS Reneman
+   year:      1996
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    271
+   pages:     H2411-H2420.
+   status:    published
+   entrytype: article
+** Inexact {N}ewton Methods
+   key:       Dembo1982
+   author:    RS Dembo, SC Eisenstat, T. Steihaug
+   year:      1982
+   journal:   SIAM Journal on Numerical Analysis
+   volume:    Vol. 19
+   pages:     No. 2
+   status:    published
+   entrytype: article
+** Significance of Sinusoids for Myocardial Blood Circulation
+   key:       Djavakhishvili1997
+   author:    N. Djavakhishvili
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     171-175.
+   status:    published
+   entrytype: article
+** A Triaxial-Measurement Shear-Test Device for Soft Biological Tissues
+   key:       Dokos2000
+   author:    S. Dokos, IJ LeGrice, BH Smaill, J. Kar, AA Young
+   year:      2000
+   journal:   Ann. Biomed. Eng.
+   volume:    122
+   pages:     471-478.
+   status:    published
+   entrytype: article
+** Shear Properties of Passive Ventricular Myocardium
+   key:       Dokos2002
+   author:    S. Dokos, BH Smaill, AA Young, IJ LeGrice
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    283
+   pages:     H2650-H2659.
+   status:    published
+   entrytype: article
+** An Improved Video-Based Computer Tracking System for Soft Biomaterials 	testing
+   key:       Downs1990
+   author:    J. Downs, HR Halperin, J. Humphrey, F. Yin
+   year:      1990
+   journal:   IEEE Transactions on Biomedical Engineering
+   volume:    37
+   pages:     903-907.
+   status:    published
+   entrytype: article
+** Effect of the Geometry of the Left Ventricle on the Calculation 	of Ejection Fraction
+   key:       Dumesnil1982
+   author:    JG Dumesnil, RM Shoucri
+   year:      1982
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    65
+   pages:     no. 1
+   status:    published
+   entrytype: article
+** A Mathematical Model of the Dynamic Geometry of the Intact Left 	ventricle and Its Application to Clinical Data
+   key:       Dumesnil1979
+   author:    JG Dumesnil, RM Shoucri, JL Laurenceau, J. Turcot
+   year:      1979
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    59
+   pages:     no. 5
+   status:    published
+   entrytype: article
+** Physical and Geometrical Modeling for Image-Based Recovery of Left 	ventricular Deformation
+   key:       Duncan1998
+   author:    J. Duncan, P. Shi, T. Constable, A. Sinusas
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     333-351.
+   status:    published
+   entrytype: article
+** Calcium Ion and Muscular Contraction
+   key:       Ebashi1968
+   author:    S. Ebashi, M. Endo
+   year:      1968
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    18
+   pages:     125--183
+   status:    published
+   entrytype: article
+** Model Simulations of Cardiovascular Changes at the Onset of Moderate 	exercise in Humans
+   key:       Elstad2002
+   author:    M. Elstad, K. Toska, L. Wall¿e
+   year:      2002
+   journal:   Journal of Physiology
+   volume:    543
+   pages:     2
+   status:    published
+   entrytype: article
+** Biaxial Mechanics of the Passively Overstretched Left Ventricle
+   key:       Emery1997
+   author:    JL Emery, JH Omens, AD McCulloch
+   year:      1997
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    
+   status:    published
+   entrytype: article
+** Effect of Altering Filling Pattern on Diastolic Pressure-Volume Curve
+   key:       Fraites1997
+   author:    T.J. Fraites, A. Saeki, D.A. Kass
+   year:      1997
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    96
+   pages:     4408--4414
+   status:    published
+   entrytype: article
+** Mechano-Electric Feedback Underlying Arrhythmias: the Atrial Fibrillation 	case
+   key:       Franz2003
+   author:    MR Franz, F. Bode
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 163-174.
+   status:    published
+   entrytype: article
+** Pseudoelasticity of Arteries and the Choice of Its Mathematical 	expression
+   key:       Fung1979
+   author:    YC Fung, K. Fronek, P. Patitucci
+   year:      1979
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    237
+   pages:     H620-H631.
+   status:    published
+   entrytype: article
+** Estimation of Left Ventricular Operating Stiffness From Doppler 	early Filling Deceleration Time in Humans
+   key:       Garcia2001
+   author:    M.J. Garcia, MS. Firstenberg, NL Greenberg, N. Smedira, L. Rodriguez, D. Prior, J.D. Thomas
+   year:      2001
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    280
+   pages:     H554-H561.
+   status:    published
+   entrytype: article
+** Dimensionality in Cardiac Modelling
+   key:       Garny2005
+   author:    A. Garny, D. Noble, P. Kohl
+   year:      2005
+   journal:   Physical Review B: Condensed Matter and Materials Physics
+   volume:    Progress in Biophysics and Molecular Biology
+   pages:     87
+   status:    published
+   entrytype: article
+** Characterization of the Normal Cardiac Myofiber Field in Goat Measured 	with MR-Diffusion Tensor Imaging
+   key:       Geerts2002
+   author:    L. Geerts, P. Bovendeerd, K. Nicolay, T. Arts
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    283
+   pages:     H139-H145.
+   status:    published
+   entrytype: article
+** A Bidomain Model for Anisotropic Cardiac Muscle
+   key:       Geselowitz1983
+   author:    D. Geselowitz, W.T. Miller III
+   year:      1983
+   journal:   Annals of Biomedical Engineering
+   volume:    11
+   pages:     191--206
+   status:    published
+   entrytype: article
+** A Numerical Study on Large-Scale Nonlinear Solvers
+   key:       Gomes-Ruggiero1996
+   author:    MA Gomes-Ruggiero, DN Kozakevich
+   year:      1996
+   journal:   Comput. Math. Appl.
+   volume:    Vol. 32
+   pages:     No. 3
+   status:    published
+   entrytype: article
+** Stroke Volume During Exercise: Interaction of Environment and Hydration
+   key:       Gonzalez-Alonso2000
+   author:    J. Gonzalez-Alonso, R. Mora-Rodriguez, E.F. Coyle
+   year:      2000
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    278
+   pages:     H321-H330.
+   status:    published
+   entrytype: article
+** In Vivo Stresses in the Human Left Ventricular Wall: Analysis Accounting
+   key:       Gould1972
+   author:    P. Gould, D. Ghista, L. Brombolich, I. Mirsky
+   year:      1972
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Left Ventricular Free Wall and Intraventricular Pressure-Sarcomere 	length Distribution
+   key:       Grimm1980
+   author:    AF Grimm, HL Lin, BR Grimm
+   year:      1980
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    239
+   pages:     101-7.
+   status:    published
+   entrytype: article
+** Contractile State of the Left Ventricle in Man As Evaluated From 	end-Systolic Pressure-Volume Relations
+   key:       Grossman1977
+   author:    W. Grossman, E. Braunwald, T. Mann, LP McLaurin, LH Green
+   year:      1977
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    56 no. 5
+   pages:     845-852.
+   status:    published
+   entrytype: article
+** Finite Element Stress Analysis of Left Ventricular Mechanics in the 	Beating Dog Heart
+   key:       Guccione1995
+   author:    J.M. Guccione, K.D. Costa, A.D. McCulloch
+   year:      1995
+   journal:   Journal of Biomechanics
+   volume:    28
+   number:    10
+   pages:     1167--1177
+   status:    published
+   entrytype: article
+** Mechanics of Active Contraction in Cardiac Muscle: Part I - Constitutive 	Relations for Fiber Stress That Describe Deactivation
+   key:       Guccione1993
+   author:    J.M. Guccione, A.D. McCulloch
+   year:      1993
+   journal:   Annals of Biomedical Engineering
+   volume:    115
+   pages:     72--81
+   status:    published
+   entrytype: article
+** Passive Material Properties of Intact Ventricular Myocardium Determined 	from a Cylindrical Model
+   key:       Guccione1991
+   author:    JM Guccione, AD McCulloch, LK Waldman
+   year:      1991
+   journal:   Ann. Biomed. Eng.
+   volume:    113
+   pages:     42-55.
+   status:    published
+   entrytype: article
+** Mechanics of Active Contraction in Cardiac Muscle: Part \uppercase{II} 	- Cylindrical Models of the Systolic Left Ventricle
+   key:       Guccione1993a
+   author:    J. M. Guccione, L. K. Waldman, A. D. McCulloch
+   year:      1993
+   journal:   Annals of Biomedical Engineering
+   volume:    115
+   pages:     82--90
+   status:    published
+   entrytype: article
+** A Computational Fluid-Structure Interaction Analysis of a Fiber-Reinforced 	stentless Aortic Valve
+   key:       Hart2003
+   author:    J. de Hart, F.P.T. Baaijens, G.W.M. Peters, P.J.G. Schreurs
+   year:      2003
+   journal:   J. Object Tech.
+   volume:    699-712.
+   pages:     
+   status:    published
+   entrytype: article
+** Transmural Distribution of Intramyocardial Pressure Measured by
+   key:       Heineman1985
+   author:    FW Heineman, J. Grauson
+   year:      1985
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Glycated Collagen Cross-Linking Alters Cardiac Mechanics in Volume-Overload 	hypertrophy
+   key:       Herrmann2003
+   author:    KL Herrmann, AD McCulloch, JH Omens
+   year:      2003
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    284
+   pages:     1277-1284.
+   status:    published
+   entrytype: article
+** Parameterization of Left Ventricular Wall Motion for Detection of 	regional Ischemia
+   key:       Herz2005
+   author:    SL Herz, CM Ingrassia, S. Homma, KD Costa, JW Holmes
+   year:      2005
+   journal:   Ann. Biomed. Eng.
+   volume:    33
+   pages:     912-919.
+   status:    published
+   entrytype: article
+** (Review) an Analytical Study of the Physiology and Pathology of 	the Propagation of Cardiac Action Potentials
+   key:       Hinch2002
+   author:    R. Hinch
+   year:      2002
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    78
+   pages:     45-81.
+   status:    published
+   entrytype: article
+** Effects of Length and Cross-Bridge Attatchment on $Ca^{2+}$ Binding 	to Cardiac Troponin C
+   key:       Hoffman1987
+   author:    P.A. Hoffman, F. Fuchs
+   year:      1987
+   journal:   American Journal of Physiology
+   volume:    253 (Cell Physiology 22)
+   pages:     C90--C96
+   status:    published
+   entrytype: article
+** Evidence for a Force-Dependent Component of Calcium Binding to Cardiac 	troponin $\uppercase{C}$
+   key:       Hofman1987
+   author:    P.A. Hofman, F. Fuchs
+   year:      1987
+   journal:   American Journal of Physiology
+   volume:    253 (Cell Physiology 22)
+   pages:     C541--C546
+   status:    published
+   entrytype: article
+** The Actomyosin Interaction and Its Control by Tropomyosin
+   key:       Holmes1995
+   author:    K.C. Holmes
+   year:      1995
+   journal:   Biophysical Journal
+   volume:    68
+   pages:     S2--S7
+   status:    published
+   entrytype: article
+** A Modified {N}ewton Method With Cubic Convergence: the Multivariate 	case
+   key:       Homeier2004
+   author:    HHH Homeier
+   year:      2004
+   journal:   Journal of Computational and Applied Mathematics
+   volume:    169
+   pages:     161-169.
+   status:    published
+   entrytype: article
+** Determination of a Constitutive Relation for Passive Myocardium: 	II
+   key:       Humphrey1990
+   author:    JD Humphrey, RK Strumpf, FCP Yin
+   year:      1990
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Modeling Total Heart Function
+   key:       Hunter2003
+   author:    PJ Hunter, AJ Pullan, BH Smaill
+   year:      2003
+   journal:   Annu. Rev. Biomed. Eng.
+   volume:    5
+   pages:     147-177.
+   status:    published
+   entrytype: article
+** Modelling the Mechanical Properties of Cardiac Muscle
+   key:                Hunter1998
+   author:             P.J. Hunter, A.D. McCulloch, terKeurs
+   year:               1998
+   journal:            Progress in Biophysics \& Molecular Biology
+   volume:             69
+   pages:              289-331.
+   status:             published
+   allowed_duplicates: Hunter1998a
+   entrytype:          article
+** Modelling the Mechanical Properties of Cardiac Muscle
+   key:                Hunter1998a
+   author:             P. J. Hunter, A. D. McCulloch, H. E. D. J. ter Keurs
+   year:               1998
+   journal:            Progress in Biophysics \& Molecular Biology
+   volume:             69
+   pages:              289--331
+   status:             published
+   allowed_duplicates: Hunter1998
+   entrytype:          article
+** A Two-Phase Finete Element Model of the Diastolic Left Ventricle
+   key:       Huyghe1991
+   author:    JM Huyghe, Campen van, T. Arts, RM Heethaar
+   year:      1991
+   journal:   J. Object Tech.
+   volume:    24
+   pages:     527-538.
+   status:    published
+   entrytype: article
+** Porous Medium Finite Element Model of the Beating Left Ventricle
+   key:       Huyghe1992
+   author:    JM Huyghe, T. Arts, Campen van, RS Reneman
+   year:      1992
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    262
+   pages:     H1256-H1267.
+   status:    published
+   entrytype: article
+** Force, Not Sarcomere Length, Correlates With Prolongation of Isosarcometric 	contraction
+   key:       Janssen1995
+   author:    P.M.L. Janssen, W.C. Hunter
+   year:      1995
+   journal:   American Journal of Physiology
+   volume:    269 (Heart Circulatory Physiology 38)
+   pages:     H676--H685
+   status:    published
+   entrytype: article
+** Deformation of the Diastolic Left Ventricle. I Nonlinear Elastic 	effects
+   key:       Janz1973
+   author:    RF Janz, AF Grimm
+   year:      1973
+   journal:   Biophysical Journal
+   volume:    13
+   pages:     689-704.
+   status:    published
+   entrytype: article
+** Finite Element Model for the Mechanical Behaviour of the Left Ventricle:
+   key:       Janz1972a
+   author:    RF Janz, AF Grimm
+   year:      1972
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Transversely Isotropic Materials Undergoing Large Deformations and 	application to Modelling of Soft Tissues
+   key:       Jemiolo2001
+   author:    S. Jemiolo, JJ Telega
+   year:      2001
+   journal:   Research Letters in Communications
+   volume:    28
+   pages:     397-404.
+   status:    published
+   entrytype: article
+** An Alternative Formulation for the DKT Plate Bending Element,
+   key:       Jeyachandrabose1985
+   author:    C. Jeyachandrabose, J. Kirkhope
+   year:      1985
+   journal:   Int. J. Numer. Meth. Eng.
+   volume:    21
+   number:    7
+   pages:     1289--1293
+   status:    published
+   entrytype: article
+** A Finite-Element Model for the Mechanical Analysis of Skeletal Muscles
+   key:       Johansson2000
+   author:    T. Johansson, P. Meier, R. Blickhan
+   year:      2000
+   journal:   Journal of Object Technology
+   volume:    206
+   pages:     131--149
+   status:    published
+   entrytype: article
+** Editorial
+   key:       Johnson2002
+   author:    C. Johnson
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    4
+   pages:     213-214.
+   status:    published
+   entrytype: article
+** Cardiac Fibroblasts and the Mechano-Electric Feedback Mechanism 	in Healthy and Diseased Hearts
+   key:       Kamkin2003
+   author:    A. Kamkin, I. Kiseleva, G. Isenberg, K-D Wagner, J. GŸnther and H. Theres, H. Scholz
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 11-120.
+   pages:     
+   status:    published
+   entrytype: article
+** Intra- and Interventricular Asynchrony of Electromechanics in the 	ventricularly Paced Heart
+   key:       Kerckhoffs2003a
+   author:    RCP Kerckhoffs, PHM Bovendeerd, FW Prinzen, K. Smith, T. Arts
+   year:      2003
+   journal:   J. Numer. Math.
+   volume:    47: 201:216.
+   pages:     
+   status:    published
+   entrytype: article
+** Electromechanics of the Paced Left Ventricle Simulated by a Straightforward 	mathematical Model: Comparison With Measurements
+   key:       Kerckhoffs2005
+   author:    RCP Kerckhoffs, OP Faris, PHM Bovendeerd, FW Prinzen, K. Smits, ER McVeigh, T. Arts
+   year:      2005
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Timing of Depolarization and Contraction in the Paced Canine Left 	ventricle: Model and Experiment
+   key:       Kerckhoffs2003b
+   author:    R.C.P. Kerckhoffs, O.P. Faris, P.H.M. Bovendeerd, F.W. Prinzen and K. Smits, E. R. McVeigh, T. Arts
+   year:      2003
+   journal:   J. of Cardiovascular Electrophysiology
+   volume:    14
+   pages:     S188--S195
+   status:    published
+   entrytype: article
+** The Video Technique Developed for Measuring Epicardial Strains on 	guinea Pig's Left Ventricle
+   key:       Kirn2005
+   author:    B. Kirn, V. Starc
+   year:      2005
+   journal:   J. Object Tech.
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** New Strain Energy Function for Acoustic Analysis of Dilatational 	waves in Nearly Incompressible, Hyper-Elastic Materials
+   key:       Kobayashi2005
+   author:    H. Kobayashi, R. Vanderby
+   year:      2005
+   journal:   Journal of Geodynamics
+   volume:    72
+   pages:     843-851
+   status:    published
+   entrytype: article
+   owner:     sundnes
+   timestamp: 2006.11.09
+** Cellular Mechanisms of Cardiac Mechano-Electric Feedback in a Mathematical 	model
+   key:       Kohl1998
+   author:    P. Kohl, K. Day, D. Noble
+   year:      1998
+   journal:   American Journal of Physiology
+   volume:    14
+   number:    1
+   pages:     111--119
+   status:    published
+   entrytype: article
+   month:     January
+** Stretch-Induced Changes in Heart Rate and Rhythm: Clinical Observations
+   key:       Kohl1999
+   author:    P. Kohl, P. Hunter, D. Noble
+   year:      1999
+   journal:   Applied Mathematical Modelling
+   volume:    Progress in Biophysics \& Molecular Biology
+   pages:     71
+   status:    published
+   entrytype: article
+** {N}ewton-Like Method With Modification of the Right-Hand-Side Vector
+   key:       Krejic2001
+   author:    N. Krejic, Z. Luzanin
+   year:      2001
+   journal:   Mathematics of Computation
+   volume:    Vol. 71
+   pages:     No. 237
+   status:    published
+   entrytype: article
+** The Heart As a Self-Regulating System: Integration of Homeodynamic 	mechanisms
+   key:       Kresh1997
+   author:    JY Kresh, JA Armour
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     159-169.
+   status:    published
+   entrytype: article
+** Preface
+   key:       Lab1999
+   author:    M. Lab
+   year:      1999
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    71
+   pages:     3-5.
+   status:    published
+   entrytype: article
+** Mechanosensitivity As an Integrative System in Heart: an Audit
+   key:       Lab1998
+   author:    M.J. Lab
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    71
+   pages:     7-27.
+   status:    published
+   entrytype: article
+** Elastic-Plastic Deformation at Finite Strains
+   key:       Lee1969
+   author:    E.H. Lee
+   year:      1969
+   journal:   IMA Journal of Applied Mathematics
+   volume:    Trans. of the ASME
+   pages:     March
+   status:    published
+   entrytype: article
+** Laminar Structure of the Heart: a Mathematical Model
+   key:       LeGrice1997
+   author:    IJ LeGrice, PJ Hunter, BH Smaill
+   year:      1997
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    272
+   pages:     H2466-H2476.
+   status:    published
+   entrytype: article
+** Laminar Structure of the Heart: Ventricular Myocyte Arrangement 	and Connective Tissue Architecture in the Dog
+   key:       LeGrice1995
+   author:    I.J. LeGrice, BH Smaill, LZ Chai, SG Edgar, JB Gavin and PJ Hunter
+   year:      1995
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    269
+   pages:     H571-H582.
+   status:    published
+   entrytype: article
+** Functional Consequences of Regional Heterogeneity in the Left Ventricle
+   key:       Lew1991
+   author:    WYW Lew
+   year:      1991
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Relationship Between Changes in Left Ventricular Dimensions and the 	ejection Fraction in Man
+   key:       Lewis1971
+   author:    R.P. Lewis, H. Sandler
+   year:      1971
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    44
+   status:    published
+   entrytype: article
+   owner:     sundnes
+   timestamp: 2006.11.09
+** Characterization of Time-Varying Properties and Regional Strains 	in Myocardial Ischemia
+   key:       Liao2003
+   author:    J. Liao, J.K.-J. Li, D. Metaxas
+   year:      2003
+   journal:   Comput. Sci. Eng.
+   volume:    3
+   pages:     109-116
+   status:    published
+   entrytype: article
+   owner:     sundnes
+   timestamp: 2006.11.09
+** A Multiaxial Constitutive Law for Mammalian Left Ventricular Myocardium 	in Steady-State Barium Contracture Or Tetanus
+   key:       Lin1998
+   author:    D.H.S. Lin, F.C.P. Lin
+   year:      1998
+   journal:   Annals of Biomedical Engineering
+   volume:    120
+   pages:     504--517
+   status:    published
+   entrytype: article
+** Modeling the Electrical Activity of the Heart: a Bidomain Model of 	the Ventricles Embedded in a Torso
+   key:       Lines2002
+   author:    G.T. Lines, P. Gr\o ttum, A. Tveito
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    5
+   number:    4
+   pages:     195--213
+   status:    published
+   entrytype: article
+** Mathematical Models and Numerical Methods for the Forward Problem 	in Cardiac Electrophysiology
+   key:       Lines2003
+   author:    G.T. Lines, M.L. Buist, P. Grøttum, A.J. Pullan, J. Sundnes and A. Tveito
+   year:      2003
+   journal:   Computing and Visualization in Science
+   volume:    5
+   pages:     215-239
+   status:    published
+   entrytype: article
+** Solving the Heart Mechanics Equations With \uppercase{N}ewton and 	quasi \uppercase{N}ewton Methods - a Comparison
+   key:       Linge2005
+   author:    S. Linge, G.T. Lines, J. Sundnes
+   year:      2005
+   journal:   Computer Methods in Biomechanics and Biomedical Engineering
+   volume:    8
+   number:    1
+   pages:     1--8
+   status:    published
+   entrytype: article
+** Mechanically Induced Sudden Death in Chest Wall Impact (commotio 	cordis)
+   key:       Link2003
+   author:    MS Link
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 175-186.
+   pages:     
+   status:    published
+   entrytype: article
+** Estimation of Total Arterial Compliance: an Improved Method and Evaluation 	of Current Methods
+   key:       Liu1986
+   author:    Z. Liu, K.P. Brin, F.C.P. Yin
+   year:      1986
+   journal:   American Journal of Physiology
+   volume:    251 (Heart and Circulatory Physiology 20)
+   pages:     H588--H600
+   status:    published
+   entrytype: article
+** On the Local Convergence of Quasi-Newton Methods for Nonlinear Complementary 	problems
+   key:       Lopes1999
+   author:    VLR Lopes, JM Martinez, R. Perez
+   year:      1999
+   journal:   BIT Numerical Mathematics
+   volume:    30
+   pages:     3-22.
+   status:    published
+   entrytype: article
+** The Assessment of Intramural Stress Alignment on the Beating Heart 	in Situ Using Micro-Ergometry: Functional Implications
+   key:       Lunkenheimer1997a
+   author:    PP Lunkenheimer, K. Redmann, KH Dietl, N. Stroh, KD Richter and P. Niederer, C. Cryer
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     115-122.
+   status:    published
+   entrytype: article
+** The Heart Muscle's Putative 'secondary Structure'. Functional Implications 	of a Band-Like Anisotropy
+   key:       Lunkenheimer1997b
+   author:    PP Lunkenheimer, K. Redmann, H. Scheld, KH Dietl, C. Cryer and KD Richter, J. Merker, W. Whimster
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     53-64.
+   status:    published
+   entrytype: article
+** Myocardial Acceleration During Isovolumic Contractio - Relationship 	to Contractility
+   key:       Lyseggen2005
+   author:    E. Lyseggen, SI Rabben, H. Skulstad, S. Urheim, C. Risoe and OA Smiseth
+   year:      2005
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    111
+   pages:     1362-1369
+   status:    published
+   entrytype: article
+** Finite Element Modelling and Simulations in Cardiovascular Mechanics 	and Cardiology: a Bibliography 1993-2004
+   key:       Mackerle2005
+   author:    J. Mackerle
+   year:      2005
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Mechano-Electric Interactions in Heterogeneous Myocardium: Development 	of Fundamental Experimental and Theoretical Models
+   key:       Markhasin2003
+   author:    VS Markhasin, O. Solovyova, LB Katsnelson, Y. Protsenko, P. Kohl, D. Noble
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 207-220.
+   pages:     
+   status:    published
+   entrytype: article
+** Practical Quasi-Newton Methods for Solving Nonlinear Systems
+   key:       Martinez2000
+   author:    JM Martinez
+   year:      2000
+   journal:   Journal of Computational and Applied Mathematics
+   volume:    124
+   pages:     97-121.
+   status:    published
+   entrytype: article
+** Effects of Arterial Input Impedance on Mean Ventricular Pressure-Flow 	relation
+   key:       Maughan1984
+   author:    W.L. Maughan, K. Sunagawa, K. Sagawa
+   year:      1984
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    247
+   pages:     H978--H983
+   status:    published
+   entrytype: article
+** Homogenization Modeling for the Mechanics of Perfused Myocardium
+   key:       May-Newman1998
+   author:    K. May-Newman, A.D. McCulloch
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     463-481.
+   status:    published
+   entrytype: article
+** Integrative Models for Understanding the Structural Basis of Reginal 	mechanical Dysfunction in Ischemic Myocardium
+   key:       Mazhari2000
+   author:    R. Mazhari, AD McCulloch
+   year:      2000
+   journal:   Annals of Biomedical Engineering
+   volume:    28
+   pages:     979-990.
+   status:    published
+   entrytype: article
+** Laguerre-Model Blind System Identification: Cardiovascular Dynamics 	estimated From Multiple Peripheral Circulatory Signals
+   key:       McCombie2005
+   author:    DB McCombie, AT Reisner, HH Asada
+   year:      2005
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    52
+   pages:     No. 11
+   status:    published
+   entrytype: article
+** Editorial Computational Biology of the Heart: From Structure to 	function
+   key:       McCulloch1998
+   author:    A. McCulloch, J. Bassingthwaighte, P. Hunter, D. Noble
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     153-155.
+   status:    published
+   entrytype: article
+** Non-Homogeneous Analysis of Three-Dimenstional Transmural Finite
+   key:       McCulloch1991
+   author:    AD McCulloch, JH Omens
+   year:      1991
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Assessment of the End-Systolic Pressure-Volume Relationship in Human 	beings With the Use of a Time-Varying Elastance Model
+   key:       McKay1986
+   author:    RG McKay, JM Aroesty, GV Heller, HD Royal, SE Warren and W. Grossman
+   year:      1986
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    74
+   pages:     no. 1
+   status:    published
+   entrytype: article
+** A Three-Dimensional Computer Model of the Human Heart for Studying 	cardiac Fluid Dynamics
+   key:       McQueen2000
+   author:    D.M. McQueen, C.S. Peskin
+   year:      2000
+   journal:   Comput. Geosci.
+   volume:    34
+   number:    1
+   pages:     57--60
+   status:    published
+   entrytype: article
+** Time-Varying Analysis Methods and Models for the Respiratory and 	cardiac System Coupling in Graded Exercise
+   key:       Meste2005
+   author:    O. Meste, B. Khaddoumi, G. Blain, S. Bermon
+   year:      2005
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    52
+   pages:     1921-1930.
+   status:    published
+   entrytype: article
+** Mechanical Circulatory Support Systems - a Review
+   key:       Mihaylov2000
+   author:    D. Mihaylov, GJ Verkerke, G. Rakhorst
+   year:      2000
+   journal:   Technology and Health Care
+   volume:    8
+   pages:     251-266.
+   status:    published
+   entrytype: article
+** Finite Element Analysis of Defibrillation Fields in a Human Torso 	model for Ventricular Defibrillation
+   key:       Min1998
+   author:    X. Min, R. Mehra
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     353-386.
+   status:    published
+   entrytype: article
+** Ventricular and Arterial Wall Stresses Based on Large Deformation 	analysis
+   key:       Mirsky1973
+   author:    I. Mirsky
+   year:      1973
+   journal:   Biophys. J.
+   volume:    13
+   pages:     1141-1159.
+   status:    published
+   entrytype: article
+** Left Ventricular Stresses in the Intact Human Heart
+   key:       Mirsky1969
+   author:    I. Mirsky
+   year:      1969
+   journal:   Biophysical Journal
+   volume:    9
+   pages:     189-208.
+   status:    published
+   entrytype: article
+** Three-Dimensional Systolic Strain Patterns in the Normal Humna Left
+   key:       Moore2000
+   author:    CC Moore, CH Lugo-Olivieri, ER McVeigh, EA Zerhouni
+   year:      2000
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Noise Reduction in Estimating Cardiac Deformation From Marker Tracks
+   key:       Muijtjens1990
+   author:    AMM Muijtjens, JMA Roos, TT Prinzen, A. Hasman, RS Reneman and T. Arts
+   year:      1990
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    258
+   pages:     H599-H605.
+   status:    published
+   entrytype: article
+** Validation of Three-Dimensional Conduction Models Using Experimental 	mapping: Are We Getting Closer?
+   key:       Muzikant1998
+   author:    A.L. Muzikant, C.S. Henriquez
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     205-223.
+   status:    published
+   entrytype: article
+** Computational Mechanics of the Heart
+   key:       Nash2000
+   author:    M.P. Nash, P.J. Hunter
+   year:      2000
+   journal:   Journal of Physiology
+   volume:    61
+   number:    1--3
+   pages:     113--141
+   status:    published
+   entrytype: article
+** Electromechanical Model of Excitable Tissue to Study Reentrant Cardiac 	arrhythmias
+   key:       Nash2004
+   author:    M.P. Nash, A.V. Panfilov
+   year:      2004
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     501--522
+   status:    published
+   entrytype: article
+** A Survey of Truncated-Newton Methods
+   key:       Nash2000a
+   author:    SG Nash
+   year:      2000
+   journal:   Journal of Computational and Applied Mathematics
+   volume:    124
+   pages:     45-59.
+   status:    published
+   entrytype: article
+** A Model of Cardiac Cellular Electromechanics
+   key:       Nickerson2001
+   author:    D.P. Nickerson, N.P. Smith, P.J. Hunter
+   year:      2001
+   journal:   Philosophical Transactions of the Royal Society London A
+   volume:    359
+   pages:     1159--1172
+   status:    published
+   entrytype: article
+** Biaxial Testing of Membrane Biomaterials: Testing Equipment and 	procedures
+   key:       Nielsen1991
+   author:    PMF Nielsen, PJ Hunter, BH Smaill
+   year:      1991
+   journal:   Annals of Biomedical Engineering
+   volume:    113
+   pages:     295-300.
+   status:    published
+   entrytype: article
+** Mathematical Model of Geometry and Fibrous Structure of the Heart
+   key:       Nielsen1991a
+   author:    P.M.F. Nielsen, I.J. LeGriece, B.H. Smaill, P.J. Hunter
+   year:      1991
+   journal:   American Journal of Physiology
+   volume:    260
+   pages:     H1365--H1378
+   status:    published
+   entrytype: article
+** Editors Note
+   key:       Noble2003
+   author:    D. Noble
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 1.
+   pages:     
+   status:    published
+   entrytype: article
+** Preface Focussed Issue: Computational Biophysics
+   key:       Noble2002b
+   author:    D. Noble
+   year:      2002
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    78
+   pages:     1-2.
+   status:    published
+   entrytype: article
+** Edotor's Note
+   key:       Noble1998
+   author:    D. Noble, T. Blundel, T. Pawson
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     151.
+   status:    published
+   entrytype: article
+** Improved Guinea-Pig Ventricular Cell Model Incorporating a Diadic 	space, \uppercase{I}$_{Kr}$ and \uppercase{I}$_{Ks}$, and Length-And 	tension-Dependent Processes
+   key:       Noble1998a
+   author:    D. Noble, A. Varghese, P. Kohl, P. Noble
+   year:      1998
+   journal:   American Journal of Physiology
+   volume:    14
+   number:    1
+   pages:     123--134
+   status:    published
+   entrytype: article
+** Regional Mechanical Properties of Passive Myocardium
+   key:       Novak1994
+   author:    VP Novak, FCP Yin, JD Humphry
+   year:      1994
+   journal:   J. Object Tech.
+   volume:    27
+   pages:     403-412.
+   status:    published
+   entrytype: article
+** Modelling Cellular and Tissue Function
+   key:       NPed
+   author:    Smith NP, Crampin EJ
+   year:      ed
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     117-119.
+   status:    published
+   entrytype: article
+** Effects of Collagen Microstructure on the Mechanics of the Left 	ventricle
+   key:       Ohayon1988
+   author:    J. Ohayon, RS Chadwick
+   year:      1988
+   journal:   Biophys. J.
+   volume:    54
+   pages:     1077-1088.
+   status:    published
+   entrytype: article
+** Epicardial Suction: a New Aproach to Mechanical Testing of the
+   key:       Okamoto2000
+   author:    RJ Okamoto, MJ Moulton, SJ Peterson, D. Li, MK Pasque and JM Guccione
+   year:      2000
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Stress and Strain As Regulators of Myocardial Growth
+   key:       Omens1998
+   author:    JH Omens
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     559-572.
+   status:    published
+   entrytype: article
+** Measurement of Strain and Analysis of Stress in Resting Rat Left 	ventricular Myocardium
+   key:       Omens1993
+   author:    J.H. Omens, D.A. MacKenna, A.D. McCulloch
+   year:      1993
+   journal:   Journal of Biomechanics
+   volume:    26
+   number:    6
+   pages:     665-676
+   status:    published
+   entrytype: article
+** Transmural Distribution of Three-Dimensional Strain in the Isolated 	arrested Canine Left Ventricle
+   key:       Omens1991
+   author:    JH Omens, KD May, AD McCulloch
+   year:      1991
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    261 (Heart Circ. Physiol. 30)
+   pages:     H918-H928.
+   status:    published
+   entrytype: article
+** Muscle LIM Protein Deficiency Leads to Alterations in Passive Ventricular 	mechanics
+   key:       Omens2002
+   author:    JH Omens, TP Usyk, Z. Li, AD McCulloch
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    282
+   pages:     H680-H687.
+   status:    published
+   entrytype: article
+** A Perspective on Myocardial Contractility
+   key:       Palladino1997
+   author:    JL Palladino, SY Rabbany, JP Mulier, A. Noordergraaf
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     135-144.
+   status:    published
+   entrytype: article
+** Fast Tracking of Cardiac Motion Using 3D-HARP
+   key:       Pan2005
+   author:    L. Pan, JL Prince, JAC Lima, NF Osman
+   year:      2005
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    Vol. 52
+   pages:     No. 8
+   status:    published
+   entrytype: article
+** A Model of Cardiac Muscle Mechanics and Energetics
+   key:       Panerai1980
+   author:    R.B. Panerai
+   year:      1980
+   journal:   Journal of Biomechanics
+   volume:    13
+   pages:     929-940.
+   status:    published
+   entrytype: article
+** An Introduction and Tutorial on Multiple-Scale Analysis in Solids
+   key:       Park2004
+   author:    HS Park, WK Liu
+   year:      2004
+   journal:   Comput. Methods Appl. Mech. Engrg
+   volume:    193
+   pages:     1733-1772.
+   status:    published
+   entrytype: article
+** Modeling Impulse Propagation and Extracellular Potential Distributions 	in Anisotropic Cardiac Tissue Using a Finite Volume Element Discretization
+   key:       Penland2002
+   author:    R.C. Penland, D.M. Harrild, C.S. Henriquez
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    4
+   pages:     215-226
+   status:    published
+   entrytype: article
+   owner:     sundnes
+   timestamp: 2006.11.09
+** Efficient Algebraic Solution of Reaction-Diffusion Systems for the 	cardiac Excitation Process
+   key:       Pennachio2002
+   author:    M. Pennachio, V. Simoncini
+   year:      2002
+   journal:   Journal of Computational and Applied Mathematics
+   volume:    145
+   pages:     pp. 49-70.
+   status:    published
+   entrytype: article
+** Recent Applications and Numerical Implementation of Quasi-Newton 	methods for Solving Nonlinear Systems of Equations
+   key:       Perez2004
+   author:    R. Perez, VLR Lopes
+   year:      2004
+   journal:   BIT Numerical Mathematics
+   volume:    35: 261-285.
+   pages:     
+   status:    published
+   entrytype: article
+** Estimated Time Course of $Ca^{2+}$ Bound to Troponin C During Relaxation 	in Isolated Cardiac Muscle
+   key:       Peterson1991
+   author:    J.N. Peterson, W.C. Hunter, M.R. Berman
+   year:      1991
+   journal:   American Journal of Physiology
+   volume:    260 (Heart Circulatory Physiology 29)
+   pages:     H1013--H1024
+   status:    published
+   entrytype: article
+** The Construction of an Anatomically Based Model of the Human Ventricular 	conduction System
+   key:       Pollard1990
+   author:    AD Pollard, RC Barr
+   year:      1990
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    37
+   pages:     1173-1185.
+   status:    published
+   entrytype: article
+** Three-Dimensional Left Ventricular Wall Motion in Man - Coordinate 	systems for Representing Wall Movement
+   key:       Potel1984
+   author:    MJ Potel, SA MacKay, JM Rubin, AM Aisen, RE Sayre
+   year:      1984
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Redistribution of Myocardial Fiber Strain and Blood Flow by Asynchronous 	activation
+   key:       Prinzen1990
+   author:    FW Prinzen, CH Augustijn, T. Arts, MA Allessie, RS Reneman
+   year:      1990
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    259
+   pages:     H300-H308.
+   status:    published
+   entrytype: article
+** Modeling the Isolated Cardiac Myocyte
+   key:       Puglisi2004
+   author:    JL Puglisi, F. Wang, DM Bers
+   year:      2004
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     163-178.
+   status:    published
+   entrytype: article
+** An Advanced Algorithm for Solving Partial Differential Equation in 	cardiac Conduction.
+   key:       Qu199
+   author:    Z. Qu, A. Garfinkel
+   year:      199
+   journal:   IEEE Transactions on Biomedical Engineering
+   volume:    46
+   number:    9
+   pages:     1166--1168
+   status:    published
+   entrytype: article
+** Differentiation of Intramyocardial Fluid Pressure From Fiber Stress
+   key:       Rabbany1997
+   author:    SY Rabbany, JY Kresh, A. Noordergraaf
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     145-157.
+   status:    published
+   entrytype: article
+** Mechano-Electric Feedback and Arrhythmias
+   key:       Ravens2003
+   author:    U. Ravens
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 255-266.
+   pages:     
+   status:    published
+   entrytype: article
+** Inhomogeneities in Wall Stress Measured by Microergometry in the 	heart Muscle in Situ
+   key:       Redmann1997
+   author:    K. Redmann, PP Lunkenheimer, HH Scheld, KH Dietl, S. Fisher and C. Cryer, WF Whimster, N. Stroh
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     123-134.
+   status:    published
+   entrytype: article
+** Extraction and Quantification of Left Ventricular Deformation Modes
+   key:       Remme2004b
+   author:    E.W. Remme, A.A. Young, K.F. Augenstein, B. Cowan, P.J. Hunter
+   year:      2004
+   journal:   IEEE Transactions on Biomedical Engineering
+   volume:    Vol. 51
+   pages:     No. 11
+   status:    published
+   entrytype: article
+** Approaches to Modeling Crossbridges and Cacium-Dependent Activation 	in Cardiac Muscle
+   key:       Rice2004
+   author:    JJ Rice, Tombe de
+   year:      2004
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     179-195.
+   status:    published
+   entrytype: article
+** Comparison of Putative Cooperative Mechanisms in Cardiac Muscle: 	length Dependence and Dynamic Responses
+   key:       Rice1999
+   author:    J.J. Rice, R.L. Winslow, W.C. Hunter
+   year:      1999
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    276
+   number:    5
+   pages:     H1734--H1754
+   status:    published
+   entrytype: article
+** Building {PDE} Codes to Be Verifiable and Validatable
+   key:       Roache2004
+   author:    PJ Roache
+   year:      2004
+   journal:   Computing in Science \& Engineering
+   volume:    sept/oct
+   pages:     pp. 30-38.
+   status:    published
+   entrytype: article
+** Mechanistic Investigation of Extracellular K+ Accumulation During 	acute Myocardial Ischemia: a Simulation Study
+   key:       Rodriguez2002
+   author:    B. Rodriguez, J.M. Ferrero, B. Trenor
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    283
+   pages:     H490-H500.
+   status:    published
+   entrytype: article
+** Stress-Dependent Finite Growth in Soft Elastic Tissues
+   key:       Rodriguez1994
+   author:    EK Rodriguez, A. Hoger, AD McCulloch
+   year:      1994
+   journal:   J. Object Tech.
+   volume:    27
+   pages:     455-467.
+   status:    published
+   entrytype: article
+** Effect of Residual Stress on Transmural Sarcomere Length Distributions 	in Rat Left Ventricle
+   key:       Rodriguez1993
+   author:    E.K. Rodriguez, JH Omens, LK Waldman, A.D. McCulloch
+   year:      1993
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    264
+   pages:     H1048-H1056.
+   status:    published
+   entrytype: article
+** Nonuniform Muscle Fiber Orientation Causes Spiral Wave Drift in 	a Finite
+   key:       Rogers1994
+   author:    JM Rogers, AD McCulloch
+   year:      1994
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** A Collocation-Galerkin Finite Element Model of Cardiac Action Potential 	propagation
+   key:       Rogers1994a
+   author:    JM Rogers, AD McCulloch
+   year:      1994
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    41
+   pages:     743-757.
+   status:    published
+   entrytype: article
+** Regional Variations in Calculated Diastolic Wall Stress in Rat Left
+   key:       Role1978
+   author:    L. Role, D. Bogen, TA McMahon, WH Abelmann
+   year:      1978
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Late Systolic Onset of Regional LV Relaxation Demonstrated in Three-Dimensional 	space by MRI Tissue Tagging
+   key:       Rosen2004
+   author:    BD Rosen, BL Gerber, T. Edvardsen, E. Castillo, LC Amado and K. Nasir, DL Kraitchman, NF Osman, DA Bluemke, JAC Lima
+   year:      2004
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Simulation of ATP Metabolism in Cardiac Excitation-Contraction Coupling
+   key:       S2004
+   author:    Matsuoka S., Sarai N., Jo H., Noma A.
+   year:      2004
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     279-299.
+   status:    published
+   entrytype: article
+** Quantitative Reconstruction of Cardiac Electromechanics in Human 	myocardium: Assembly of Electrophysiologic and Tension Generation 	models
+   key:       Sachse2003a
+   author:    FB Sachse, G. Seemann, K. Chaisaowong, D. Weiss
+   year:      2003
+   journal:   J. of Cardiovascular Electrophysiology
+   volume:    Vol. 14
+   pages:     pp. S210-S218.
+   status:    published
+   entrytype: article
+** Incorporation of Experimentally-Derived Fiber Orientation Into a 	structural Constitutive Model for Planar Collagenous Tissues
+   key:       Sacks2003
+   author:    MS Sacks
+   year:      2003
+   journal:   Annals of Biomedical Engineering
+   volume:    125
+   pages:     280-287.
+   status:    published
+   entrytype: article
+** Biaxial Mechanical Evaluation of Planar Biological Materials
+   key:       Sacks2001
+   author:    MS Sacks
+   year:      2001
+   journal:   Journal of Physiology
+   volume:    61
+   pages:     199-246.
+   status:    published
+   entrytype: article
+** A New Three-Dimensional Finite-Difference Bidomain Formulation for 	inhomogeneous Anisotropic Cardiac Tissues
+   key:       Saleheen1998
+   author:    HI Saleheen, KT Ng
+   year:      1998
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    Vol. 45
+   pages:     No. 1
+   status:    published
+   entrytype: article
+** The Anisotropic Structure of the Human Left and Right Ventricles
+   key:       Schmid1997
+   author:    P. Schmid, P. Niederer, PP Lunkenheimer, F. Torrent-Guasp
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     29-43.
+   status:    published
+   entrytype: article
+** Geometrical Factors Influencing Muscle Force Development I. the 	effect of Filament Spacing Upon Axial Forces
+   key:       Schoenberg1980
+   author:    M. Schoenberg
+   year:      1980
+   journal:   Biophys. J.
+   volume:    30
+   pages:     51-68
+   status:    published
+   entrytype: article
+** HEART: an Automated Beat-to-Beat Cardiovascular Analysis Package 	using {MATLAB}
+   key:       Schroeder2004
+   author:    MJ Schroeder, B. Perreault, DL Ewert, SC Koenig
+   year:      2004
+   journal:   Computers in Biology and Medicine
+   volume:    34
+   pages:     pp. 371-388.
+   status:    published
+   entrytype: article
+** Quantitative Reconstruction of Cardiac Electromechanics in Human 	myocardium: Regional Heterogeneity
+   key:       Seemann2003
+   author:    G. Seemann, FB Sachse, DL Weiss, O. Dšssel
+   year:      2003
+   journal:   J. of Cardiovascular Electrophysiology
+   volume:    Vol. 14
+   pages:     pp. S219-S228
+   status:    published
+   entrytype: article
+** Importance of Oblique Fiber Orientation for Left Ventricular Wall 	deformation
+   key:       Shapiro1997
+   author:    EP Shapiro, FE Rademakers
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     21-28.
+   status:    published
+   entrytype: article
+** Dynamic Stiffness Measured in Central Segment of Excised Rabbit 	papillary
+   key:       Shibata1987
+   author:    T. Shibata, WC Hunter, A. Yang, K. Sagawa
+   year:      1987
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** The Calculation of the Intramyocardial Stress
+   key:       Shoucri2002
+   author:    RM Shoucri
+   year:      2002
+   journal:   Technology and Health Care
+   volume:    10
+   pages:     11-22.
+   status:    published
+   entrytype: article
+** Active and Passive Stresses in the Myocardium
+   key:       Shoucri2000
+   author:    RM Shoucri
+   year:      2000
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    279
+   pages:     H2519-H2528.
+   status:    published
+   entrytype: article
+** Theoretical Study of Pressure-Volume Relation in Left Ventricle
+   key:       Shoucri1991
+   author:    RM Shoucri
+   year:      1991
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** A Numerically Efficient Model for Simulation of Defibrillation in 	an Active Bidomain Sheet of Myocardium
+   key:       Skouibine2000
+   author:    K. Skouibine, N. Trayanova, P. Moore
+   year:      2000
+   journal:   Mathematical Biosciences
+   volume:    166
+   pages:     85--100
+   status:    published
+   entrytype: article
+** Altered T Wave Dynamics in a Contracting Cardiac Model
+   key:       Smith2003
+   author:    NP Smith, M. Buist, AJ Pullan
+   year:      2003
+   journal:   J. of Cardiovascular Electrophysiology
+   volume:    14
+   pages:     suppl
+   status:    published
+   entrytype: article
+** Generation of an Anatomically Based Geometric Coronary Model
+   key:       Smith2000
+   author:    NP Smith, AJ Pullan, PJ Hunter
+   year:      2000
+   journal:   Annals of Biomedical Engineering
+   volume:    28
+   pages:     14-25.
+   status:    published
+   entrytype: article
+** Computational Modelling of Ventricular Mechanics and Energetics
+   key:       Smith2005
+   author:    N. Smith, C. Stevens, P. Hunter
+   year:      2005
+   journal:   Applied Mechanics and Engineering
+   volume:    Vol. 58
+   pages:     pp. 77-90.
+   status:    published
+   entrytype: article
+** Analysing Cardiac Excitation-Contraction Coupling With Mathematical 	models of Local Control
+   key:       Soeller2004
+   author:    C. Soeller, MB Cannell
+   year:      2004
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    85
+   pages:     141-162.
+   status:    published
+   entrytype: article
+** Estimation of the Local Fraction of Cardiac Output From the Standpoint 	of the Theory of Active Diastole
+   key:       Sokolova2005
+   author:    IV Sokolova
+   year:      2005
+   journal:   Annals of Biomedical Engineering
+   volume:    39
+   pages:     97-102.
+   status:    published
+   entrytype: article
+** The Myosin Swinging Cross-Bridge Model
+   key:       Spudich2001
+   author:    J.A. Spudich
+   year:      2001
+   journal:   Nature
+   volume:    Molecular cell biology
+   pages:     Vol. 2
+   status:    published
+   entrytype: article
+** Sarcomere Length Changes in a 3D Mathematical Model of the Pig Ventricles
+   key:       Stevens2003
+   author:    C. Stevens, PJ Hunter
+   year:      2003
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    82: 229-241.
+   pages:     
+   status:    published
+   entrytype: article
+** Ventricular Mechanics in Diastole: Material Parameter Sensitivity
+   key:                Stevens2003a
+   author:             C. Stevens, E. Remme, I. LeGrice, P. Hunter
+   year:               2003
+   journal:            Journal of Biomechanics
+   volume:             36
+   pages:              737-748
+   status:             published
+   allowed_duplicates: Stevens2003b
+   entrytype:          article
+** Ventricular Mechanics in Diastole: Material Parameter Sensitivity
+   key:                Stevens2003b
+   author:             C. Stevens, E. Remme, I. LeGrice, P. Hunter
+   year:               2003
+   journal:            J. Object Tech.
+   volume:             36
+   pages:              737-748.
+   status:             published
+   allowed_duplicates: Stevens2003a
+   entrytype:          article
+** Fibre Orientation in the Canine Left Ventricle During Diastole and 	systole
+   key:       Streeter1969
+   author:    DD Streeter, HM Spotnitz, DP Patel, J. Ross, EH Sonnenblick
+   year:      1969
+   journal:   Circ. Res.
+   volume:    24
+   pages:     339-347.
+   status:    published
+   entrytype: article
+** Stress Distribution in the Canine Ventricle During Diastole and 	systole
+   key:       Streeter1970
+   author:    DD Streeter, RN Vaishnav, DJ Patel, HM Spotnitz, EH Sonnenblick
+   year:      1970
+   journal:   Biophys. J.
+   volume:    10
+   pages:     345-363.
+   status:    published
+   entrytype: article
+** $Ca^{2+}$-Dependece of Diastolic Porperties of Cardiac Sarcomeres: 	involvment of Titin
+   key:       Stuyvers1998
+   author:    B.D. Stuyvers, M. Miura, J.-P. Jin, H.E.D.J. ter Keurs
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     425--443
+   status:    published
+   entrytype: article
+** Global Cardiac Function: Mechano-Energetico-Informatics
+   key:       Suga2003
+   author:    H. Suga
+   year:      2003
+   journal:   J. Object Tech.
+   volume:    36
+   pages:     713-720.
+   status:    published
+   entrytype: article
+** Multigrid Block Preconditioning for a Coupled System of Partial Differential 	equations Modeling the Electrical Activity in the Heart
+   key:       Sundnes2002
+   author:    J. Sundnes, G.T. Lines, K.-A. Mardal, A. Tveito
+   year:      2002
+   journal:   Computer Methods in Biomechanics and Biomedical Engineering
+   volume:    5
+   number:    6
+   pages:     397--409
+   status:    published
+   entrytype: article
+** An Operator Splitting Method for Solving the Bidomain Equations Coupled 	to a Volume Conductor Model for the Torso
+   key:       Sundnes2005
+   author:    J. Sundnes, G.T. Lines, A. Tveito
+   year:      2005
+   journal:   Mathematical Biosciences
+   volume:    194
+   number:    2
+   pages:     233--248
+   status:    published
+   entrytype: article
+** Efficient Solution of Ordinary Differential Equations Modeling Electrical 	activity in Cardiac Cells
+   key:       Sundnes2001
+   author:    J. Sundnes, G.T. Lines, A. Tveito
+   year:      2001
+   journal:   Mathematical Biosciences
+   volume:    172
+   number:    2
+   pages:     55--72
+   status:    published
+   entrytype: article
+** On the Computational Complexity of the Bidomain and the Monodomain 	models of Electrophysiology
+   key:       Sundnes2006
+   author:    J. Sundnes, B.F. Nielsen, K.-A. Mardal, X. Cai, G.T. Lines, A. Tveito
+   year:      2006
+   journal:   Annals of Biomedical Engineering
+   volume:    34
+   number:    7
+   pages:     1088-97
+   status:    published
+   entrytype: article
+** Mechanical Aspects of Cardiac Development
+   key:       Taber1998
+   author:    L.A. Taber
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     237-255.
+   status:    published
+   entrytype: article
+** Cardiac Mechano-Electric Feedback in Man: Clinical Relevance
+   key:       Taggart1999
+   author:    P. Taggart, P.M.I. Sutton
+   year:      1999
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    71
+   pages:     139-154.
+   status:    published
+   entrytype: article
+** Contribution of Laminar Myofiber Architecture to Load-Dependent Changes 	in Mechanics of LV Myocardium
+   key:       Takayama2002
+   author:    Y. Takayama, K.D. Costa, J.W. Covell
+   year:      2002
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    282
+   pages:     H1510--H1520
+   status:    published
+   entrytype: article
+** The Effect of Coronary Occlusion on Myocardial Contraction
+   key:       Tennant1935
+   author:    LR Tennant, CJ Wiggers
+   year:      1935
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    112
+   pages:     351-61.
+   status:    published
+   entrytype: article
+** A Mixed Finite Element Formulation for a Non-Linear, Transversely 	Isotropic Material Model for the Cardiac Tissue
+   key:       Thorvaldsen2005
+   author:    T. Thorvaldsen, H. Osnes, J. Sundnes
+   year:      2005
+   journal:   Computer Methods in Biomechanics and Biomedical Engineering
+   volume:    8
+   number:    6
+   pages:     369--379
+   status:    published
+   entrytype: article
+** Cardiac Myofilaments: Mechanics and Regulation
+   key:       Tombe2003
+   author:    P.P. de Tombe
+   year:      2003
+   journal:   J. Object Tech.
+   volume:    36
+   pages:     721-730.
+   status:    published
+   entrytype: article
+** A Finite Element Method for an Eikonal Equation Model of Myocardial 	excitation Wavefront Propagation
+   key:       Tomlinson2002
+   author:    K.A. Tomlinson, P.J. Hunter, A.J. Pullan
+   year:      2002
+   journal:   IMA Journal of Applied Mathematics
+   volume:    63
+   number:    1
+   pages:     324--350
+   status:    published
+   entrytype: article
+** Transmural Gradients of Cardiac Myofiber Shortening in Aortic Valve 	stenosis Patients Using MRI Tagging
+   key:       Toom2002
+   author:    A. van der Toom, P. Barenbrug, G. Snoep, der van, T. Delhaas and FW Prinzen, J. Maessen, T. Arts
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    283
+   pages:     1609-1615.
+   status:    published
+   entrytype: article
+** A Silicone Rubber Mould of the Heart
+   key:       Torrent-Guasp1997
+   author:    FFESC Torrent-Guasp, WF Whimster, K. Redmann
+   year:      1997
+   journal:   Technology and Health Care
+   volume:    5
+   pages:     13-20.
+   status:    published
+   entrytype: article
+** Computer Simulations of Cardiac Defibrillation: a Look Inside the 	heart
+   key:       Trayanova2002
+   author:    N. Trayanova, F. Aguel
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    4
+   pages:     259-270.
+   status:    published
+   entrytype: article
+** A Model for Human Ventricular Tissue
+   key:       Tusscher2003
+   author:    K.H.W.J. ten Tusscher, D. Noble, P.J. Noble, A.V. Panfilov
+   year:      2003
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    286
+   pages:     H1573--H1589
+   status:    published
+   entrytype: article
+** Pericardial Influences on Ventricular Filling in the Conscious Dog: 	An Analysis Based on Pericardial Pressure
+   key:       Tyson1984
+   author:    GS Tyson, GW Maier, CO Olsen, JW Davis, JS Rankin
+   year:      1984
+   journal:   Circ. Res.
+   volume:    54
+   pages:     173-184.
+   status:    published
+   entrytype: article
+** Width and Lattice Spacing in Radially Compressed Frog Skinned Muscle
+   key:       Umazume1986
+   author:    Y. Umazume, S. Onodera, H. Higuchi
+   year:      1986
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Maximal Twitch Tension in Intact Length-Clamped Ferret Papillary 	muscles
+   key:       Urthaler1988
+   author:    F. Urthaler, AA Walker, DNS Reeves, LL Hefner
+   year:      1988
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Computational Model of Three-Dimensional Cardiac Electromechanics
+   key:       Usyk2002
+   author:    T.P. Usyk, I.J. LeGrice, A.D. McCulloch
+   year:      2002
+   journal:   Computing and Visualization in Science
+   volume:    4
+   pages:     249-257
+   status:    published
+   entrytype: article
+** Effect of Laminar Orthotropic Myofiber Architecture on Regional Stress 	and Strain in the Canine Left Ventricle
+   key:       Usyk2000
+   author:    T.P. Usyk, R. Mazhari, A.D. McCulloch
+   year:      2000
+   journal:   Journal of Physiology
+   volume:    61
+   pages:     143--164
+   status:    published
+   entrytype: article
+** Electromechanical Model of Cardiac Resynchronization in the Dilated 	failing Heart With Left Bundle Branch Block
+   key:       Usyk2003b
+   author:    T.P. Usyk, A.D. McCulloch
+   year:      2003
+   journal:   Journal of Object Technology
+   volume:    36
+   pages:     57-61
+   status:    published
+   entrytype: article
+** Relationship Between Regional Shortening and Asynchronous Electrical 	activation in a Three-Dimensional Model of Ventricular Electromechanics
+   key:                Usyk2003a
+   author:             T.P. Usyk, A.D. McCulloch
+   year:               2003
+   journal:            J. of Cardiovascular Electrophysiology
+   volume:             14
+   pages:              S196-S202
+   status:             published
+   allowed_duplicates: Usyk2003c
+   entrytype:          article
+** Relationship Between Regional Shortening and Asynchronous Electrical 	activation in a Three-Dimensional Model of Ventricular Electromechanics
+   key:                Usyk2003c
+   author:             TP Usyk, AD McCulloch
+   year:               2003
+   journal:            J. of Cardiovascular Electrophysiology
+   volume:             Vol. 14
+   pages:              pp. S196-S202
+   status:             published
+   allowed_duplicates: Usyk2003a
+   entrytype:          article
+** Regional Septal Dysfunction in a Three-Dimensional Computational 	model of Focal Myofiber Disarray
+   key:       Usyk2001
+   author:    TP Usyk, JH Omens, AD McCulloch
+   year:      2001
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    281
+   pages:     H506-H514.
+   status:    published
+   entrytype: article
+** Three-Dimensional Stress and Strain in Passive Rabbit Left Ventricle: 	A Model Study
+   key:       Vetter2000
+   author:    F.J. Vetter, A.D. McCulloch
+   year:      2000
+   journal:   Annals of Biomedical Engineering
+   volume:    28
+   pages:     781--792
+   status:    published
+   entrytype: article
+** Three-Dimensional Stress and Strain in Passive Rabbit Left Ventricle: 	a
+   key:       Vetter2000a
+   author:    FJ Vetter, AD McCulloch
+   year:      2000
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Three-Dimensional Analysis of Regional Cardiac Function: a Model 	of Rabbit Ventricular Anatomy
+   key:       Vetter1998
+   author:    F.J. Vetter, A.D. McCullogh
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     157-183.
+   status:    published
+   entrytype: article
+** Transmural Myocardial Deformaion in the Ischemic Canine Left Ventricle
+   key:       Villarreal1991
+   author:    FJ Villarreal, WYW Lew, LK Waldman, JW Covell
+   year:      1991
+   journal:   Circ. Res.
+   volume:    68
+   pages:     368-381.
+   status:    published
+   entrytype: article
+** Analysis of Left Ventricular Behaviour in Diastole by Means of Finite
+   key:       Vinson1979
+   author:    CA Vinson, DG Gibson, AL Yettram
+   year:      1979
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Acute Alterations in Left Ventricular Diastolic Chamber Stiffness: 	Role
+   key:       Vogel1982
+   author:    WM Vogel, CS Apstein, LL Briggs, WH Gaasch, J. Ahn
+   year:      1982
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Mathematical Modelling of the Cardiovascular System
+   key:       Vosse2003
+   author:    FN Vosse
+   year:      2003
+   journal:   J. Numer. Math.
+   volume:    47: 175-183.
+   pages:     
+   status:    published
+   entrytype: article
+** Finite Element Based Computational Methods for Cardiovascular Fluid-Structure 	interaction
+   key:       Vosse2003a
+   author:    FN Vosse, J. Hart, CHGA Oijen, D. Bessems, TWM Gunther and A. Segal, BJBM Wolters, JMA Stijnen, FPT Baaijens
+   year:      2003
+   journal:   J. Numer. Math.
+   volume:    47: 335-368.
+   pages:     
+   status:    published
+   entrytype: article
+** Transmural Myocardial Deformation in the Canine Left Ventricle: 	Normal in Vivo Three-Dimensional Finite Strains
+   key:       Waldman1985
+   author:    LK Waldman, YC fung, JW Covell
+   year:      1985
+   journal:   Circ. Res.
+   volume:    57
+   pages:     152-163.
+   status:    published
+   entrytype: article
+** Relation Between Transmural Deformation and Local Myofiber Direction 	in the Canine Left Ventricle
+   key:       Waldman1988
+   author:    LK Waldman, D. Nosan, F. Villarreal, JW Covell
+   year:      1988
+   journal:   Circ. Res.
+   volume:    63
+   pages:     550-562.
+   status:    published
+   entrytype: article
+** Multiphysics Simulation of Left Ventricular Filling Dynamics Using 	fluid-Structure Interaction Finite Element Method
+   key:       Watanabe2004
+   author:    H. Watanabe, S. Sugiura, H. Kafuku, T. Hisada
+   year:      2004
+   journal:   Biophysical Journal
+   volume:    87
+   pages:     2074--2085
+   status:    published
+   entrytype: article
+** An Artificial Arterial System for Pumping Hearts
+   key:       Westerhof1971
+   author:    N. Westerhof, G. Elzinga, P. Sipkema
+   year:      1971
+   journal:   Journal of Physiology
+   volume:    Vol. 31
+   pages:     No. 5
+   status:    published
+   entrytype: article
+** Do Cardiac Neurons Play a Role in the Intrinsic Control of Heart 	rate in the Rat
+   key:       Wilson2002
+   author:    SJ Wilson, CP Bolter
+   year:      2002
+   journal:   American Journal of Physiology
+   volume:    87
+   pages:     675-682.
+   status:    published
+   entrytype: article
+** A Spatial Scale Factor for Electrophysiological Models of Myocardium
+   key:       Winfree1998
+   author:    A.T. Winfree
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     185-203.
+   status:    published
+   entrytype: article
+** Modeling the Cellular Basis Fo Altered Excitation-Contraction Coupling 	in Heart Failure
+   key:       Winslow1998
+   author:    R.L. Winslow, J. Rice, S. Jafri
+   year:      1998
+   journal:   Progress in Biophysics \& Molecular Biology
+   volume:    69
+   pages:     497-514.
+   status:    published
+   entrytype: article
+** Stress Distribution Within the Left Ventricular Wall Approximated 	as a
+   key:       Wong1968
+   author:    AYK Wong, PM Rautaharju
+   year:      1968
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Effects of Single- and Biventricular Pacing on Temporal and Spatial 	dynamics of Ventricular Contraction
+   key:       Wyman2002
+   author:    BT Wyman, WC Hunter, FW Prinzen, OP Faris, ER McVeigh
+   year:      2002
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    282
+   pages:     H372-H379.
+   status:    published
+   entrytype: article
+** Mapping Propagation of Mechanical Activation in the Paced Heart 	with MRI Tagging
+   key:       Wyman1999
+   author:    BT Wyman, WC Hunter, FW Prinzen, ER McVeigh
+   year:      1999
+   journal:   Am J Physiol Heart Circ Physiol
+   volume:    276
+   pages:     H881-H891.
+   status:    published
+   entrytype: article
+** State-Dependent Radial Elasticity of Attached Cross-Bridges in Single
+   key:       Xu1993
+   author:    S. Xu, B. Brenner, LC Yu
+   year:      1993
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Historical Development in Convergence Analysis for Newton's and 	Newton-Like Methods
+   key:       Yamamoto2000
+   author:    T. Yamamoto
+   year:      2000
+   journal:   Journal of Computational and Applied Mathematics
+   volume:    124
+   pages:     1-23.
+   status:    published
+   entrytype: article
+** The Possible Role of Poroelasticity in the Apparent Viscoelastic
+   key:       Yang1991
+   author:    M. Yang, LA Taber
+   year:      1991
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Left Ventricular Relaxation in the Filling and Nonfilling Canine 	heart
+   key:       Yellin1986
+   author:    E.L. Yellin, M. Hori, C. Yoran, E.H. Sonnenblick, S. Gabbay, R.W.M. Frater
+   year:      1986
+   journal:   American Journal of Physiology -- Heart Circulation Physiology
+   volume:    250
+   pages:     H620--H629
+   status:    published
+   entrytype: article
+** Application of the Finite Element Method to Ventricular Mechanics
+   key:       Yin1985
+   author:    FCP Yin
+   year:      1985
+   journal:   Empirical Software Engineering
+   volume:    12
+   pages:     311-342.
+   status:    published
+   entrytype: article
+** Ventricular Wall Stress
+   key:       Yin1981
+   author:    FCP Yin
+   year:      1981
+   journal:   Circ. Res.
+   volume:    49
+   pages:     829-842.
+   status:    published
+   entrytype: article
+** An Approach to Quantification of Biaxial Tissue Stress-Strain Data
+   key:       Yin1986
+   author:    FCP Yin, PH Chew, SL Zeger
+   year:      1986
+   journal:   J. Object Tech.
+   volume:    19
+   pages:     27-37.
+   status:    published
+   entrytype: article
+** Quantification of the Mechanical Properties of Noncontracting Canine
+   key:       Yin1987
+   author:    FCP Yin, RK Strumpf, PH Chew, SL Zeger
+   year:      1987
+   journal:   The J of visualization and computer animation
+   volume:    
+   pages:     
+   status:    published
+   entrytype: article
+** Epicardial Surface Estimation From Coronary Angiograms
+   key:       Young1989
+   author:    AA Young, PJ Hunter
+   year:      1989
+   journal:   Computer Communications
+   volume:    graphics
+   pages:     and image processing
+   status:    published
+   entrytype: article
+** Estimation of Epicardial Strain Using the Motions of Coronary Bifurcations 	in Biplane Cineangiography
+   key:       Young1992
+   author:    A.A. Young, P.J. Hunter, B.H. Smaill
+   year:      1992
+   journal:   IEEE Trans. Biomed. Eng.
+   volume:    Vol. 39
+   pages:     No. 5
+   status:    published
+   entrytype: article
+** Realtionship Between Force and Intracellular [$Ca^{2+}$] in Tetanized 	Mammalian Heart Muscle
+   key:       Yue1986
+   author:    D.T. Yue, E. Marban, W.G. Wier
+   year:      1986
+   journal:   Journal of Physiology
+   volume:    87
+   pages:     223--242
+   status:    published
+   entrytype: article
+** The Effects of Cross-Fiber Deformation on Axial Fiber Stress in 	myocardium
+   key:       Zahalak1999
+   author:    GI Zahalak, Laborderie de, JM Guccione
+   year:      1999
+   journal:   J. of Appl. Mechanics Trans. of the ASME
+   volume:    121
+   pages:     376-385.
+   status:    published
+   entrytype: article
+** Coupling of a 3D Finite Element Model of Cardiac Ventricular Mechanics to Lumped Systems Models of the Systemic and Pulmonic Circulation
+   key:       Kerckhoffs2006
+   author:    RC Kerckhoffs, ML Neal, Q. Gu, JB Bassingthwaighte, AD McCulloch JH Omens JH
+   year:      2006
+   journal:   Annals of Biomedical Engineering
+   volume:    35
+   number:    1
+   pages:     1-18
+   status:    published
+   entrytype: article
+* books
+** A Primer on Scientific Programming With {P}ython
+   key:       Langtangen_2014
+   author:    H. P. Langtangen
+   year:      2014
+   publisher: Springer
+   status:    published
+   edition:   Fourth
+   entrytype: book
+   series:    Texts in Computational Science and Engineering
+** An Introduction to the Theory of Elasticity
+   key:       Atkin1980
+   author:    R.J. Atkin, N. Fox
+   year:      1980
+   publisher: Longman Inc.
+   status:    published
+   entrytype: book
+** Scientific and Engineering C++: an Introduction With Advanced Techniques 	and Examples
+   key:       Barton1994
+   author:    J. J. Barton, L. R. Nackman
+   year:      1994
+   publisher: Addison Wesley Longman, Inc.
+   status:    published
+   entrytype: book
+** Finite Element Procedures
+   key:       Bathe1996
+   author:    K.-J. Bathe
+   year:      1996
+   publisher: Prentice-Hall, Inc.
+   status:    published
+   entrytype: book
+** Mechanics of Engineering Materials
+   key:       Benham1994
+   author:    P. P. Benham, R. J. Crawford
+   year:      1994
+   publisher: John Wiley \& Sons, Inc.
+   status:    published
+   entrytype: book
+** Nonlinear Continuum Mechanics for Finite Element Analysis
+   key:       Bonet1997
+   author:    J. Bonet, R.D. Wood
+   year:      1997
+   publisher: Cambridge University Press
+   status:    published
+   entrytype: book
+** Concepts and Applications of Finite Element Analysis
+   key:       Cook1989
+   author:    R. D. Cook, D. S. Malkus, M. E. Plesha
+   year:      1989
+   publisher: John Wiley \& Sons, Inc.
+   status:    published
+   entrytype: book
+** Biomechanics: Mechanical Properties of Living Tissues
+   key:       Fung1993
+   author:    Y.C. Fung
+   year:      1993
+   publisher: Springer
+   status:    published
+   entrytype: book
+** Nonlinear Solid Mechanics, a Continuum Approach for Engineering
+   key:       Holzapfel2001
+   author:    G.A. Holzapfel
+   year:      2001
+   publisher: John Wiley \& Sons, Inc.
+   status:    published
+   entrytype: book
+** Modeling and Simulation in Medicine and the Life Sciences
+   key:       Hoppensteadt2002
+   author:    F.C. Hoppensteadt, C.S. Peskin
+   year:      2002
+   publisher: Springer
+   status:    published
+   edition:   2nd
+   entrytype: book
+** Computational Partial Differential Equations - Numerical Methods 	and {D}iffpack Programming
+   key:       Langtangen2003
+   author:    H.P. Langtangen
+   year:      2003
+   publisher: Springer
+   status:    published
+   edition:   2nd
+   entrytype: book
+   series:    Texts in Computational Science and Engineering
+** Advanced Topics in Computational Partial Differential Equations, 	Numerical Methods and {D}iffpack Programming
+   key:       Mardal2003
+   author:    K.-A. Mardal, H. P. Langtangen
+   year:      2003
+   publisher: Springer
+   status:    published
+   alteditor: H. P. Langtangen and A. Tveito
+   entrytype: book
+** Schaum's Outline of Theory and Problems of Continuum Mechanics
+   key:       Mase1970
+   author:    G. E. Mase
+   year:      1970
+   publisher: Prentice-Hall, Inc.
+   status:    published
+   entrytype: book
+   series:    Schaum's outline series
+** The Heart Physiology and Metabolism
+   key:       Opie1991
+   author:    L. H. Opie
+   year:      1991
+   publisher: Wiley Press
+   status:    published
+   edition:   2nd
+   entrytype: book
+** Computational Cardiology - Modeling of Anatomy, Electrophysiology, 	and Mechanics
+   key:       Sachse2004
+   author:    F.B. Sachse
+   year:      2004
+   publisher: Springer
+   number:    2966
+   status:    published
+   entrytype: book
+   opteditor: G. Goosa and J. Hartmanis and J. van Leeuwen
+   series:    Lecture Notes in Computer Science
+** Cardiac Contraction and the Pressure-Volume Relationship
+   key:       Sagawa1988
+   author:    K. Sagawa, L. Maughan, H. Suga, K. Sunagawa
+   year:      1988
+   publisher: Cambridge University Press
+   status:    published
+   entrytype: book
+** Computing the Electrical Activity in the Heart
+   key:       Sundnes2006a
+   author:    J. Sundnes, GT Lines, X. Cai, BF Nielsen, K-A Mardal, A. Tveito
+   year:      2006
+   publisher: Springer
+   status:    published
+   entrytype: book
+* proceedings
+** Mixed Finite Element Methods
+   key:       Auricchio2004
+   author:    F. Auricchio, F. Brezzi, C. Lovadina
+   editor:    E. Stein, R. de Borst, T. J. R. Hughes
+   year:      2004
+   booktitle: Encyclopedia of Computational Mechanics: Volume 1, Fundamentals
+   publisher: John Whiley \& Son, Ltd.
+   pages:     237-278
+   status:    published
+   entrytype: inproceedings
+** The Mechanics of the Heart
+   key:       Bergel1979
+   author:    D.H. Bergel, P.J. Hunter
+   editor:    H.H.C. Hwang, D.R. Gross, D.J. Patel
+   year:      1979
+   booktitle: Quantitative Cardiovascular Studies, Clinical and Research Applications 	of Engineering Principles
+   publisher: University Park Press, Baltimore
+   pages:     151--213
+   status:    published
+   entrytype: inproceedings
+** Structural and Numerical Models for the (Visco)elastic Response of 	Arterial Walls With Residual Stresses
+   key:       Holzapfel2003
+   author:    G.A. Holzapfel
+   editor:    G.A. Holzapfel, R.W. Ogden
+   year:      2003
+   booktitle: Biomechanics of Soft Tissue in Cardiovascular Systems
+   publisher: Springer-Verlag
+   pages:     109-184
+   status:    published
+   entrytype: inproceedings
+   series:    CISM Courses and Lectures no. 441
+** Myocardial Constitutive Laws for Continuum Models of the Heart
+   key:       Hunter1995
+   author:    P.J. Hunter
+   editor:    S. Sideman, R. Beyar
+   year:      1995
+   booktitle: Molecular and Subcellular Cardiology
+   publisher: Plenum Press, New York
+   pages:     303--318
+   status:    published
+   entrytype: inproceedings
+** Systems of {PDE}s and Block Preconditioning
+   key:       Mardal2003a
+   author:    K.-A. Mardal, J. Sundnes, H.P. Langtangen, A. Tveito
+   editor:    H.P. Langtangen, A. Tveito
+   year:      2003
+   booktitle: Advanced Topics in Computational Partial Differential Equations, 	Numerical Methods and Diffpack Programming
+   publisher: Springer-Verlag
+   pages:     199--236
+   status:    published
+   entrytype: inproceedings
+   series:    Lecture Notes in Computational Science and Engineering, No. 33
+** Three-Dimensional Mechanics of Myocardial Contraction: Mechanisms 	of Transverse Systolic Stress
+   key:       Mazhari1999
+   author:    R. Mazhari, A. D. McCulloch
+   year:      1999
+   booktitle: Proceeding of ASME 4th Summer Bioengineering Conference
+   pages:     43-44
+   status:    published
+   alteditor: G. A. Holzapfel and R. W. Ogden
+   entrytype: inproceedings
+** Biological Information Processing Using the Concept of Interpenetrating 	domains
+   key:       Schmitt1969
+   author:    O.H. Schmitt
+   editor:    K.N. Leibovic
+   year:      1969
+   booktitle: Information Processing in the Nervous System
+   publisher: Springer-Verlag, New York
+   pages:     325-331
+   status:    published
+   entrytype: inproceedings
+** Constitutive Theory for Strongly Anisotropic Solids
+   key:       Spencer1984
+   author:    A.J.M. Spencer
+   editor:    A.J.M. Spencer
+   year:      1984
+   booktitle: Continuum Theory of the Mechanics of Fibre-reinforced Composites
+   publisher: Springer-Verlag
+   pages:     1-32
+   status:    published
+   entrytype: inproceedings
+   series:    CISM Courses and Lectures no. 282
+** Electrical Activity in the Human Heart
+   key:       Sundnes2003
+   author:    J. Sundnes, G.T. Lines, P. Grøttum, A. Tveito
+   editor:    H.P. Langtangen, A. Tveito
+   year:      2003
+   booktitle: Advanced Topics in Computational Partial Differential Equations, 	Numerical Methods and Diffpack Programming
+   publisher: Springer-Verlag
+   pages:     401--449
+   status:    published
+   entrytype: inproceedings
+   series:    Lecture Notes in Computational Science and Engineering, No. 33
+** Finite Element Modeling of Elastic Structures
+   key:       Thorvaldsen2003
+   author:    T. Thorvaldsen, H.P. Langtangen, H. Osnes
+   editor:    H.P. Langtangen, A.Tveito
+   year:      2003
+   booktitle: Advanced Topics in Computational Partial Differential Equations, 	Numerical Methods and Diffpack Programming
+   publisher: Springer-Verlag
+   pages:     507-576
+   status:    published
+   entrytype: inproceedings
+   series:    Lecture Notes in Computational Science and Engineering no. 33
+** A Mixed Formulation for Modeling the Mechanical Behavior of the Heart
+   key:       Thorvaldsen2005a
+   author:    T. Thorvaldsen, J. Sundnes, H. Osnes
+   editor:    B. Skallerud, H.I. Andersson
+   year:      2005
+   booktitle: MekIT'05 -- Third national conference on Computational Mechanics
+   publisher: Tapir Academic Press, Trondheim, Norway
+   pages:     327--341
+   status:    published
+   entrytype: inproceedings
+** Computational Methods for Soft Tissue Biomechanics
+   key:       Usyk2003
+   author:    T.P. Usyk, A.D. McCulloch
+   editor:    G.A. Holzapfel, R.W. Ogden
+   year:      2003
+   booktitle: Biomechanics of Soft Tissue in Cardiovascular Systems
+   publisher: Springer-Verlag
+   pages:     273-342
+   status:    published
+   entrytype: inproceedings
+   series:    CISM Courses and Lectures no. 441
+* misc
+** {Python} Programming Language
+   key:       Python
+   url:       http://python.org
+   status:    published
+   entrytype: misc
+   note:      \url{http://python.org}
+   sortkey:   Python
+** Loops and Lists
+   key:       Langtangen_TCSE6_looplist
+   author:    H. P. Langtangen
+   url:       http://hplgit.github.io/primer.html/doc/pub/looplist
+   status:    published
+   entrytype: misc
+   note:      \emph{http://hplgit.github.io/primer.html/doc/pub/looplist}
+** Some Document
+   key:       Langtangen_dobook_fake
+   author:    H. P. Langtangen
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html
+   status:    published
+   entrytype: misc
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html}
+** Use of Mako to Aid Book Writing
+   key:       Langtangen_dobook_mako
+   author:    H. P. Langtangen
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/mako/html
+   status:    published
+   entrytype: misc
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/mako/html}
+** Directory and File Structure
+   key:       Langtangen_dobook_rules
+   author:    H. P. Langtangen
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html
+   status:    published
+   entrytype: misc
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html}
+** Debugging in {Python}
+   key:       Langtangen_TCSE6_debug
+   author:    H. P. Langtangen
+   url:       http://hplgit.github.io/primer.html/doc/pub/debug
+   status:    published
+   entrytype: misc
+   note:      \emph{http://hplgit.github.io/primer.html/doc/pub/debug}

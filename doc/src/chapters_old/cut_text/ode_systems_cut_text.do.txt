@@ -1,0 +1,105 @@
+An ordinary differential equation with corresponding initial condition is typically
+written 
+!bt
+\begin{align*}
+{\color{red}u'(t)} &= \alpha {\color{red}u(t)}(1 - R^{-1}{\color{red}u(t)})\\
+{\color{red}u(0)} &= U_0
+\end{align*}
+!et
+
+
+!split
+===== Examples on scalar differential equations (ODEs) =====
+
+!bblock Terminology:
+ * *Scalar ODE*: a single ODE, one unknown function
+ * *Vector ODE* or *systems of ODEs*: several ODEs, several unknown functions
+!eblock
+
+!bblock Examples:
+!bt
+\begin{align*}
+u'&=\alpha u\quad\hbox{exponential growth}\\
+u'&=\alpha u\left(  1-\frac{u}{R}\right)\quad\hbox{logistic growth}\\
+u' + b|u|u &= g\quad\hbox{falling body in fluid}
+\end{align*}
+!et
+!eblock
+
+!split
+===== We shall write an ODE in a generic form: $u'=f(u,t)$ =====
+
+
+
+===== Let's apply the method! =====
+
+!bblock Problem: The world's simplest ODE
+
+!bt
+\[ u' = u,\quad t\in (0,T] \]
+!et
+
+Solve for $u$ at $t=t_k=k\Delta t$, $k=0,1,2,\ldots,t_n$,
+$t_0=0$, $t_n=T$
+!eblock
+
+!bblock Forward Euler method:
+!bt
+\[ u_{k+1} = u_k + \Delta t\, f(u_k,t_k)\]
+!et
+!eblock
+
+!bblock Solution by hand:
+What is $f$? $f(u,t)=u$
+
+!bt
+\[ u_{k+1} = u_k + \Delta t f(u_k,t_k) = u_k + \Delta t u_k = (1+\Delta t)u_k\]
+!et
+
+First step:
+!bt
+\[ u_1 = (1+\Delta t) u_0\]
+!et
+but what is $u_0$?
+!eblock
+
+!split
+
+
+
+
+As an example, consider the following ODE model, which describes
+the spreading
+!split
+===== The ODE system that is the final project in the course =====
+
+!bblock
+Model for spreading of a disease in a population:
+
+!bt
+\begin{align*}
+S' &= - \beta SI\\
+I' &= \beta SI -\nu R\\
+R' &= \nu I
+\end{align*}
+!et
+
+Initial conditions:
+
+!bt
+\begin{align*}
+S(0) &= S_0\\
+I(0) &= I_0\\
+R(0) &= 0
+\end{align*}
+!et
+!eblock
+
+
+Finally, it is worth commenting on the robustness of this solver. We have taken some care in implementing a
+robust and flexible solver, which works regardless of whether our `f`-function returns a list, tuple or array. However, the code
+is less robust in its treatment of the dimensions of the system, and requires that the initial condition has exactly the same
+number of components as returned by `f`. This is a natural requirement, and it is impossible to avoid in a meaningful way since
+every equation component needs an initial condition, but we could potentially improve the solver to give a more informative
+error message if the dimensions of the two do
+

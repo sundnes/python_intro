@@ -1,0 +1,86 @@
+
+This course teaches the Python language, which has a number of advantages as a first programming language, but also
+some minor drawbacks. The main advantage of Python is that it is a so-called "high-level" language, with simple and
+intuitive syntax that makes it easy to get started. However, although it is suitable as a beginner's language, Python is also
+suitable for more advanced tasks, and is currently one of the most widely used programming languages worldwide.
+
+One of the more important drawbacks of Python is tightly linked to its main advantages. Being a flexible high-level
+language, writing small programs can be very quick, but the code can easily get messy when writing something bigger.
+Other languages like C, C++ and Java enforces more structure in the code, which is annoying when you want to write
+a small program quickly, but may be efficient in the long run when writing larger programs. However, it is
+certainly possible to write neat and nicely structured programs in Python as well, but this requires
+a choice of the programmer to follow certain principles of coding style, and is not forced by the language itself.
+We will comment more on coding style later in these notes.
+
+Another slightly annoying aspect of Python is that it exists in different versions. At the time of writing this
+(August 2019), Python 3 is dominant, with the newest stable version being Python 3.7.
+All the examples in these notes are in Python 3, but the latest version of
+"A Primer on Scientific Programming with Python" was published in 2016 and is still Python 2. For the topics covered
+here the difference between the two version are very small, and combining the notes with the book should not
+cause much trouble. The most significant difference, which we will run into very early, is a difference in
+the command `print` which we use to write text and numbers to the screen. We will comment more on this and some
+other differences later.
+
+Finally, a nice feature of Python is that it can be used in many different ways. This is very
+useful for a number of purposes, but can be confusing in the beginning. Here's a quick overview of how
+we use Python in IN1900:
+
+  * Writing regular programs using a text editor or an IDE (Integrated development environment) is the
+    "classical" way of programming, and will be the most widely used in the course. One writes small programs using a
+    text editor, stores them in a file, and runs them from a terminal window with a command such as `python my_program.py`.
+    All exercises in IN1900 are to be handed in as ".py"-files, so this way of programming will probably be
+    your main style of working through the course. If one prefers an IDE, a convenient choice is Spyder, which
+    is installed automatically if installing Python from Anaconda. See the IN1900 course website for more information.
+  * Python can be used interactively in the terminal, by typing `python` or `ipython` in a terminal window,
+    without a subsequent file name. This will open an environment for typing and running Python commands, which is not very
+    suitable for writing programs over several lines, but extremely useful for testing Python commands
+    and statements, or simply
+    using Python as a calculator. The two versions `python` and `ipython` work largely the same way, but `ipython` has a
+    number of additional features and is recommended. An `ipython` window can also be started for instance
+    from the *Anaconda navigator*, which is convenient on Windows.
+  * *Jupyter notebooks* are a form of interactive notebooks that combine code and text. These are read viewed a
+    browser and look quite similar to a simple web page, but an important difference is that the code segments are "live"
+    Python code that can be run, changed and re-run while reading the document. These notes are available as Jupyter
+    notebooks, and most of the slides used in the lectures will also be in this format.
+
+For more detailed instructions on how to install and run Python on various platforms we refer to the course web site.
+
+======= The first example; Hello world! =======
+Most introductory books on programming start with a so-called "Hello world!"-program, which is a program
+that simply writes the words "Hello world!" to the screen. In Python, this program is just a single line;
+!bc pypro
+print("Hello world!")
+!ec
+To write and run such a program, open your favourite editor (Atom, gedit, Emacs etc.) type
+the given line and save the file with a suitable filename, for instance `hello.py`. Then, open a terminal or an iPython window,
+navigate to the directory where you saved the file (`cd` and `ls` are the essential commands, see the course web site for a
+quick guide). The type `python hello.py` in the terminal, or `run hello.py` if you are using iPython. The output appears
+in the terminal right after the command. If you are using an IDE, this is essentially an editor and an iPython/terminal window
+combined. For instance, in the Spyder IDE the editor is in the upper left window, and you type the program and save the file there.
+The, the window in the lower right corner is the iPython window where you run the program.
+
+While the "Helllo world!"-program may seem like a silly example, it actually serves a number of useful purposes. First of all,
+running this small program will verify that you have installed Python properly, and that you have installed the right version.
+It also introduces the function `print`, which will be used virtually every time we program, and
+illustrates how we use quotes to define a `string` in Python. While `print` is a word that Python understands, *hello* and
+*world* are not. By using the quotes we tell Python that it should not try to understand (or interprete) these words, but
+rather treat it as a simple text that in this case is to be printed to the screen. More about this later. Furthermore, this simple example
+illustrates the most frequently encountered difference between Python versions 2 and 3. In Python 2, the program would read
+`print "Hello world"`, i.e. without the parantheses. The examples in the book by Langtangen, which are written
+in Python 2, will stop with an error message if you try to run them using Python 3. In most cases the only error is the
+missing parantheses, which is usually indicated by the error message, and adding parantheses to all the print statements
+will make most of the examples run fine in Python 3.
+
+The tiny "Hello world!" example is also a good candidate for testing the interactive Python shell mentioned above.
+In a regular terminal window on Mac or Linux, the example would look something like this:
+!bc pyshell
+Terminal> python
+Python 3.7.3 (default, Mar 27 2019, 16:54:48)
+[Clang 4.0.1 (tags/RELEASE_401/final)] :: Anaconda, Inc. on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print("Hello world!")
+Hello world!
+>>>
+!ec
+As mentioned above, the interactive shell is very useful for testing and learning how various Python functions are used, and for using
+Python as a calculator. 

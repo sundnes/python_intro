@@ -1,0 +1,74 @@
+
+======= Summary of loops, lists and tuples =======
+Key topics covered in this chapter:
+
+ * While loops
+ * Boolean expressions
+ * For loops
+ * Lists
+ * Nested lists
+ * Tuples
+
+While loops and for loops are used to repeat similar operations many times. Their general syntax looks as follows:
+
+!bc pycod-t
+while condition:
+    <block of statements>
+
+for element in somelist:
+    <block of statements>
+!ec
+The while-loop is the most general, but the for-loop is a bit simpler to use. The rule of thumb is that whenever
+the number of iterations in the loop is known in advance, it is best to use a for-loop. When this number is not known,
+for instance if we want to keep updating a sum until some convergence criterion is met, we need to use a while-loop.
+
+
+Lists and tuples ar used to store sequences of values. They are essentially the same, with the important exception that tuples
+are immutable, i.e. they cannot be changed after they are created. We will mostly use lists in this course, but it is important to know
+about both.
+
+!bc pycod
+mylist  = ['a string', 2.5, 6, 'another string']
+mytuple = ('a string', 2.5, 6, 'another string')
+mylist[1]  = -10
+mylist.append('a third string')
+mytuple[1] = -10  # illegal: cannot change a tuple
+!ec
+
+=== Important list operations worth remembering. ===
+The table below summarizes some important list operations. It is a good idea to ensure that you understand and remember
+all of these, for instance by testing the statements in an interactive Python shell.
+# #if FORMAT in ("latex", "pdflatex")
+{\footnotesize
+# #endif
+
+|------------c---------------------------------------c--------------------------|
+| Construction                | Meaning                                         |
+|------------l---------------------------------------l--------------------------|
+| `a = [] `                   | initialize an empty list                        |
+| `a = [1, 4.4, 'run.py'] `   | initialize a list                               |
+| `a.append(elem)`            | add `elem` object to the end                    |
+| `a + [1,3]`                 | add two lists                                   |
+| `a.insert(i, e)`            | insert element `e` before index `i`             |
+| `a[3]`                      | index a list element                            |
+| `a[-1]`                     | get last list element                           |
+| `a[1:3]`                    | slice: copy data to sublist (here: index 1, 2)  |
+| `del a[3]`                  | delete an element (index `3`)                   |
+| `a.remove(e)`               | remove an element with value `e`                |
+| `a.index('run.py')`         | find index corresponding to an element's value  |
+| `'run.py' in a`             | test if a value is contained in the list        |
+| `a.count(v)`                | count how many elements that have the value `v` |
+| `len(a)`                    | number of elements in list `a`                  |
+| `min(a)`                    | the smallest element in `a`                     |
+| `max(a)`                    | the largest element in `a`                      |
+| `sum(a)`                    | add all elements in `a`                         |
+| `sorted(a)`                 | return sorted version of list `a`               |
+| `reversed(a)`               | return reversed sorted version of list `a`      |
+| `b[3][0][2]`                | nested list indexing                            |
+| `isinstance(a, list)`       | is `True` if `a` is a list                      |
+| `type(a) is list`           | is `True` if `a` is a list                      |
+|-------------------------------------------------------------------------------|
+
+# #if FORMAT in ("latex", "pdflatex")
+}
+# #endif

@@ -1,0 +1,129 @@
+
+Special features for teaching material 
+
+DocOnce offers some special features that can greatly aid development of effective teaching material: fancy admonitions simple boxes interactive code blocks hidden code blocks exercises multiple-choice questions or quizzes movies quotes
+
+These are briefly exemplified below. If you are mainly interested in how to structure DocOnce-based books, you can safely jump to Section.
+
+Admonitions 
+
+
+
+Use admonitions! Need to notify, warn, summarize, ask a question, give a tip, dive into less important details, or really emphasize a result? DocOnce features special notice, warning, summary, and question boxes called admonitions. These can be typeset in a variety of versions, depending on the output format (check out and the many options with 
+in the name).
+
+
+Simple box 
+
+
+
+Put a box around something important:
+
+
+
+
+
+
+Note: Simple boxes are not supported in format.
+
+
+
+Embedded interactive code 
+
+
+
+
+
+Problems! RunestoneInteractive books has nice support for interactive code, but there are at present problems with the rendering in HTML.
+
+
+
+The code environment 
+
+To illustrate program flow, you can step through code (as in a debugger, just more illustrative) using the code environment. Here is an example:
+
+
+In HTML and Sphinx format this code can be stepped through in the browser, while in LaTeX one gets a link to a web page with this functionality.
+
+The code environment 
+
+The SageMathCell server enables live Python code in web documents. Using the code environment, Python code can be embedded in a live code cell Sage Cell for interactive computing:
+
+
+
+We can even plot:
+
+
+
+RunestoneInteractive books have such interactive cells, but they do not seem to work well (?) yet,
+
+HTML and Sphinx output has such interactive Sage Cells, while other output formats can just show the code.
+
+
+Exercises 
+
+
+
+Exercise environments DocOnce supports exercise subsections, which are subsections with some extra tagging for exercises. Important features are: exercises can be divided into subexercises one may specify filename(s) for delivering the answer to an exercise one may specify filename(s) for the solution of an exercise one may specify a remark (fun facts, comments) one or more hints can be given to an exercise or subexercise (can be hidden in certain output formats) any exercise or subexercise can have a solution field any exercise or subexercise can have an answer field (very condensed solution) solutions and answers can be removed from the document at compile time exercises can have one of four titles: Exercise, Project, Problem, or Example
+
+
+
+Quote 
+
+There is also a quote environment (invisible box with larger margins).
+
+
+We're programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We're not excited by incremental renovation: tinkering, improving, planting flower beds.
+
+There's a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming: _It's harder to read code than to write _
+This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it's easier and more fun than figuring out how the old function works.
+
+Joel Spolsky, 2000
+
+
+Quiz 
+
+
+
+
+
+Does DocOnce feature multiple-choice questions or quizzes? Yes. See the quiz manual. No.
+
+
+Quite often we need mathematics and computer code in questions and answers.
+
+
+Remark: RunestoneInteractive books has nice support for quizzes, but mathematics and code blocks (or other types of advanced formatting) are not allowed in answers and feedbacks.
+
+
+
+
+Compute the integral and report the formula in verbatim LaTeX code,
+
+
+
+There is no closed-form formula for this integral. Maybe you fiddled around with pen and paper the wrong way... Try ! so the answer is
+
+
+
+
+
+
+Something went wrong here with the fractions...
+
+
+
+
+Well, the math is correct, but the LaTeX code lacks two backslashes, and is old-fashioned, use in 2015.
+
+
+The typesetting of a quiz depends on the output format. One can output in plain HTML and Sphinx formats, hover over the choice and get a pop-up tooltip with the right answer and an explanation (if defined). The explanation can only show plain text, so it is empty if it contains math or code blocks, or figures. With HTML Bootstrap styles one can click on a symbol to open up the answer and the explanation. RunestoneInteractive books (Sphinx) offers a button for the same purpose, but the explanation can only be plain text so any math or code block makes the explanation empty. LaTeX output can feature the choices only (no answer, no explanation: ), the short answer only or both the answer and all explanations (the case in this demo).
+
+
+What about a video lecture? 
+
+
+
+
+Can you think of applications of the above mentioned features?
+

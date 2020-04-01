@@ -1,0 +1,443 @@
+
+
+# #ifdef OLDSTUFF
+!split
+===== Next example: class for functions (part 1) =====
+
+!bblock
+  * Suppose we want to implement mathematical functions $f(x;p_1,\ldots,p_n)$ with parameters as classes. These classes should also support computation of $df/dx$ and $d^2f/dx^2$
+  * Example on such a class:
+
+!bc pycod
+class SomeFunc:
+    def __init__(self, parameter1, parameter2, ...)
+        # store parameters
+    def __call__(self, x):
+        # evaluate function
+    def df(self, x):
+        # evaluate the first derivative
+    def ddf(self, x):
+        # evaluate the second derivative
+!ec
+
+  * If we do not bother to derive the analytical derivatives, we can use numerical differentation formulas in `df` and `ddf`
+!eblock
+
+!split
+===== Next example: class for functions (part 2) =====
+
+!bblock
+  * Observation: with numerical differentiation, all such classes contain the same `df` and `ddf` methods
+  * Such duplication of code is considered a bad thing
+  * Better: collect `df` and `ddf` in a superclass and let subclasses automatically inherit these methods
+!eblock
+
+!split
+===== Super- and subclass for functions =====
+
+!bblock
+!bc pycod
+class FuncWithDerivatives:
+    def __init__(self, h=1.0E-5):
+        self.h = h  # spacing for numerical derivatives
+
+    def __call__(self, x):
+        raise NotImplementedError(
+          '___call__ missing in class %s' %
+          self.__class__.__name__)
+
+    def df(self, x):
+        # compute 1st derivative by a finite difference:
+        h = float(self.h)  # short form
+        return (self(x+h) - self(x-h))/(2*h)
+
+    def ddf(self, x):
+        # compute 2nd derivative by a finite difference:
+        h = float(self.h)  # short form
+        return (self(x+h) - 2*self(x) + self(x-h))/h**2
+!ec
+!eblock
+
+!bblock
+The superclass is not useful in itself - a subclass is needed to implement a specific mathematical function
+!eblock
+
+!split
+===== How to implement a specific function as a subclass =====
+
+!bblock
+  * Inherit from superclass `FuncWithDerivatives`
+  * Store parameters in constructor
+  * Implement function formula in `__call__`
+  * Rely on inherited `df` and `ddf` for numerical derivatives, or reimplement `df` and `ddf` with exact expressions
+!eblock
+
+!split
+===== A subclass for a function; no direct use of superclass =====
+
+!bblock
+  * Say we want to implement $f(x)=\cos (ax)+x^3$
+  * We do this in a subclass:
+
+!bc pycod
+class MyFunc(FuncWithDerivatives):
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, x):
+        return cos(self.a*x) + x**3
+
+    def df(self, x):
+        a = self.a
+        return -a*sin(a*x) + 3*x**2
+
+    def ddf(self, x):
+        a = self.a
+        return -a*a*cos(a*x) + 6*x
+!ec
+
+  * This subclass inherits from the superclass, but does not make use of anything from the superclass - no practical use of the superclass in this example
+!eblock
+
+!split
+===== A subclass for a function; use of superclass =====
+
+!bblock
+  * Say we want to implement $f(x)=\ln |p\tanh(qx\cos rx)|$
+  * We are lazy and want to avoid hand derivation of long expressions for $f'(x)$ and $f''(x)$ - use finite differences instead
+  * Implementation as a subclass:
+
+!bc pycod
+ class MyComplicatedFunc(FuncWithDerivatives):
+    def __init__(self, p, q, r, h=1.0E-9):
+        FuncWithDerivatives.__init__(self, h)
+        self.p, self.q, self.r = p, q, r
+
+    def __call__(self, x):
+        p, q, r = self.p, self.q, self.r
+        return log(abs(p*tanh(q*x*cos(r*x))))
+!ec
+
+  * This time we inherit `df` and `ddf`
+  * Note also that we must pass `h` on to the superclass constructor
+  * It is always a good habit to call the superclass constructor
+!eblock
+
+!split
+===== Interactive example =====
+
+!bblock
+$f(x)=\ln |p\tanh(qx\cos rx)|$ <linebreak> compute $f(x)$, $f'(x)$, $f''(x)$ for $x=\pi/2$
+!eblock
+
+!bblock
+
+
+!bc pyshell
+>>> from math import *
+>>> f = MyComplicatedFunc(1, 1, 1)
+>>> x = pi/2
+>>> f(x)
+-36.880306514638988
+>>> f.df(x)
+-60.593693618216086
+>>> f.ddf(x)
+3.3217246931444789e+19
+!ec
+!eblock
+# #endif
+
+
+split
+===== A flexible main program for numerical differentiation =====
+
+!bblock
+Suppose we want to differentiate function expressions from the command line:
+
+!bc sys
+Terminal> python df.py 'exp(sin(x))' Central 2 3.1
+-1.04155573055
+
+Terminal> python df.py 'f(x)' difftype difforder x
+f'(x)
+!ec
+
+With `eval` and the `Diff` class hierarchy this main program can be realized in a few lines (many lines in C# and Java!):
+
+!bc pycod
+import sys
+from Diff import *
+from math import *
+from scitools.StringFunction import StringFunction
+
+f = StringFunction(sys.argv[1])
+difftype = sys.argv[2]
+difforder = sys.argv[3]
+classname = difftype + difforder
+df = eval(classname + '(f)')
+x = float(sys.argv[4])
+print df(x)
+!ec
+!eblock
+
+
+
+=== Alternative implementations: ===
+  * *Pure Python functions* <linebreak>
+    downside: more arguments to transfer, cannot apply formulas twice to get 2nd-order derivatives etc.
+  * *Functional programming*<linebreak>
+    gives the same flexibility as the OO solution
+  * *One class and one common math formula* <linebreak>
+    applies math notation instead of programming techniques to generalize code
+
+
+!bblock
+These techniques are beyond scope in the course, but place OO into a bigger perspective. Might better clarify what OO is - for some.
+!eblock
+
+
+
+# #ifdef OOSHAPES
+
+!split
+===== A class hierarchy for geometric shapes =====
+
+!bblock Goal:
+Make a drawing program where simple figures can be drawn by simple Python commands.
+!eblock
+
+!bblock Example:
+!bc pycod
+l1 = Line(start=(0,0), stop=(1,1))  # define line
+l1.draw()        # make plot data
+display()        # display the plot data
+
+r1 = Rectangle(lower_left_corner=(0,1), width=3, height=5)
+r1.draw()
+
+Circle(center=(5,7), radius=1).draw()
+Wheel(center=(6,2), radius=2, inner_radius=0.5, nlines=7).draw()
+display()
+savefig('tmp')   # create PNG file tmp.png
+!ec
+!eblock
+
+!split
+===== The resulting figure... =====
+
+#FIGURE: [fig-oo/shapes1, width=360 frac=0.6]
+
+!split
+===== How can we realize this drawing tool? =====
+
+!bblock
+  * We need objects for geometric shapes: Line, Rectangle, Circle, Arc, Wheel, Arrow, Spring, Man, Car, etc.
+  * Objects are naturally related in a family
+  * Superclass Shape provides functionality (code) common for all geometric shapes, and subclasses add code for a specific shape
+  * Line is a subclass of Shape
+  * Arc is a subclass of Shape
+  * Circle is a subclass of Arc (special Arc of 360 degrees)
+  * Wheel has two Circles and several Lines
+!eblock
+
+!split
+===== Is-a versus has-a relationships =====
+
+!bblock
+  * In OO one distinguishes between is-a and has-a relationships
+  * An Arc *is a* Shape
+  * A Circle *is an* Arc
+  * $\Rightarrow$ *is-a* means *subclass of*
+  * A Wheel *has* two Circle objects many Line objects
+  * $\Rightarrow$ *has-a* means *attribute*
+  * Note: a shape is (in general) built of other shapes, so a shape *is*  another shape and *has* other shapes
+!eblock
+
+!split
+===== Overview of the class hierarchy =====
+
+!bblock
+  * Superclass Shape has a drawing tool (we omit the details)
+  * The drawing tool can draw a curve, set the linetype, thickness, color, etc., make hardcopies, display all curves defined so far on the screen, etc. (We use Gnuplot)
+  * Class Curve represents some set of connected $x$ and $y$ points
+  * Basic shapes just define their curve
+  * More complicated shapes are built of other shapes <linebreak> (and curves)
+  * Class Shape contains
+    * the common parts of all constructors
+    * a draw method for drawing all shapes/curves of a class
+    * other common methods for geometric transforms (later)
+  * Subclasses (Line, Circle, ...) define their shapes/curves in a method `subshapes`, which returns a list of Shape subclass objects - the superclass Shape can perform common operations on this list
+!eblock
+
+!split
+===== Let us show some code to be specific: the superclass =====
+
+!bblock
+!bc pycod
+class Shape:
+    def __init__(self):
+        self.shapes = self.subshapes()
+        if isinstance(self.shapes, Shape):
+            self.shapes = [self.shapes]  # turn to list
+
+    def subshapes(self):
+        """Define self.shapes as list of Shape instances."""
+        raise NotImplementedError(self.__class__.__name__)
+
+    def draw(self):
+        for shape in self.shapes:
+            shape.draw()
+!ec
+!eblock
+
+!split
+===== The subclass Line =====
+
+!bblock
+!bc pycod
+class Line(Shape):
+    def __init__(self, start, stop):
+        self.start, self.stop = start, stop
+        Shape.__init__(self)
+
+    def subshapes(self):
+        x = [self.start[0], self.stop[0]]
+        y = [self.start[1], self.stop[1]]
+        return Curve(x,y)
+!ec
+!eblock
+
+!bblock
+The subclass stores geometric info about its shape in the constructor and defines, in the `subshape` method, enough coordinates to draw the shape
+!eblock
+
+!split
+===== A Rectangle has slightly more code =====
+
+!bblock
+Specification: lower left corner point + width + height
+!eblock
+
+!bblock
+!bc pycod
+class Rectangle(Shape):
+    def __init__(self, lower_left_corner, width, height):
+        self.lower_left_corner = lower_left_corner  # 2-tuple
+        self.width, self.height = width, height
+        Shape.__init__(self)
+
+    def subshapes(self):
+        ll = self.lower_left_corner  # short form
+        x = [ll[0], ll[0]+self.width,
+             ll[0]+self.width, ll[0], ll[0]]
+        y = [ll[1], ll[1], ll[1]+self.height,
+             ll[1]+self.height, ll[1]]
+        return Curve(x,y)
+!ec
+!eblock
+
+!split
+===== And here is an Arc =====
+
+!bblock
+!bc pycod
+class Arc(Shape):
+    def __init__(self, center, radius,
+                 start_degrees, opening_degrees, resolution=180):
+        self.center = center
+        self.radius = radius
+        self.start_degrees = start_degrees*pi/180
+        self.opening_degrees = opening_degrees*pi/180
+        self.resolution = resolution
+        Shape.__init__(self)
+
+    def subshapes(self):
+        t = linspace(self.start_degrees,
+                     self.start_degrees + self.opening_degrees,
+                     self.resolution+1)
+        x0 = self.center[0];  y0 = self.center[1]
+        R = self.radius
+        x = x0 + R*cos(t)
+        y = y0 + R*sin(t)
+        return Curve(x,y)
+!ec
+!eblock
+
+!split
+===== A Circle is a special kind of an Arc =====
+
+!bblock
+!bc pycod
+class Circle(Arc):
+    def __init__(self, center, radius, resolution=180):
+        Arc.__init__(self, center, radius, 0, 360, resolution)
+!ec
+!eblock
+
+!split
+===== A Wheel is more complicated... =====
+
+!bblock
+!bc pycod
+class Wheel(Shape):
+    def __init__(self, center, radius, inner_radius, nlines=10):
+        self.center = center
+        self.radius = radius
+        self.inner_radius = inner_radius
+        self.nlines = nlines
+        Shape.__init__(self)
+
+    def subshapes(self):
+        outer = Circle(self.center, self.radius)
+        inner = Circle(self.center, self.inner_radius)
+        lines = []
+        t = linspace(0, 2*pi, self.nlines)
+        Ri = self.inner_radius;  Ro = self.radius
+        x0 = self.center[0];  y0 = self.center[1]
+        xinner = x0 + Ri*cos(t)
+        yinner = y0 + Ri*sin(t)
+        xouter = x0 + Ro*cos(t)
+        youter = y0 + Ro*sin(t)
+        lines = [Line((xi,yi),(xo,yo)) for xi, yi, xo, yo in
+                 zip(xinner, yinner, xouter, youter)]
+        return [outer, inner] + lines
+!ec
+!eblock
+
+!split
+===== And now to the real strength of OO! =====
+
+!bblock
+  * We now have a lot of different geometric shapes we can draw
+  * But can we make a wheel roll?
+  * Yes, if the wheel can be rotated and translated
+  * The great thing is that we can implement general formulas for translation and rotation of a set of points in class Curve, and class Shape can translate and rotate any subclass figure just as it can draw any subclass figure
+  * All subclasses automatically inherit general functionality for translating and rotating themselves!
+  * See the book for details
+  * This is a good example on the power of mathematics and OO!
+!eblock
+
+!split
+===== Let the Wheel roll... =====
+
+!bblock
+!bc pycod
+center = (6,2)
+radius = 2
+angle = 2
+total_rotation_angle = 200
+w1 = Wheel(center=center, radius=radius,
+           inner_radius=0.5, nlines=7)
+for i in range(int(total_rotation_angle/angle)):
+    w1.draw()
+    display()
+
+    L = radius*angle*pi/180  # translation = arc length
+    w1.rotate(angle, center[0], center[1])
+    w1.translate(-L, 0)
+    center = (center[0] - L, center[1])
+
+    erase()
+!ec
+!eblock
+# #endif

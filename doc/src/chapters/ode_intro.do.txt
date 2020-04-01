@@ -1,0 +1,659 @@
+TITLE: App.E: Programming of differential equations
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+AUTHOR: Joakim Sundnes at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+DATE: today
+
+!split
+===== Plan for the rest of the fall (1) =====
+!bblock
+* Tuesday October 30:
+  * Short quiz
+  * Exer 7.10, 7.12, 7.25
+  * How to solve *any* scalar ODE
+* Thursday November 1:
+  * Exer 9.1, 9.3, (9.4, 9.6)
+  * Vector ODEs (Systems of ODEs)
+* Tuesday November 6/Thursday November 8:
+  * Exer E.21, E.22
+  * More on vector ODEs
+  * Disease modeling (final project)
+!eblock
+
+!split
+===== Plan for the rest of the fall (2) =====
+!bblock
+* November 12 - November 18:
+  * Final project on disease modeling
+  * No ordinary lectures
+  * Time for questions about the project ("orakel") will be announced
+* November 19 - November 28 (exam):
+  * Repetition lectures ("on demand")
+!eblock
+
+!split
+===== Quiz (special methods) =====
+What is printed by the following code? Why?
+!bblock
+!bc pycod
+from numpy import *
+
+class MyList:
+    def __init__(self,values):
+        self.values = values
+
+    def __add__(self,other):
+        result = []
+        for i in range(len(self.values)):
+        result.append(str(self.values[i])+'+' \
+                              +str(other.values[i]))
+        return result
+
+l1 = [2,3,4]; l2 = [5,6,1]
+a1 = array(l1); a2 = array(l2)
+m1 = MyList(l1); m2 = MyList(l2)
+print(l1+l2)
+print(a1+a2)
+print(m1+m2)
+!ec
+!eblock
+
+!split
+===== A class for Polynomials (exer 6.25) =====
+!bblock
+A polynomial is uniquely defined by its coefficients:
+!bt
+\begin{align*}
+p_1(x) &= 3x^2 - 2x + 1 \\
+p_2(x) &= ax + b \\
+\ldots &
+\end{align*}
+!et
+In general, for a polynomial of degree $n$ we have
+!bt
+\begin{align*}
+p(x) &= \sum_{i=0}^n a_i x^i
+\end{align*}
+!et
+We can make a class for Polynomials, where the coefficients $a_i$
+are stored as a list or dictionary.
+!eblock
+
+
+!split
+===== How to solve any ordinary scalar differential equation =====
+!bslidecell 00 0.4
+!bt
+\begin{align*}
+{\color{red}u'(t)} &= \alpha {\color{red}u(t)}(1 - R^{-1}{\color{red}u(t)})\\
+{\color{red}u(0)} &= U_0
+\end{align*}
+!et
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig-ode2/logistic_func_mpl, width=400 frac=0.9]
+!eslidecell
+
+!split
+===== Examples on scalar differential equations (ODEs) =====
+
+!bblock Terminology:
+ * *Scalar ODE*: a single ODE, one unknown function
+ * *Vector ODE* or *systems of ODEs*: several ODEs, several unknown functions
+!eblock
+
+!bblock Examples:
+!bt
+\begin{align*}
+u'&=\alpha u\quad\hbox{exponential growth}\\
+u'&=\alpha u\left(  1-\frac{u}{R}\right)\quad\hbox{logistic growth}\\
+u' + b|u|u &= g\quad\hbox{falling body in fluid}
+\end{align*}
+!et
+!eblock
+
+!split
+===== We shall write an ODE in a generic form: $u'=f(u,t)$ =====
+
+!bblock
+ * Our methods and software should be applicable to *any* ODE
+ * Therefore we need an abstract notation for an arbitrary ODE
+
+!bt
+\[ u^{\prime}(t) = f(u(t), t)\]
+!et
+!eblock
+
+!bblock
+The three ODEs on the last slide correspond to
+
+!bt
+\begin{align*}
+f(u,t) &= \alpha u,\quad\hbox{exponential growth}\\
+f(u,t) &= \alpha u\left(  1-\frac{u}{R}\right),\quad\hbox{logistic growth}\\
+f(u,t) &= -b|u|u + g,\quad\hbox{body in fluid}
+\end{align*}
+!et
+!eblock
+
+!bblock
+Our task: write functions and classes that take $f$ as input and
+produce $u$ as output
+!eblock
+
+!split
+===== We use finite difference approximations to derivatives to turn an ODE into a difference equation =====
+
+!bblock $u'=f(u,t)$
+Assume we have computed $u$ at discrete time points
+$t_0,t_1,\ldots,t_k$. At $t_k$ we have the ODE
+
+!bt
+\[ u'(t_k) = f(u(t_k),t_k) \]
+!et
+
+Approximate $u'(t_k)$ by a forward finite difference,
+
+!bt
+\[ u'(t_k)\approx \frac{u(t_{k+1})-u(t_k)}{\Delta t}\]
+!et
+
+Insert in the ODE at $t=t_k$:
+
+!bt
+\[ \frac{u(t_{k+1})-u(t_k)}{\Delta t} = f(u(t_k),t_k) \]
+!et
+
+Terms with $u(t_k)$ are known, and this is an algebraic (difference) equation
+for $u(t_{k+1})$
+!eblock
+
+!split
+===== The Forward Euler (or Euler's) method; idea =====
+
+FIGURE: [fig-ode2/FE_comic_1, width=600 frac=0.8]
+
+
+!split
+===== The Forward Euler (or Euler's) method; idea =====
+
+FIGURE: [fig-ode2/FE_comic_2, width=600 frac=0.8]
+
+
+!split
+===== The Forward Euler (or Euler's) method; mathematics =====
+
+!bblock
+Solving with respect to $u(t_{k+1})$
+!bt
+\[ u(t_{k+1}) = u(t_k) + \Delta t f(u(t_k), t_k)\]
+!et
+
+This is a very simple formula that we can use repeatedly for
+$u(t_1)$, $u(t_2)$, $u(t_3)$ and so forth.
+!eblock
+
+!bblock Difference equation notation:
+Let $u_k$ denote the numerical approximation to the exact solution $u(t)$
+at $t=t_k$.
+
+!bt
+\[ u_{k+1} = u_k + \Delta t f(u_k,t_k)\]
+!et
+
+This is an ordinary difference equation we can solve!
+!eblock
+
+
+!split
+===== Let's apply the method! =====
+
+!bblock Problem: The world's simplest ODE
+
+!bt
+\[ u' = u,\quad t\in (0,T] \]
+!et
+
+Solve for $u$ at $t=t_k=k\Delta t$, $k=0,1,2,\ldots,t_n$,
+$t_0=0$, $t_n=T$
+!eblock
+
+!bblock Forward Euler method:
+!bt
+\[ u_{k+1} = u_k + \Delta t\, f(u_k,t_k)\]
+!et
+!eblock
+
+!bblock Solution by hand:
+What is $f$? $f(u,t)=u$
+
+!bt
+\[ u_{k+1} = u_k + \Delta t f(u_k,t_k) = u_k + \Delta t u_k = (1+\Delta t)u_k\]
+!et
+
+First step:
+!bt
+\[ u_1 = (1+\Delta t) u_0\]
+!et
+but what is $u_0$?
+!eblock
+
+!split
+===== An ODE needs an initial condition: $u(0)=U_0$ =====
+
+!bblock Numerics:
+Any ODE $u'=f(u,t)$ *must* have an initial condition $u(0)=U_0$, with
+known $U_0$, otherwise we cannot start the method!
+!eblock
+
+!bblock Mathematics:
+In mathematics: $u(0)=U_0$ must be specified to get a unique solution.
+!eblock
+
+!bblock Example:
+!bt
+\[ u'=u \]
+!et
+Solution: $u=Ce^t$ for any constant $C$. Say $u(0)=U_0$: $u=U_0e^t$.
+!eblock
+
+!split
+===== We start with a specialized program for $u'=u$, $u(0)=U_0$ =====
+
+!bblock Algorithm:
+Given $\Delta t$ (`dt`) and $n$
+
+ * Create arrays `t` and `u` of length $n+1$
+ * Set initial condition: `u[0]` = $U_0$, `t[0]=0`
+ * For $k=0,1,2,\ldots,n-1$:
+  * `t[k+1] = t[k] + dt`
+  * `u[k+1] = (1 + dt)*u[k]`
+!eblock
+
+!split
+===== We start with a specialized program for $u'=u$, $u(0)=U_0$ =====
+
+!bblock Program:
+!bc pycod
+import numpy as np
+import sys
+
+dt = float(sys.argv[1])
+U0 = 1
+T = 4
+n = int(T/dt)
+
+t = np.zeros(n+1)
+u = np.zeros(n+1)
+
+t[0] = 0
+u[0] = U0
+for k in range(n):
+    t[k+1] = t[k] + dt
+    u[k+1] = (1 + dt)*u[k]
+
+# plot u against t
+!ec
+!eblock
+
+!split
+===== The solution if we plot $u$ against $t$ =====
+
+$\Delta t = 0.4$ and $\Delta t=0.2$:
+
+FIGURE: [fig-ode2/FE_n_10_20, width=600 frac=1]
+
+!split
+===== The algorithm for the general ODE $u'=f(u,t)$ =====
+
+!bblock Algorithm:
+Given $\Delta t$ (`dt`) and $n$
+
+ * Create arrays `t` and `u` of length $n+1$
+ * Create array `u` to hold $u_k$ and
+ * Set initial condition: `u[0]` = $U_0$, `t[0]=0`
+ * For $k=0,1,2,\ldots,n-1$:
+  * `u[k+1] = u[k] + dt*f(u[k], t[k])` color{red}{(the only change!)}
+  * `t[k+1] = t[k] + dt`
+!eblock
+
+!split
+===== Implementation of the general algorithm for $u'=f(u,t)$ =====
+
+!bblock General function:
+!bc pycod
+def ForwardEuler(f, U0, T, n):
+    """Solve u'=f(u,t), u(0)=U0, with n steps until t=T."""
+    import numpy as np
+    t = np.zeros(n+1)
+    u = np.zeros(n+1)  # u[k] is the solution at time t[k]
+
+    u[0] = U0
+    t[0] = 0
+    dt = T/float(n)
+
+    for k in range(n):
+        t[k+1] = t[k] + dt
+        u[k+1] = u[k] + dt*f(u[k], t[k])
+
+    return u, t
+!ec
+!eblock
+
+!bblock Magic:
+This simple function can solve any ODE (!)
+!eblock
+
+!split
+===== Example on using the function =====
+
+!bblock Mathematical problem:
+Solve $u'=u$, $u(0)=1$, for $t\in [0,4]$,
+with $\Delta t = 0.4$ <linebreak>
+Exact solution: $u(t)=e^t$.
+!eblock
+
+!bblock Basic code:
+!bc pycod
+def f(u, t):
+    return u
+
+U0 = 1
+T = 3
+n = 30
+u, t = ForwardEuler(f, U0, T, n)
+!ec
+!eblock
+
+!bblock Compare exact and numerical solution:
+!bc pycod
+from math import exp
+import matplotlib.pyplot as plt
+plt.plot(t, u, 'r-', t, exp(t), 'b-',
+     xlabel='t', ylabel='u', legend=('numerical', 'exact'),
+     title="Solution of the ODE u'=u, u(0)=1")
+plt.show()
+!ec
+!eblock
+
+!split
+===== Now you can solve any ODE! =====
+
+!bblock Recipe:
+ * Identify $f(u,t)$ in your ODE
+ * Make sure you have an initial condition $U_0$
+ * Implement the $f(u,t)$ formula in a Python function `f(u, t)`
+ * Choose $\Delta t$ or no of steps $n$
+ * Call `u, t = ForwardEuler(f, U0, T, n)`
+ * `plot(t, u)`
+!eblock
+
+!bblock Warning:
+The Forward Euler method may give very inaccurate solutions if
+$\Delta t$ is not sufficiently small. For some problems
+(like $u''+u=0$) other methods should be used.
+!eblock
+
+
+!split
+===== Let us make a class instead of a function for solving ODEs =====
+
+!bblock Usage of the class:
+!bc pycod
+method = ForwardEuler(f, dt)
+method.set_initial_condition(U0, t0)
+u, t = method.solve(T)
+plot(t, u)
+!ec
+!eblock
+
+!bblock How?
+  * Store $f$, $\Delta t$, and the sequences $u_k$, $t_k$ as attributes
+  * Split the steps in the `ForwardEuler` function into three methods:
+     * the constructor (`__init__`)
+     * `solve` for running the numerical time stepping
+     * `advance` for isolating the numerical updating formula <linebreak>
+       (new numerical methods just need a different `advance` method,
+       the rest is the same)
+!eblock
+
+!split
+===== The code for a class for solving ODEs (part 1) =====
+
+!bblock
+!bc pycod
+
+import numpy as np
+
+class ForwardEuler_v1:
+    def __init__(f, U0, T, n):
+        self.f, self.U0, self.T, self.n = f, U0, T, n
+        self.dt = T/float(n)
+        self.u = np.zeros(self.n+1)
+        self.t = np.zeros(self.n+1)
+
+!ec
+!eblock
+
+!split
+===== The code for a class for solving ODEs (part 2) =====
+
+!bblock
+!bc pycod
+
+class ForwardEuler_v1:
+    ...
+    def solve(self, T):
+        """Compute solution for 0 <= t <= T."""
+        n = int(round(T/self.dt))  # no of intervals
+        self.u[0] = float(self.U0)
+        self.t[0] = float(0)
+
+        for k in range(self.n):
+            self.k = k
+            self.t[k+1] = self.t[k] + self.dt
+            self.u[k+1] = self.advance()
+        return self.u, self.t
+
+    def advance(self):
+        """Advance the solution one time step."""
+        # Create local variables to get rid of "self." in
+        # the numerical formula
+        u, dt, f, k, t = self.u, self.dt, self.f, self.k, self.t
+
+        unew = u[k] + dt*f(u[k], t[k])
+        return unew
+!ec
+!eblock
+
+
+!split
+===== Using a class to hold the right-hand side $f(u,t)$ =====
+
+!bblock Mathematical problem:
+!bt
+\[ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad t\in [0,40]\]
+!et
+!eblock
+
+!bblock Class for right-hand side $f(u,t)$:
+!bc pycod
+
+class Logistic:
+    def __init__(self, alpha, R, U0):
+        self.alpha, self.R, self.U0 = alpha, float(R), U0
+
+    def __call__(self, u, t):   # f(u,t)
+        return self.alpha*u*(1 - u/self.R)
+!ec
+!eblock
+
+!bblock Main program:
+!bc pycod
+problem = Logistic(0.2, 1, 0.1)
+method = ForwardEuler_v1(problem,problem.U0,40,401)
+u, t = method.solve(T)
+!ec
+!eblock
+
+!split
+===== Figure of the solution =====
+
+FIGURE: [fig-ode2/logistic_func_mpl, width=600 frac=1.0]
+
+
+!split
+===== Numerical methods for ordinary differential equations =====
+
+!bblock Forward Euler method:
+!bt
+     \[ u_{k+1} = u_k + \Delta t\, f(u_k, t_k) \]
+!et
+!eblock
+
+!bblock 4th-order Runge-Kutta method:
+!bt
+\[ u_{k+1} = u_k + {1\over 6}\left( K_1 + 2K_2 + 2K_3 + K_4\right)\]
+!et
+
+!bt
+\begin{align*}
+K_1 &= \Delta t\,f(u_k, t_k)\\
+K_2 &= \Delta t\,f(u_k + {1\over2}K_1, t_k + {1\over2}\Delta t)\\
+K_3 &= \Delta t\,f(u_k + {1\over2}K_2, t_k + {1\over2}\Delta t)\\
+K_4 &= \Delta t\,f(u_k + K3, t_k + \Delta t)
+\end{align*}
+!et
+
+And lots of other methods! How to program a wide collection of methods?
+Use object-oriented programming!
+!eblock
+
+!split
+===== A superclass for ODE methods =====
+
+!bpop
+!bblock Common tasks for ODE solvers:
+  * Store the solution $u_k$ and the corresponding time levels $t_k$, $k=0,1,2,\ldots,n$
+  * Store the right-hand side function $f(u,t)$
+  * Set and store the initial condition
+  * Run the loop over all time steps
+!eblock
+!epop
+
+!bpop
+!bblock Principles:
+  * Common data and functionality are placed in superclass `ODESolver`
+  * Isolate the numerical updating formula in a method `advance`
+  * Subclasses, e.g., `ForwardEuler`, just implement the specific numerical formula in `advance`
+!eblock
+!epop
+
+!split
+===== The superclass code =====
+
+!bblock
+!bc pycod
+class ODESolver:
+    def __init__(self, f):
+        self.f = f
+
+    def advance(self):
+        """Advance solution one time step."""
+        raise NotImplementedError  # implement in subclass
+
+    def set_initial_condition(self, U0):
+        self.U0 = float(U0)
+
+    def solve(self, time_points):
+        self.t = np.asarray(time_points)
+        self.u = np.zeros(len(self.t))
+        # Assume that self.t[0] corresponds to self.U0
+        self.u[0] = self.U0
+
+        # Time loop
+        for k in range(n-1):
+            self.k = k
+            self.u[k+1] = self.advance()
+        return self.u, self.t
+
+!ec
+!eblock
+
+!split
+===== Implementation of the Forward Euler method =====
+
+!bblock Subclass code:
+!bc pycod
+class ForwardEuler(ODESolver):
+    def advance(self):
+        u, f, k, t = self.u, self.f, self.k, self.t
+
+        dt = t[k+1] - t[k]
+        unew = u[k] + dt*f(u[k], t)
+        return unew
+!ec
+!eblock
+
+!bblock Application code for $u'-u=0$, $u(0)=1$, $t\in [0,3]$, $\Delta t=0.1$:
+!bc pycod
+from ODESolver import ForwardEuler
+def test1(u, t):
+    return u
+
+method = ForwardEuler(test1)
+method.set_initial_condition(U0=1)
+u, t = method.solve(time_points=np.linspace(0, 3, 31))
+plot(t, u)
+!ec
+!eblock
+
+!split
+===== The implementation of a Runge-Kutta method =====
+
+!bblock Subclass code:
+!bc pycod
+class RungeKutta4(ODESolver):
+    def advance(self):
+        u, f, k, t = self.u, self.f, self.k, self.t
+
+        dt = t[k+1] - t[k]
+        dt2 = dt/2.0
+        K1 = dt*f(u[k], t)
+        K2 = dt*f(u[k] + 0.5*K1, t + dt2)
+        K3 = dt*f(u[k] + 0.5*K2, t + dt2)
+        K4 = dt*f(u[k] + K3, t + dt)
+        unew = u[k] + (1/6.0)*(K1 + 2*K2 + 2*K3 + K4)
+        return unew
+!ec
+!eblock
+
+!bblock Application code (same as for ForwardEuler):
+!bc pycod
+from ODESolver import RungeKutta4
+def test1(u, t):
+    return u
+
+method = RungeKutta4(test1)
+method.set_initial_condition(U0=1)
+u, t = method.solve(time_points=np.linspace(0, 3, 31))
+plot(t, u)
+!ec
+!eblock
+
+!split
+===== The user should be able to check intermediate solutions and terminate the time stepping =====
+
+!bblock
+ * Sometimes a property of the solution determines when to stop the solution process: e.g., when $u < 10^{-7}\approx 0$.
+ * Extension: `solve(time_points, terminate)`
+ * `terminate(u, t, step_no)` is called at every time step, is user-defined,
+   and returns `True` when the time stepping should be terminated
+ * Last computed solution is `u[step_no]` at time `t[step_no]`
+
+!bc pycod
+def terminate(u, t, step_no):
+    eps = 1.0E-6                     # small number
+    return abs(u[step_no,0]) < eps   # close enough to zero?
+!ec
+!eblock

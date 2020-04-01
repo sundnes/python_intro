@@ -1,0 +1,677 @@
+In this chapter we will take one step beyond the "Hello world!"-example of
+the first chapter, and introduce programming with mathematical formulas.
+Such formulas are essential parts of most programs written for scientific
+applications, and they are also useful for introducing the concept of
+*variables*, which is a fundamental part of all programming languages.
+
+======= Programming simple mathematics =======
+
+To introduce the concepts of this chapter, we first consider a simple formula
+for calculating interest on a bank deposit:
+!bt
+\[
+A = P(1+(r/100))^n .
+\]
+!et
+Here $P$ is the initial deposit (the *principal*), $r$ is the yearly interest
+rate given in percent, $n$ is the number of years, and $A$ is the final amount.
+
+The task is now to write a program that computes $A$ for given
+values of $P$, $r$ and $n$. We could of course easily do
+this with a calculator, but a small program can be much
+more flexible and powerful. To evaluate the formula above,
+we first need to assign values to $P$, $r$ and $n$, and then
+make the calculation. Choosing for instance
+$P=100, r=5.0$, and $n=7$, a complete Python program that does the calculation
+and outputs  the result reads
+!bc pypro
+print(100*(1 + 5.0/100)**7)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+140.71004226562505
+!ec
+# #endif
+As described in the previous chapter, this line can be typed into an
+interactive Python session, or written in an editor and stored in a file,
+for instance `interest0.py`. The program is then run with the command `python interest0.py`
+in a regular terminal, or `run interest0.py` in an iPython window or Spyder.
+
+The `interest0.py`-program is not much more complex or useful than the
+"Hello world!"-example from the previous chapter, but there are a couple of
+important differences. First, notice that in this case
+we did not use quotation marks inside the parentheses. The reason is that
+we want Python to evaluate the mathematical formula,
+and print the result to the screen. This works fine as long as the text inside
+the parenthesis is valid Python code, or, more precisely, a valid *expression* that
+can be evaluated to give some result. If we put quotation marks around the
+formula above, the code would still work, but the result is not what we want (try it!).
+At this point it is also worth noting that while we state above that Python is a
+"flexible" and "high-level" language, all programming languages are extremely picky about spelling and
+grammar. Consider for instance the line
+!bc
+write(100*(1+5,0/100)^7)
+!ec
+While most people may read this line quite easily, and interpret it as the
+same formula as the one above, it makes no sense
+as a Python program. There are multiple errors: `write` is not a legal Python
+word in this context, comma has another meaning than the point, and the hat does
+not mean exponentiation. We have to be extremely accurate with how we write
+computer programs, and it takes time and experience to learn this.
+
+The evaluation of the mathematical formula above is performed according to
+the standard rules. Terms are evaluated one by one, starting from left,
+exponentiation is performed first and then multiplication and division. We use
+parentheses to control the order of the evaluation, just as we do in regular
+mathematics. Here, the parentheses around `(1 + 5.0/100)` means that this sum
+is evaluated first (to give 1.05), and then raised to the power of 7.
+Forgetting the parenthesis and writing `1 + 5.0/100**7` will give a very
+different result, just as in mathematics. Because the use of parentheses to
+group calculations works exactly as in mathematics, it is not very difficult
+to understand for people with a mathematical background. However, when
+programming more complicated formulas it is very easy to make mistakes such
+as forgetting or misplacing a closing parenthesis. This mistake is probably
+the most common source of error when programming mathematical formulas, and even for
+experienced programmers it is worth paying close attention to the order and
+number of parentheses in the expressions. Getting it wrong will
+either lead to an error message when the code is run, or to a program that runs
+fine but gives an unexpected results. The first type of error is usually quite
+easy to find and to fix, but the latter may be much harder.
+
+Although Python is quite strict on spelling and grammar, in programming terms
+called the *syntax*, there is some flexibility. For instance,
+whitespace inside a formula does not matter at all. An expression
+like `5    *2` works just as well as `5*2`. In general, whitespace
+in a Python program only matters if it is at the start of a line, which we
+will come back to later. Otherwise, one should use whitespace
+in order to make the code as readable as possible to humans, since Python will
+ignore it anyway.
+
+
+======= Variables and variable types =======
+
+In mathematics we are used to variables, such as $P$, $r$ and $n$ in the interest
+formula above. We can use variables in a
+program too, and this makes the program easier to read and understand:
+!bc pycod
+primary = 100
+r = 5.0
+n = 7
+amount = primary * (1+r/100)**n
+print(amount)
+!ec
+This program spans several lines of text and uses variables, but otherwise
+performs the same calculations and gives the exact same output as the one-line
+program above. Still, the use of variables has a few advantages even for
+this very simple example. One is that the program becomes easier to read,
+since the meaning of the numbers becomes more intuitive and the formula
+is easier to recognize. Another advantage, which may be more important, is
+that it becomes easier to change the value of one of the variables. This advantage
+becomes even more obvious in more complex formulas where the same variable
+occurs multiple times. Changing the code in multiple places each time we need a
+new value is guaranteed to introduce errors. If the same number occurs more
+than once in a program, it should always be stored in a variable.
+
+The instructions in the program above are called *statements*, and are
+executed one by one when we run the program. It is common to have one
+statement per line, although it is possible to put multiple statements on
+one line, separated by semicolon, as in `primary = 100; r = 5.0; n=7`.
+For people new to programming, especially those
+used to reading mathematics, it is worth taking note of
+the strict sequence in which the lines are executed. In the mathematical
+equation above we first introduced the formula itself, and then defined and
+explained the variables used in the formula ($P, r, n$, and $A$) on the next line.
+This approach is completely standard
+in mathematics, but it makes no sense in programming. Programs are
+executed line by line from the top, so all definitions of
+variables must be done *above* the line where they are used.
+
+The choice variable names is up to the programmer, and in general there is
+great flexibility in choosing such names. In mathematics it is common to use
+a single letter for a variable, but a variable in Python program can be any
+word containing the letters a-z, A-Z, underscore `_` and the digits 0-9, but
+it cannot start with a digit. Variable names Python are also case-sensitive,
+for instance `a` is different from `A`. The following program is identical to the
+one above, but with different variable names:
+!bc pypro
+initial_amount = 100
+interest_rate = 5.0
+number_of_years = 7
+final_amount = initial_amount*(1 + interest_rate/100)**number_of_years
+print(final_amount)
+!ec
+These variable names are arguably
+more descriptive, but they also make the formula very long and cumbersome
+to read. Choosing good variable names is often a balance of being descriptive
+and being short and compact, and the choice can be quite important for making a program easy to
+read and understand. Writing readable and understandable code is obviously important
+if you collaborate with others who have to understand your code, but it
+also makes it easier for yourself to find errors in the code or develop it further
+at a later stage. Choosing good
+variable names is therefore worthwhile even if you are the only person who will ever read your code.
+
+The program above contains two different types of statements;
+first there are four *assignment statements*, which assign values to variables,
+and then a single *print statement* at the end. It may be quite intuitive
+how these statements work, but the assignment statements
+are worth looking into in more detail. In these statements, the expression on the right
+hand side of the equality sign is evaluated first, and then
+the result is assigned to the variable on the left. An effect of this
+execution order is that statements like the following work just
+fine, and are common to see in programs:
+!bc pycod
+t = 0.6
+t = t + 0.1
+print(t)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+0.7
+!ec
+# #endif
+The line `t = t + 0.1` would not make sense as a mathematical equation,
+but is a perfectly valid assignment in a computer program. The right hand side is
+evaluated first, using the value of `t` already defined, and then the `t` variable
+is updated to hold the result of the calculation. The equality sign in Python is
+called the *assignment operator*, and although it works similarly to an equality
+sign in mathematics it is not quite the same. If we want the more usual meaning
+of the equality sign, for instance to figure out if two numbers are equal, the operator to use in
+Python is `==`. A trivial comparison may look like
+!bc pycod
+a = 5
+print(a == 5)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+True
+!ec
+# #endif
+We will see many more such examples later.
+
+=== Comments are useful to explain how you think in programs. ===
+It is possible to combine the strengths of the two programs above, and have
+both compact variable names and a more detailed description of what each
+variable means. This can be done using *comments*, as illustrated in the
+following example:
+!bc pycod
+# program for computing the growth of
+# money deposited in a bank
+primary = 100    # initial amount
+r = 5.0          # interest rate in %
+n = 7            # the number of years
+amount = primary * (1+r/100)**n
+print(amount)
+!ec
+In this code all the text following the `#` symbol is treated as a comment,
+and effectively ignored by Python. Comments are used to explain what the
+computer instructions mean, what variables represent, and how the
+programmer reasoned when the program was written.  They can be
+very useful for increasing readability, but they should not be over-used.
+Comments that say no more than the code, for instance `a = 5  # set a to 5`,
+are not very useful.
+
+=== All variables have types. ===
+
+So far all the variables we have used have been numbers, which is also how
+we are used to think of variables in mathematics. However, in
+a computer program we can have many different kinds of variables, not
+just numbers. All variables have a *type*, which in Python is
+usually decided automatically based on the value we assign to it.
+For instance, the statement `n = 7` will create
+a variable of the type *integer*, or `int`, while `r = 5.0`
+will create a variable of type `float`, representing
+a floating point number. We can also have text variables, called strings, which
+have type `str`. For instance, the "Hello world!"-example above could have been written as
+!bc pycod
+hello = "Hello world!"
+print(hello)
+!ec
+Here we create a variable `hello`, which automatically gets type `str`, and then
+print the contents of this variable to the screen. The output is exactly as for
+the first example of Chapter ref{ch:intro}.
+
+We can check the type of a variable using the builtin function `type`:
+!bc pycod
+print(type(hello))
+print(type(r))
+print(type(primary))
+print(type(n))
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+<class 'str'>
+<class 'float'>
+<class 'float'>
+<class 'int'>
+!ec
+# #endif
+We see that the output is what we would expect from how these variables
+were defined above. The word `class` preceding the types
+indicates that these types are defined as *classes* in Python, a concept
+we will get back to later. It is usually not necessary to check the type of
+variables inside a Python program, but it may be very useful when learning
+new concepts or if you get errors or unexpected behavior from your program.
+
+We will encounter many more variable types in subsequent chapters. The type
+of a variable decides how it can be used, and also decides the effect of
+various operations on that variable. The rules for these operations are usually
+quite intuitive. For instance, most mathematical operations only work with
+variable types that actually represent numbers, or they have a different effect
+on other variable types, when this is natural. To get an idea of how this
+works in Python, think about some simple mathematical operations on text strings.
+Which of the following operations do you think are allowed, and what are the
+results? (i) Adding two strings together, (ii) multiplying a string with an integer,
+(iii) multiplying two strings, and (iv) multiplying a string with a decimal
+number. After giving some thought to this, check your guesses by trying them in
+Python:
+!bc pycod
+hello = "Hello world!"
+print(hello + hello)
+print(hello*5)
+!ec
+
+Strings that contain numbers are a potential source of confusion. Consider for
+instance the code
+!bc pycod
+x1 = 2
+x2 = "2"
+print(x1+x1)
+print(x2+x2)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+4
+22
+!ec
+# #endif
+We see that the `x2` variable is still treated as a text string in Python,
+because it was defined using the quotation marks, even though it contains a
+single number. For the examples we have seen so far it is easy to
+ensure that numbers are numbers, simply by not using quotation marks when they are
+defined. However, later in this book we will write programs that read data from
+files or user input. Such data will usually come in as text, and any numbers
+will be text strings similar to the `x2` variable above. Before using the
+numbers in calculations we need to convert them to actual numbers, which
+can be done with the builtin function `float`:
+!bc pycod
+x1 = float(x1)
+x2 = float(x2)
+print(type(x1))
+print(type(x2))
+print(x2+x2)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+<class 'float'>
+<class 'float'>
+4.0
+!ec
+# #endif
+Of course, using `float` to convert a string to a number requires that the
+string is actually a number. Trying to convert
+a regular word, as in `float(hello)` will make the program stop with an
+error message. There are numerous other builtin functions for converting between
+types, such as `int` for converting to an integer and `str` for converting to a
+string. Throughout this book we will mostly use the `float` conversion, but we
+will also see examples where it is useful to convert numbers to text using `str`.
+
+======= Formatting text output =======
+
+The calculations in the programs above would output a single number, and
+simply print this number to the screen.
+In many cases this solution is fine, but sometimes we want
+several numbers or other types of output from a program. This is easy to do
+with the `print` function, by simply putting several variables inside the
+parentheses, separated by comma. For instance, if we want to output both
+`primary` and `final_amount` from the calculation above, the following line would work:
+!bc pycod
+print(primary,final_amount)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+100 140.71004226562505
+!ec
+# #endif
+However, although this line works, the output is not very
+readable or useful. Sometimes it is useful to
+format the output better, and to use a combination of text and numbers, for instance
+!bc dat
+After 7 years, 100 EUR has grown to xxx EUR.
+!ec
+There are multiple ways to accomplish this in Python, but the most
+recent and arguably most convenient is to use so
+called *f-strings*, which were introduced in Python 3.6. If you are using an
+earlier version of Python the following examples
+will therefore not work, but there are alternative and fairly similar
+ways of formatting text output.
+
+To achieve the output string above, using the *f-string* formatting, we
+would replace the final line of our  program by with
+!bc pycod
+print(f"After {n} years, 100 EUR has grown to {amount} EUR.")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+After 7 years, 100 EUR has grown to 140.71004226562505 EUR.
+!ec
+# #endif
+There are a couple of things worth noticing here. First, we enclose the
+output in quotation marks, just as in the "Hello world!"-example above, which
+tells Python that this is a string. Second, the string is prefixed with the
+letter `f`, which indicates that the string is an f-string that
+may contain something extra.
+More specifically, the string may contain expressions or variables enclosed
+in curly braces, and we have included two such variables, `n` and
+`amount`. When Python encounters the curly braces inside
+an f-string, it will evaluate the contents of the braces, which may be an
+expression or a variable, and insert the resulting value into the string. The process
+is often referred to as *string interpolation* or *variable interpolation*, and exists
+in various forms in many programming languages.
+In our case Python will simply insert the current values of the variables `n` and
+`amount` into the string, but if we want we can also include a mathematical expression inside the
+braces, such as
+!bc pycod
+print(f"2+2 = {2+2}")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+2+2 = 4
+!ec
+# #endif
+The only requirement for the contents inside the braces is that it is a
+valid Python expression, which can be evaluated to give some kind of value.
+Throughout this book we will typically use it for numbers, but it may also be used
+for expressions with other types of output.
+
+The f-string formatting will usually give nicely formatted output by
+default, but sometimes we want more detailed control of the formatting. For
+instance, we may want to control the number of decimals when outputting
+numbers. This is conveniently obtained
+by including a *format specifier* inside the curly braces. Consider for
+instance the following code:
+!bc pycod
+t = 1.234567
+print(f"Default output gives t = {t}.")
+print(f"We can set the precision: t = {t:.2}.")
+print(f"Or control the number of decimals: t = {t:.2f}.")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+Default output gives t = 1.234567.
+We can set the precision: t = 1.2.
+Or control the number of decimals: t = 1.23.
+!ec
+# #endif
+There are many different format specifiers, for controlling the output format
+of both numbers and other types of variables. We will
+only use a small subset in this book, and primarily to control the formatting
+of numbers. In addition to those shown above, the following
+may be useful;
+!bc pycod
+print(f"We may set the space used for the output: t = {t:8.2f}.")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+We may set the space used for the output: t =     1.23
+!ec
+# #endif
+This specifier is used to control the number of decimals in a number, and also how much
+space (the number of characters) used to output the number
+on the screen. Here we have specified the number to be output with two decimals
+and a total length of eight, including the decimals.
+This form of control is very useful for outputting multiple lines in a
+table-like format, to ensure that the columns in the table are
+properly aligned. A similar feature can be used for integers
+!bc pycod
+r = 87
+print(f"Integer set to occupy exactly 8 chars of space: r = {r:8d}")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+Integer set to occupy exactly 8 chars of space: r =       87
+!ec
+# #endif
+Finally, the generic format specifier `g` will output a floating point number
+in the most compact form, consider for instance:
+!bc pycod
+a = 786345687.12
+b = 1.2345
+print(f"Without the format specifier: a = {a}, b = {b}.")
+print(f"With the format specifier: a = {a:g}, b = {b:g}.")
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+Without the format specifier: a = 786345687.12, b = 1.2345.
+With the format specifier: a = 7.86346e+08, b = 1.2345.
+!ec
+# #endif
+
+======= Importing modules =======
+We have seen that standard arithmetic operations are directly available in Python, without any
+extra effort. However, what if need more advanced mathematical
+operations such as $\sin x$, $\cos x$, $\ln x$, etc.?
+These functions are not available directly, but can be found in a so-called *module*,
+which must be imported before we can use them in our program. In general, lots of functionality in Python
+is found in such modules, and we will import one or more
+modules in nearly all programs we write. The standard
+mathematical functions are found a module named `math`, and the following code computes
+the square root of a number using the `sqrt` function in the `math` module:
+!bc pycod
+import math
+r = math.sqrt(2)
+# or
+from math import sqrt
+r = sqrt(2)
+# or
+from math import *   # import everything in math
+r = sqrt(2)
+!ec
+These examples illustrate three different ways of importing modules. In the first one, we import
+everything from the `math` module, but everything we want to use must be prefixed with `math`. The
+second option imports only the `sqrt` function, and it imports it into the main *namespace* of the
+program, which means it can be used with no prefix. Finally, the third option imports everything
+from `math` into the main namespace, so all functions from the module are available in our program
+without the prefix.
+
+A natural question to ask is why we need three different ways to import a module. Why not use the
+simple `from math import *` and get access to all the mathematics functions we need? The reason is
+that we will often import from several modules in the same program,
+and some of these modules may contain functions with
+identical names. In these cases it is useful to have some control over which functions we actually
+use, either by selecting only what we need from each module, as in `from math import sqrt`, or
+by importing with `import math` so that all functions must be prefixed with the module name.
+To avoid confusion later it may be good to get into the habit of importing modules like this right away,
+although in small programs where we only import a single module there is nothing wrong with `from math import *`.
+
+As another example of computing with functions from `math`, consider evaluating
+the bell-shaped Gaussian function
+!bt
+\[ f(x) = \frac{1}{\sqrt{2\pi}s} \exp\left[
+\frac{1}{2}\left(\frac{x-m}{s}\right)^2\right]
+\]
+!et
+for $m = 0, s = 2$, and $x=1$. For this calculation need to import the
+square root, exponential function and $\pi$ from the math module, and
+the Python code may look as follows:
+!bc pypro
+from math import sqrt, pi, exp
+m = 0
+s = 2
+x = 1.0
+f = 1/(sqrt(2*pi)*s) * exp(-0.5*((x-m)/s)**2)
+print(f)
+!ec
+Notice that for this more complex formula it is very easy to make mistakes
+with the parentheses. Such errors will often lead to an error message that
+points to a syntax error on the *next* line of your program.
+This can be confusing at first, so it is useful to be aware of. If you get
+an error message pointing to a line directly below a complex mathematical
+formula, the source is usually a missing closing parenthesis in the formula itself.
+
+=== How to find information about Python modules? ===
+At this point it is
+natural to ask how we know where to find the functions we want. For instance,
+say we need to compute with complex numbers. How can we know if there is a
+module in Python for this? And if there is one, what is it called?
+In general, learning about the useful modules and what they contain are part
+of learning Python programming, but it may be even more important to know
+where to find such information. An excellent source
+is the Python Library Reference (https://docs.python.org/3/library/), which
+contains information about all the standard modules that are distributed with
+Python. More generally, a google search such as `complex numbers python` quickly
+leads us to the `cmath` module, which contains mostly the same functions
+as `math`, but with support for complex numbers. If we know the name of a module
+and want to check its contents we can go to straight to the Python Library
+Reference, but there are also other options. The
+command `pydoc` in the terminal window can be used to list information about a
+module (try for instance `pydoc math`), or we can import the module in a Python
+program and list its contents with the builtin function `dir`.
+!bc pycod
+import math
+print(dir(math))
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+['__doc__', '__file__', '__loader__', '__name__', (...) ]
+!ec
+# #endif
+
+
+!split
+======= Pitfalls when programming mathematics =======
+
+Usually, the mathematical operations as described above work as we would expect.
+When the results are not what we expect, the
+cause is usually a trivial error we have introduced while typing, typically
+assigning the wrong value to a variable or
+messing up the number of parentheses. However, some potential error sources
+are less obvious, and are worth knowing about even if they are
+relatively rare.
+
+=== Round-off errors give inexact results. ===
+Computers have inexact arithmetics because of rounding errors. This is
+usually not a problem in
+computations, but in some cases it
+may cause unexpected results. Let us for instance compute $1/49\cdot 49$
+and $1/51\cdot 51$:
+!bc pycod
+v1 = 1/49.0*49
+v2 = 1/51.0*51
+print(f"{v1:.16f} {v2:.16f}")
+!ec
+# #if FORMAT != 'ipynb'
+Output with 16 decimals becomes
+!bc dat
+ 0.9999999999999999 1.0000000000000000
+!ec
+# #endif
+Most real numbers are represented inexactly on a computer, typically with 17 digits accuracy.
+Neither 1/49 nor 1/51 are represented exactly, and the error is approximately $10^{-16}$.
+Errors of this order usually don't matter, but there are two particular cases
+where they may be significant. One is that in some cases they may accumulate
+through numerous computations and end up as a significant error in the final
+result. The other, which you are more likely to
+encounter through the examples of this book, is that comparison of two
+decimal numbers may be unpredictable. The two numbers
+`v1` and `v2` above are both supposed to be equal to 1, but look at the
+result of this code:
+!bc pycod
+print(v1 == 1)
+print(v2 == 1)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+False
+True
+!ec
+# #endif
+We see that the evaluation works as expected in one case but not the other,
+and this is a general problem when comparing floating
+point numbers. In most cases it works, but in some cases it doesn't. It is
+difficult or impossible to predict when it will not
+work, and the behavior of the program therefore becomes unpredictable. The
+solution is to always compare floats using a tolerance,
+as in
+!bc pycod
+tol = 1e-14
+print(abs(v1-1) < tol)
+print(abs(v2-1) < tol)
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+True
+True
+!ec
+# #endif
+There is no strict rule for how to set the value of the tolerance `tol`. It should
+be small enough to be considered insignificant for the application at hand,
+but larger than the typical machine precision $10^{-16}$.
+
+=== Some words are reserved and cannot be used as variables. ===
+Although the
+choice of variable names is up to the programmer, some names are reserved in
+Python and are not allowed to be used. These are `and`,
+`as`,
+`assert`,
+`break`,
+`class`,
+`continue`,
+`def`,
+`del`,
+`elif`,
+`else`,
+`except`,
+`exec`,
+`finally`,
+`for`,
+`from`,
+`global`,
+`if`,
+`import`,
+`in`,
+`is`,
+`lambda`,
+`not`,
+`or`,
+`pass`,
+`print`,
+`raise`,
+`return`,
+`try`,
+`with`,
+`while`, and
+`yield`.
+It is by no means necessary to memorize this list at this point, and we will use
+many of these reserved words in our programs later so it will be quite natural that
+they cannot be used as variable names. However, for programming physics and
+mathematics it may be worth taking note of `lambda`, since the Greek
+letter $\lambda$ is commonly used in physics and mathematics formulas. Since
+Python does not understand Greek letters it is common to just spell
+them out when programming a formula, i.e. $\alpha$ becomes `alpha` etc.
+However, using this approach for $\lambda$ will lead to an error, and the error
+message may not be very easy to understand. The problem is easily solved by
+introducing a small intentional typo and writing `lmbda` or similar.
+
+=== Integer division may cause surprising errors. ===
+In Python 2, and many other programming languages, unintended *integer division* may sometimes cause surprising
+results. In Python 3 this is no longer a problem, so you are not likely to run into it during this course, but
+it is worth being aware of the problem since many other programming languages behave in this way. Recall from above that
+various operations behave differently depending on the type of the variable they work on, for instance adding two strings
+vs adding numbers. In Python 2, the division operator, $/$, behaves like normal division if one of the two arguments
+are floats, but if both are integers then it will perform integer division, and discard the decimal part of the result.
+Consider the following interactive session, which runs Python 2.7:
+!bc
+Terminal> python2.7
+Python 2.7.14 (default, Sep 22 2017, 00:06:07)
+(...)
+>>> print(5.0/100)   #the parentheses are optional in Python 2.7
+0.05
+>>> print(5/100)
+0
+!ec
+
+Integer division is useful for many tasks in computer science, and is therefore the default behavior of many
+programming languages, but it is usually not what want when programming mathematical formulas. Therefore, it may be
+a good habit to ensure that variables used in calculations are actually floats, by simply defining them as `r = 5.0` rather
+than `r = 5`. Although it does not really make a difference in Python 3, it is good to get into this habit simply to avoid
+problems when programming in other languages later.

@@ -1,0 +1,10 @@
+The goal of this book is to teach graduate students and scientists how to build and solve computational
+models of heart mechanics. The book provides the required background knowledge in physiology, continuum mechanics,
+and numerical methods, is written in a compact tutorial style, and aims to enable readers to quickly
+build and experiment with their own models. After a brief introduction to heart anatomy and physiology, the
+book introduces non-linear solid mechanics as the mathematical and computational framework, and continues to
+introduce specific topics of heart modeling through a series of illustrating examples. Key topics include 
+constitutive laws for hyperelasticity, modeling anisotropy and heterogeneous tissue architecture, modeling 
+active contraction, coupling active contraction with passive material behavior, and realistic boundary
+conditions for modeling the beating heart. The examples are accompanied by compact and extendable software 
+tools written in Python.

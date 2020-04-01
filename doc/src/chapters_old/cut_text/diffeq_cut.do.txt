@@ -1,0 +1,13 @@
+
+!split
+===== Difference equations must have an initial condition =====
+
+!bblock
+ * In mathematics, it is much stressed that a difference equation for
+   $x_n$ must have an initial condition $x_0$
+ * The initial condition is obvious when programming: otherwise we cannot
+   start the program ($x_0$ is needed to compute $x_n$)
+ * However: if you forget `x[0] = x0` in the program, you get $x_0=0$
+   (because `x = zeroes(N+1)`),
+   which (usually) gives unintended results!
+!eblock

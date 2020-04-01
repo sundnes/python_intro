@@ -1,0 +1,14 @@
+running preprocess -DFORMAT=html -DDEVICE=screen  index.do.txt > tmp_preprocess__index.do.txt
+running mako on tmp_preprocess__index.do.txt to make tmp_mako__index.do.txt
+*** mako error: mako.exceptions.SyntaxException
+   (SyntaxError) Missing parentheses in call to 'print' (<unknown>, line 16) ('# List the chapters that are ready for publishing\n') at line: 28 char: 1
+This could indicate that the mako template code is not compatible with the version of Python currently used by DocOnce and mako, which is Python 3.6.1
+running preprocess -DFORMAT=html -DDEVICE=screen  index.do.txt > tmp_preprocess__index.do.txt
+running mako on tmp_preprocess__index.do.txt to make tmp_mako__index.do.txt
+*** mako error: mako.exceptions.SyntaxException
+   (SyntaxError) Missing parentheses in call to 'print'. Did you mean print("""
+*** error: 'chapters' dictionary in index_html_files_do.txt does not
+    contain the key "%s". Fill in that chapter nickname and the
+    corresponding chapter title!
+""" % name)? (<unknown>, line 16) ('# List the chapters that are ready for publishing\n') at line: 28 char: 1
+This could indicate that the mako template code is not compatible with the version of Python currently used by DocOnce and mako, which is Python 3.6.7

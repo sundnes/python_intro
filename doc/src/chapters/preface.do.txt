@@ -1,0 +1,96 @@
+This book was originally written as a set of lecture notes to
+the book *A Primer on Scientific Programming with Python* by
+Hans Petter Langtangen[^primer], and can be used either as supplement
+to that book or on its own as a compact introduction to scientific programming.
+Langtangen's book, and these lecture notes, have formed the core of an introductory course
+on scientific programming at the University of Oslo (INF1100/IN1900, 10ETCS credits).
+The course has been running since 2007, and is primarily taken by first-year
+students of mathematics, engineering, physics, chemistry, and geosciences.
+
+[^primer]: Hans Petter Langtangen, *A primer on scientific programming with Python*,
+5th edition, Springer-Verlag, 2016.
+
+The writing of these lecture notes, and subsequently turning them into a book,
+was primarily motivated by two factors. The first was that many students found
+the nearly 1000 pages of Langtangen's book to be a bit overwhelming as
+a first introduction to programming. This effect may be mostly psychological,
+since the book is well structured and suited for selective study of chapters
+and sections, but the feedback from students still indicated the need for a
+more compact and (literally) lightweight introduction. The second reason was
+that Hans Petter Langtangen sadly passed away in 2016, and his book has therefore
+not been updated to the newest versions of Python and the various
+tools introduced in the book. This issue may also be mostly a mental obstacle,
+since the differences between the Python versions are quite small, and only minor edits are needed to
+make most of the examples from the original book run on the newest Python platform.
+However, the book is intended as a first introduction to programming, and when
+learning a completely new topic any minor inconsistency is a potential source
+of confusion. I therefore saw the need for an
+updated document where all the code examples would run without any modifications
+on the most commonly used Python platform. That said, in spite of these minor
+shortcomings as an introductory book, Langtangen's book is still an excellent
+resource on scientific programming in Python. Compared with the present book it
+covers a much broader set of topics, includes more examples,
+more detailed discussions and explanations, and many more useful programming
+hints and tips. I highly recommend it as a supplement to these notes for
+anyone with ambitions to become an expert scientific programmer.
+
+The present book was written specifically for the course
+*Introduction to programming for scientific applications* (IN1900) at the
+University of Oslo. It follows exactly the same teaching philosophy and
+general structure as Langtangen's original book, with the overarching idea
+that the only way to learn to program is to write programs. Reading theory is useful,
+but without actual programming practice the value is very limited. The IN1900
+course is therefore largely based on problem solving and programming exercises,
+and the main purpose of this book is to prepare the students for this task
+by providing a brief introduction to fundamental programming concepts and
+Python tools. The presentation style is compact and pragmatic, and includes
+a large number of code examples to illustrate new concepts work and how they
+are used in practical applications. The examples are
+a combination of pieces of code (so-called code *snippets*), complete Python programs, and
+examples of interactive sessions in a Python shell. Readers are encouraged to
+run and modify the codes to get a feel for how the various programming
+concepts work. Source code for most of the  examples, as well as Jupyter
+notebooks for all the chapters, is provided in the online resources accompanying this book.
+
+The typical reader of the book will be a student
+of mathematics, physics, chemistry, or other natural sciences, and many of the
+examples will be familiar to these readers. However, the rapidly growing
+relevance of data science means that computations and scientific programming will
+be of interest to an increasing group of users. No typical data science tools
+are presented in this book, but you will learn tasks such as reading data
+from files, simple text processing, and programming with mathematics and floating
+point computations. These are all fundamental building blocks of any data science
+application, and they are essential to know about before diving into more
+advanced and specialized tools.
+
+No prior knowledge of programming is needed to read this book. We start with
+some very simple examples to get started with programming, and then move on
+to introduce fundamental programming concepts such as loops, functions, if-tests,
+lists, and classes. These generic concepts are supplemented by more specific and
+practical tools for scientific programming, primarily plotting and array based
+computations. The overall purpose of the book is to get the reader introduced
+to programming, and in particular to demonstrate how programming can be
+an extremely useful and powerful tool in many branches of the Natural Sciences.
+
+Many people have contributed to this book, in particular my colleagues at
+Simula Research Laboratory and the University of Oslo. However, the contributions
+of Professor Hans Petter Langtangen stand head and shoulders above everyone else.
+He has been an extremely inspiring teacher, mentor, and colleague throughout my
+scientific career; he developed the course that is now IN1900; and he wrote the
+book on which these notes are based. Throughout these lecture notes I have
+extensively copied ideas, presentation style, and code examples
+from his original book, simply because I find them
+excellent for introducing programming in a scientific context. If it were not
+for Hans Petter I would clearly never have written these notes. I would also
+probably not be writing this if he had not sadly passed in 2016.
+There would be no need to, because he would for
+sure have written a far better and more extensive book himself.<linebreak>
+ <linebreak>
+
+# #if FORMAT in ("latex", "pdflatex")
+## Just dump native latex
+\noindent
+{\it March 2020}  \hfill  {\it Joakim Sundnes}
+# #else
+*Joakim Sundnes*, March 2020
+# #endif

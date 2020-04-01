@@ -1,0 +1,582 @@
+
+
+FIGURE: [fig-class/UML_class_Y, width=120 frac=0.18]
+
+
+FIGURE: [fig-class/UML_class_Account, width=120 frac=0.15]
+
+
+!split
+===== Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions) =====
+
+!bblock
+SymPy can perform exact, symbolic differentiation:
+
+!bc pycod
+>>> from sympy import *
+>>> def g(t):
+...     return t**3
+...
+>>> t = Symbol('t')
+>>> dgdt = diff(g(t), t)           # compute g'(t)
+>>> dgdt
+3*t**2
+
+>>> # Turn sympy expression dgdt into Python function dg(t)
+>>> dg = lambdify([t], dgdt)
+>>> dg(1)
+3
+!ec
+!eblock
+
+!split
+===== Automagic differentiation detour; class based on sympy =====
+
+!bblock
+!bc pycod
+import sympy as sp
+
+class Derivative_sympy:
+    def __init__(self, f):
+        # f: Python f(x)
+        x = sp.Symbol('x')
+        sympy_f = f(x)
+        sympy_dfdx = sp.diff(sympy_f, x)
+        self.__call__ = sp.lambdify([x], sympy_dfdx)
+!ec
+!eblock
+
+!bblock
+!bc pyshell
+>>> def g(t):
+...    return t**3
+
+>>> def h(y):
+...    return sp.sin(y)
+
+>>> dg = Derivative_sympy(g)
+>>> dh = Derivative_sympy(h)
+>>> dg(1)   # 3*1**2 = 3
+3
+>>> from math import pi
+>>> dh(pi)  # cos(pi) = -1
+-1.0
+!ec
+!eblock
+
+!split
+===== Automagic integration; problem setting =====
+
+FIGURE: [fig-class/integral_comic_strip, width=800 frac=1]
+
+!bblock
+Given a function $f(x)$, we want to compute
+
+!bt
+\[ F(x; a) = \int_a^x f(t)dt \]
+!et
+!eblock
+
+!split
+===== Automagic integration; technique =====
+
+!bblock
+!bt
+\[ F(x; a) = \int_a^x f(t)dt \]
+!et
+
+Technique: Midpoint rule or Trapezoidal rule, here the latter:
+
+!bt
+\[
+\int_a^x f(t)dt = h\left({1\over2}f(a) + \sum_{i=1}^{n-1} f(a+ih) + {1\over2}f(x)\right)
+\]
+!et
+
+Desired application code:
+
+!bc pycod
+def f(x):
+    return exp(-x**2)*sin(10*x)
+
+a = 0; n = 200
+F = Integral(f, a, n)
+x = 1.2
+print F(x)
+!ec
+!eblock
+
+!split
+===== Automagic integration; implementation =====
+
+!bblock
+
+!bc pycod
+def trapezoidal(f, a, x, n):
+    h = (x-a)/float(n)
+    I = 0.5*f(a)
+    for i in range(1, n):
+        I += f(a + i*h)
+    I += 0.5*f(x)
+    I *= h
+    return I
+!ec
+
+Class `Integral` holds `f`, `a` and `n` as attributes and has a call special method for computing the integral:
+
+!bc pycod
+class Integral:
+    def __init__(self, f, a, n=100):
+        self.f, self.a, self.n = f, a, n
+
+    def __call__(self, x):
+        return trapezoidal(self.f, self.a, x, self.n)
+!ec
+!eblock
+
+!split
+===== Automagic integration; test function =====
+
+!bblock
+  * How can we test class `Integral`?
+  * Method 1: compute by hand for some $f$ and small $n$
+  * Method 2: utilize that linear functions are integrated
+    exactly by our numerical formula, regardless of $n$
+
+Test function based on method 2:
+
+!bc pycod
+def test_Integral():
+    f = lambda x: 2*x + 5
+    F = lambda x: x**2 + 5*x - (a**2 + 5*a)
+    a = 2
+    dfdx = Integralf, a, n=4)
+    x = 6
+    diff = abs(I(x) - (F(x) - F(a)))
+    assert diff < 1E-15, 'bug in class Integral, diff=%s' % diff
+!ec
+!eblock
+
+
+!split
+===== Class for complex numbers; functionality =====
+
+!bblock
+Python already has a class `complex` for complex numbers, but implementing such a class is a good pedagogical example on class programming (especially with special methods).
+!eblock
+
+!bblock Usage:
+!bc pyshell
+>>> u = Complex(2,-1)
+>>> v = Complex(1)     # zero imaginary part
+>>> w = u + v
+>>> print w
+(3, -1)
+>>> w != u
+True
+>>> u*v
+Complex(2, -1)
+>>> u < v
+illegal operation "<" for complex numbers
+>>> print w + 4
+(7, -1)
+>>> print 4 - w
+(1, 1)
+!ec
+!eblock
+
+!split
+===== Class for complex numbers; implementation (part 1) =====
+
+!bblock
+!bc pycod
+class Complex:
+    def __init__(self, real, imag=0.0):
+        self.real = real
+        self.imag = imag
+
+    def __add__(self, other):
+        return Complex(self.real + other.real,
+                       self.imag + other.imag)
+
+    def __sub__(self, other):
+        return Complex(self.real - other.real,
+                       self.imag - other.imag)
+
+    def __mul__(self, other):
+        return Complex(self.real*other.real - self.imag*other.imag,
+                       self.imag*other.real + self.real*other.imag)
+
+    def __div__(self, other):
+        ar, ai, br, bi = self.real, self.imag, \
+                         other.real, other.imag # short forms
+        r = float(br**2 + bi**2)
+        return Complex((ar*br+ai*bi)/r, (ai*br-ar*bi)/r)
+!ec
+!eblock
+
+!split
+===== Class for complex numbers; implementation (part 2) =====
+
+!bblock
+!bc pycod
+    def __abs__(self):
+        return sqrt(self.real**2 + self.imag**2)
+
+    def __neg__(self):   # defines -c (c is Complex)
+        return Complex(-self.real, -self.imag)
+
+    def __eq__(self, other):
+        return self.real == other.real and \
+               self.imag == other.imag
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __str__(self):
+        return '(%g, %g)' % (self.real, self.imag)
+
+    def __repr__(self):
+        return 'Complex' + str(self)
+
+    def __pow__(self, power):
+        raise NotImplementedError(
+          'self**power is not yet impl. for Complex')
+!ec
+!eblock
+
+!split
+===== Refining the special methods for arithmetics =====
+
+!bblock
+Can we add a real number to a complex number?
+
+!bc pyshell
+>>> u = Complex(1, 2)
+>>> w = u + 4.5
+...
+AttributeError: 'float' object has no attribute 'real'
+!ec
+
+Problem: we have assumed that `other` is `Complex`.
+Remedy:
+
+!bc pycod
+class Complex:
+    ...
+    def __add__(self, other):
+        if isinstance(other, (float,int)):
+            other = Complex(other)
+        return Complex(self.real + other.real,
+                       self.imag + other.imag)
+
+# or
+
+    def __add__(self, other):
+        if isinstance(other, (float,int)):
+            return Complex(self.real + other, self.imag)
+        else:
+            return Complex(self.real + other.real,
+                           self.imag + other.imag)
+!ec
+!eblock
+
+!split
+===== Special methods for ``right'' operands; addition =====
+
+!bblock
+What if we try this:
+
+!bc pyshell
+>>> u = Complex(1, 2)
+>>> w = 4.5 + u
+...
+TypeError: unsupported operand type(s) for +:
+    'float' and 'instance'
+!ec
+
+Problem: Python's `float` objects cannot add a `Complex`.
+
+Remedy: if a class has an `__radd__(self, other)` special method, Python applies this for `other + self`
+
+!bc pycod
+class Complex:
+    ...
+    def __radd__(self, other):
+        """Rturn other + self."""
+        # other + self = self + other:
+        return self.__add__(other)
+!ec
+!eblock
+
+!split
+===== Special methods for ``right'' operands; subtraction =====
+
+!bblock
+Right operands for subtraction is a bit more complicated since $a-b \neq b-a$:
+
+!bc pycod
+class Complex:
+    ...
+    def __sub__(self, other):
+        if isinstance(other, (float,int)):
+            other = Complex(other)
+        return Complex(self.real - other.real,
+                       self.imag - other.imag)
+
+    def __rsub__(self, other):
+        if isinstance(other, (float,int)):
+            other = Complex(other)
+        return other.__sub__(self)
+!ec
+!eblock
+
+
+
+!split
+===== Summarizing example: interval arithmetics for uncertainty quantification in formulas =====
+
+!bblock Uncertainty quantification:
+Consider measuring gravity $g$ by dropping a ball from $y=y_0$ to $y=0$
+in time $T$:
+
+!bt
+\[ g = 2y_0T^{-2} \]
+!et
+
+What if $y_0$ and $T$ are uncertain? Say $y_0\in [0.99,1.01]$ m
+and $T\in [0.43, 0.47]$ s. What is the uncertainty in $g$?
+!eblock
+
+!split
+===== The uncertainty can be computed by interval arithmetics =====
+
+!bblock Interval arithmetics
+Rules for computing with intervals, $p=[a,b]$ and $q=[c,d]$:
+
+ * $p+q = [a + c, b + d]$
+ * $p-q = [a - d, b - c]$
+ * $pq =  [\min(ac, ad, bc, bd), \max(ac, ad, bc, bd)]$
+ * $p/q = [\min(a/c, a/d, b/c, b/d), \max(a/c, a/d, b/c, b/d)]$
+   ($[c,d]$ cannot contain zero)
+
+Obvious idea: make a class for interval arithmetics!
+!eblock
+
+!split
+===== Class for interval arithmetics =====
+
+!bblock
+!bc pycod
+class IntervalMath:
+    def __init__(self, lower, upper):
+        self.lo = float(lower)
+        self.up = float(upper)
+
+    def __add__(self, other):
+        a, b, c, d = self.lo, self.up, other.lo, other.up
+        return IntervalMath(a + c, b + d)
+
+    def __sub__(self, other):
+        a, b, c, d = self.lo, self.up, other.lo, other.up
+        return IntervalMath(a - d, b - c)
+
+    def __mul__(self, other):
+        a, b, c, d = self.lo, self.up, other.lo, other.up
+        return IntervalMath(min(a*c, a*d, b*c, b*d),
+                            max(a*c, a*d, b*c, b*d))
+
+    def __div__(self, other):
+        a, b, c, d = self.lo, self.up, other.lo, other.up
+        if c*d <= 0: return None
+        return IntervalMath(min(a/c, a/d, b/c, b/d),
+                            max(a/c, a/d, b/c, b/d))
+    def __str__(self):
+        return '[%g, %g]' % (self.lo, self.up)
+!ec
+!eblock
+
+!split
+===== Demo of the new class for interval arithmetics =====
+
+!bblock Code:
+!bc pycod
+I = IntervalMath   # abbreviate
+a = I(-3,-2)
+b = I(4,5)
+
+expr = 'a+b', 'a-b', 'a*b', 'a/b'   # test expressions
+for e in expr:
+    print e, '=', eval(e)
+!ec
+!eblock
+
+!bblock Output:
+!bc pycod
+a+b = [1, 3]
+a-b = [-8, -6]
+a*b = [-15, -8]
+a/b = [-0.75, -0.4]
+!ec
+!eblock
+
+!split
+===== Shortcomings of the class =====
+
+!bblock
+This code
+
+!bc pycod
+a = I(4,5)
+q = 2
+b = a*q
+!ec
+
+leads to
+
+!bc
+  File "IntervalMath.py", line 15, in __mul__
+    a, b, c, d = self.lo, self.up, other.lo, other.up
+AttributeError: 'float' object has no attribute 'lo'
+!ec
+
+Problem: `IntervalMath` times `int` is not defined.
+
+Remedy: (cf. class `Complex`)
+
+!bc pycod
+class IntervalArithmetics:
+    ...
+    def __mul__(self, other):
+        if isinstance(other, (int, float)):      # NEW
+            other = IntervalMath(other, other)   # NEW
+        a, b, c, d = self.lo, self.up, other.lo, other.up
+        return IntervalMath(min(a*c, a*d, b*c, b*d),
+                            max(a*c, a*d, b*c, b*d))
+!ec
+
+(with similar adjustments of other special methods)
+!eblock
+
+!split
+===== More shortcomings of the class =====
+
+!bblock
+Try to compute `g = 2*y0*T**(-2)`:
+multiplication of `int` (2) and
+`IntervalMath` (`y0`),
+and power operation `T**(-2)` are not defined
+!eblock
+
+!bblock
+!bc pycod
+class IntervalArithmetics:
+    ...
+    def __rmul__(self, other):
+        if isinstance(other, (int, float)):
+            other = IntervalMath(other, other)
+        return other*self
+
+    def __pow__(self, exponent):
+        if isinstance(exponent, int):
+            p = 1
+            if exponent > 0:
+                for i in range(exponent):
+                    p = p*self
+            elif exponent < 0:
+                for i in range(-exponent):
+                    p = p*self
+                p = 1/p
+            else:   # exponent == 0
+                p = IntervalMath(1, 1)
+            return p
+        else:
+            raise TypeError('exponent must int')
+!ec
+!eblock
+
+!split
+===== Adding more functionality to the class: rounding =====
+
+!bblock
+``Rounding'' to the midpoint value:
+
+!bc pyshell
+>>> a = IntervalMath(5,7)
+>>> float(a)
+6
+!ec
+
+is achieved by
+
+!bc pycod
+class IntervalArithmetics:
+    ...
+    def __float__(self):
+        return 0.5*(self.lo + self.up)
+!ec
+!eblock
+
+!split
+===== Adding more functionality to the class: repr and str methods =====
+
+!bblock
+!bc pycod
+class IntervalArithmetics:
+    ...
+    def __str__(self):
+        return '[%g, %g]' % (self.lo, self.up)
+
+    def __repr__(self):
+        return '%s(%g, %g)' % \
+          (self.__class__.__name__, self.lo, self.up)
+!ec
+!eblock
+
+!split
+===== Demonstrating the class: $g=2y_0T^{-2}$ =====
+
+!bblock
+!bc pyshell
+>>> g = 9.81
+>>> y_0 = I(0.99, 1.01)
+>>> Tm = 0.45                 # mean T
+>>> T = I(Tm*0.95, Tm*1.05)   # 10% uncertainty
+>>> print T
+[0.4275, 0.4725]
+>>> g = 2*y_0*T**(-2)
+>>> g
+IntervalMath(8.86873, 11.053)
+>>> # computing with mean values:
+>>> T = float(T)
+>>> y = 1
+>>> g = 2*y_0*T**(-2)
+>>> print '%.2f' % g
+9.88
+!ec
+!eblock
+
+!split
+===== Demonstrating the class: volume of a sphere =====
+
+!bblock
+!bc pyshell
+>>> R = I(6*0.9, 6*1.1)   # 20 % error
+>>> V = (4./3)*pi*R**3
+>>> V
+IntervalMath(659.584, 1204.26)
+>>> print V
+[659.584, 1204.26]
+>>> print float(V)
+931.922044761
+>>> # compute with mean values:
+>>> R = float(R)
+>>> V = (4./3)*pi*R**3
+>>> print V
+904.778684234
+!ec
+!eblock
+
+!bblock
+20% uncertainty in $R$ gives almost 60% uncertainty in $V$
+!eblock

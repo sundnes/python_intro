@@ -1,0 +1,85 @@
+# Note on the Springer T4 style: here we use the modifications
+# introduced in t4do.sty and svmonodo.sty (both are bundled with DocOnce).
+
+TITLE:  Introduction to scientific programming with Python
+AUTHOR: Joakim Sundnes at Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+## Handy mako variables and functions for the preprocessing step
+# #include "../chapters/mako_code.txt"
+
+## Externaldocuments: ../chapters/fake/main_fake
+
+# #if FORMAT in ("latex", "pdflatex")
+## Just dump native latex
+\begin{dedication}
+Dedicated to the memory of Hans Petter Langtangen.
+\end{dedication}
+# #endif
+
+
+========= Preface  =========
+label{ch:preface}
+
+# #include "../chapters/preface.do.txt"
+
+TOC: on
+
+!split
+========= Getting started with Python =========
+label{ch:intro}
+# #include "../chapters/intro.do.txt"
+
+========= Computing with formulas =========
+label{ch:formulas}
+# #include "../chapters/formulas.do.txt"
+
+!split
+========= Loops and lists =========
+label{ch:looplist}
+# #include "../chapters/looplist.do.txt"
+
+!split
+========= Functions and branching =========
+label{ch:funcif}
+# #include "../chapters/funcif.do.txt"
+
+!split
+========= User input and error handling =========
+label{ch:input}
+# #include "../chapters/input.do.txt"
+
+!split
+========= Arrays and plotting =========
+label{ch:array_plot}
+# #include "../chapters/plot_mpl.do.txt"
+
+# !split
+# ========= Difference equations =========
+# label{ch:diff_eq}
+# # #include "../chapters/diffeq.do.txt"
+
+!split
+========= Dictionaries and strings =========
+label{ch:dictstring}
+# #include "../chapters/dictstring.do.txt"
+
+!split
+========= Classes =========
+label{ch:class}
+# #include "../chapters/class.do.txt"
+
+!split
+========= Object-oriented programming =========
+label{ch:oo}
+# #include "../chapters/oo.do.txt"
+
+# !split
+# ========= Solving ordinary differential equations =========
+# label{ch:odesys}
+# # #include "../chapters/ode_systems.do.txt"
+
+
+# !split
+# ========= References =========
+# BIBFILE: ../chapters/papers.pub

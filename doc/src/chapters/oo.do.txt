@@ -1,0 +1,509 @@
+When reading the chapter title *Object-oriented programming*, one may wonder
+why this title is introduced now. We have used objects
+since Chapter ref{ch:formulas}, and we started making our own
+classes and object types
+in Chapter ref{ch:class}, so what is new in Chapter ref{ch:oo}? The answer to this is that
+the term *object-oriented programming (OOP)* may have two different meanings.
+The first is simply programming with objects and classes, which
+we introduced in Chapter ref{ch:class}, and is more commonly
+referred to as object-*based* programming. The second meaning
+of OOP is programming with *class hierarchies*, which are
+families of classes that inherit methods and attributes from each other.
+This is the topic of the present chapter. We will learn how to collect
+classes in families (hierarchies) and let child classes inherit
+attributes and methods from parent classes.
+
+======= Class hierarchies and inheritance =======
+A class hierarchy is a family of closely related classes, organized in a
+hierarchical manner. A key concept is *inheritance*, which means that
+child classes can inherit attributes and methods from parent classes.
+A typical strategy is to write a general class as a base class (or parent class),
+and then let special cases be represented as subclasses (child classes).
+This approach can often save much typing and code duplication. As usual, we
+introduce the topic by looking at some examples.
+
+=== Classes for lines and parabolas.  ===
+As a first example, let us create a class for representing and evaluating straight lines;
+$y=c_0 + c_1x$. Following the concepts and ideas introduced in
+Chapter ref{ch:class}, the implementation of the class may look as follows
+!bc pycod
+import numpy as np
+
+class Line:
+    def __init__(self, c0, c1):
+        self.c0, self.c1 = c0, c1
+
+    def __call__(self, x):
+        return self.c0 + self.c1*x
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in np.linspace(L, R, n):
+            y = self(x)
+            s += f'{x:12g} {y:12g}\n'
+        return s
+!ec
+We see that we have equipped the class with a standard constructor, a `__call__` special method
+for evaluating the linear function, and a method `table` for writing a table of $x$ and $y$ values.
+Say we now want to write a similar class for evaluating a parabola $y=c_0 + c_1x + c_2x^2$.
+The code could look like:
+!bc pycod
+class Parabola:
+    def __init__(self, c0, c1, c2):
+        self.c0, self.c1, self.c2 = c0, c1, c2
+
+    def __call__(self, x):
+        return self.c2*x**2 + self.c1*x + self.c0
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += f'{x:12g} {y:12g}\n'
+        return s
+!ec
+We observe that the two classes are nearly identical, only differing in the parts
+that involve `c2`. Although we could very quickly just copy all the code from the `Line` class
+and edit the small parts that are needed, such duplication of code is usually a bad idea.
+At some point we may need to make changes to the code, for instance to correct an error or
+improve the functionality, and having to correct the same error in multiple
+places is a recipe for time consuming errors. So, is there a way we can utilize
+the class `Line` code in `Parabola` without resorting to copy-paste?
+This is exactly what inheritance is about.
+
+To introduce inheritance, let us first look at the following class definition:
+!bc pycod
+class Parabola(Line):
+    pass
+!ec
+Here `pass` is just a Python keyword that can be used wherever Python expects
+to find some code, but we don't really want to define anything. So at
+first sight this `Parabola` class seems to be empty, but notice the class
+definition `class Parabola(Line)`, which means that parabola is a subclass of
+`Line` and *inherits* all its methods and attributes. The new `Parabola` class therefore has
+attributes `c0` and `c1` and three methods `__init__`, `__call__`, and
+`table`. `Line` is a *base class* (or parent class, superclass) , `Parabola` is
+a *subclass*  (or child class, derived class). So the new `Parabola` class
+is not as useless as it first seemed, but it is still just a copy of the `Line`
+class. To make it represent a parabola, we need to add the missing code,
+i.e. the code that differs between `Line` and `Parabola`. The principle when
+creating such subclasses is to reuse as much as possible from the base class,
+only add what is needed in the subclass, and avoid duplicating
+code. Inspecting the two original classes above, we see that the
+`Parabola` class must add code to `Line`'s constructor (an extra `c2` attribute),
+and an extra term in `__call__`, but `table` can be used unaltered.
+The full definition of `Parabola` as a subclass of `Line` becomes:
+!bc pycod
+class Parabola(Line):
+    def __init__(self, c0, c1, c2):
+        super().__init__(c0, c1)  # Line stores c0, c1
+        self.c2 = c2
+
+    def __call__(self, x):
+        return super().__call__(x) + self.c2*x**2
+!ec
+To maximize code reuse, we let the `Parabola` class call the methods from `Line`,
+and then add the parts that are missing. A subclass can always access
+its base class using the builtin function `super()`, and this is the preferred way
+to call methods from the base class. We could, however, also
+use the class name directly, for instance `Line.__init__(self,c0,c1)`. In general, these two methods for invoking superclass methods look like:
+!bc pycod-t
+SuperClassName.method(self, arg1, arg2, ...)
+super().method(arg1, arg2, ...)
+!ec
+Notice the difference between the two approaches. When using the class name directly we need to include `self` as argument, while this is handled
+automatically when using `super()`. The use of `super()` is usually preferred, but in most cases the two approaches are equivalent.
+
+To briefly summarize this first example, these are the main benefits of
+introducing the subclass:
+  * Class `Parabola` just adds code to the already existing code in class `Line` - no duplication of storing `c0` and `c1`, and computing $c_0+c_1x$
+  * Class `Parabola` also has a `table` method - it is inherited and did not need to be written
+  * `__init__` and `__call__` are *overridden* or *redefined* in the subclass, with no code duplication
+We can use the `Parabola` class and call its methods just as if they were implemented in the class directly:
+!bc pycod
+p = Parabola(1, -2, 2)
+p1 = p(2.5)
+print(p1)
+print(p.table(0, 1, 3))
+!ec
+
+=== What does inheritance really mean? ===
+From a practical viewpoint, and for the examples in this book, the point of inheritance is to reuse methods and attributes from the
+base class, and minimize code duplication. On a more theoretical level, inheritance should be thought of as an "is-a"-relationship between the
+the two classes. By this we mean that if `Parabola` is a subclass of `Line`, an instance of `Parabola` is also a `Line` instance. The `Parabola` class
+is thought of as a special case of the `Line` class, and therefore every `Parabola` is also a `Line`, but not vice versa. We can
+check class type and class relations with the builtin functions `isinstance(obj, type)` and `issubclass(subclassname, superclassname)`:
+# #if FORMAT != 'ipynb'
+!bc pyshell
+>>> from Line_Parabola import Line, Parabola
+>>> l = Line(-1, 1)
+>>> isinstance(l, Line)
+True
+>>> isinstance(l, Parabola)
+False
+>>> p = Parabola(-1, 0, 10)
+>>> isinstance(p, Parabola)
+True
+>>> isinstance(p, Line)
+True
+>>> issubclass(Parabola, Line)
+True
+>>> issubclass(Line, Parabola)
+False
+>>> p.__class__ == Parabola
+True
+>>> p.__class__.__name__   # string version of the class name
+'Parabola'
+!ec
+# #else
+!bc pyshell
+>>> l = Line(-1, 1)
+>>> isinstance(l, Line)
+>>> isinstance(l, Parabola)
+>>> p = Parabola(-1, 0, 10)
+>>> isinstance(p, Parabola)
+True
+>>> isinstance(p, Line)
+True
+>>> issubclass(Parabola, Line)
+True
+>>> issubclass(Line, Parabola)
+False
+>>> p.__class__ == Parabola
+True
+>>> p.__class__.__name__   # string version of the class name
+'Parabola'
+!ec
+# #endif
+We will not use these methods much in practical applications[^isinstance], but they are very useful for getting a feel for class relationships when
+learning OOP.
+
+[^isinstance]:In fact, if you have to use `isinstance` in your code to check what kind of object you are working with it is usually a sign that
+the design of the program is wrong. There are exceptions, but normally `isinstance` and `issubclass` should only be used for learning and debugging.
+
+Mathematically oriented readers may have noticed a logical fault in the small
+class hierarchy we have presented so far. We stated that a subclass
+is usually thought of as a special case of the base class, but a parabola is not
+really a special case of a straight line. In fact it is the
+other way around, since a line $c_0+c_1x$ is a parabola $c_0+c_1x+c_2x^2$ with $c_2=0$.
+Could then `Line` be a subclass of `Parabola`? Certainly, and many
+will prefer this relation between a line and a parabola, since it follows the
+usual is-a relationship between a subclass and its base.
+The code may look like:
+!bc pycod
+class Parabola:
+    def __init__(self, c0, c1, c2):
+        self.c0, self.c1, self.c2 = c0, c1, c2
+
+    def __call__(self, x):
+        return self.c2*x**2 + self.c1*x + self.c0
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
+
+class Line(Parabola):
+    def __init__(self, c0, c1):
+        super().__init__(c0, c1, 0)
+!ec
+Notice that this version allows even more code reuse than the previous one, since both `__call__` and `table` can be reused without changes.
+
+
+======= Example; classes for numerical differentiation =======
+Common tasks in scientific computing, such as differentiation and integration,
+can be solved with a large variety of numerical methods. Many such methods
+are closely related, and can easily be grouped into families of methods that
+are very suitable for implementing in a class hierarchy.
+As a first example we consider methods for numerical differentiation. The
+simplest formula is a one-sided finite difference;
+!bt
+\[ f'(x) \approx {f(x+h)-f(x)\over h} ,\]
+!et
+which can be implemented in the following class:
+!bc pycod
+class Derivative:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+    def __call__(self, x):
+        f, h = self.f, self.h      # make short forms
+        return (f(x+h) - f(x))/h
+!ec
+To use the `Derivative` class, we simply define a function `f(x)`,
+create an instance of the class, and call it as if it was a regular function
+(effectively calling the `__call__` method behind the scenes):
+!bc pycod
+from math import exp, sin, pi
+
+def f(x):
+    return exp(-x)*sin(4*pi*x)
+
+dfdx = Derivative(f)
+print(dfdx(1.2))
+!ec
+However, there are numerous other formulas for numerical differentiation,
+for instance
+!bt
+\begin{align*}
+f'(x) &= \frac{f(x+h)-f(x)}{h} + {\cal O}(h) ,\\
+f'(x) &= \frac{f(x)-f(x-h)}{h} + {\cal O}(h) ,\\
+f'(x) &= \frac{f(x+h)-f(x-h)}{2h} + {\cal O}(h^2) ,\\
+f'(x) &=  \frac{4}{3}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{1}{3}\frac{f(x+2h) - f(x-2h)}{4h} + {\cal O}(h^4), \\
+f'(x) &=  \frac{3}{2}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{3}{5}\frac{f(x+2h) - f(x-2h)}{4h} + \nonumber\\
+&  \frac{1}{10}\frac{f(x+3h) - f(x-3h)}{6h} + {\cal O}(h^6), \\
+f'(x) &=  \frac{1}{h}\left(
+-\frac{1}{6}f(x+2h) + f(x+h) - \frac{1}{2}f(x) - \frac{1}{3}f(x-h)\right)
+  + {\cal O}(h^3).
+\end{align*}
+!et
+We can easily make a module that offers multiple formulas:
+!bc pycod
+class Forward1:
+    def __init__(self, f, h=1E-5):
+        self.f, self.h = f, h
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+class Central2:
+    def __init__(self, f, h=1E-5):
+        self.f, self.h = f, h
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)
+
+class Central4:
+    def __init__(self, f, h=1E-5):
+        self.f, self.h = f, h
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+                (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+!ec
+The problem with this code is of course that all the constructors are
+identical, so we duplicate lots of code. Although duplicating this simple
+constructor may not be a big problem, it may easily lead to errors if we want
+to change the constructor later, and it is therefore worth avoiding.
+As mentioned above, a general idea of OOP is to place
+code common to many classes in a superclass and inherit that code.
+In this case, we can make a superclass containing the constructor, and
+let the different subclasses implement their own version of the `__call__` method.
+The superclass will be very simple, and not really useful on its own:
+!bc pycod
+class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f, self.h = f, h
+!ec
+The subclasses for the 1st-order forward formula and the 2nd and
+4th order central difference formulas may then look like
+!bc pycod
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+class Central2(Diff):
+    def __call__(self,x):
+        f, h = self.f, self.h
+        return (f(x+h)-f(x-h))/(2*h)
+
+class Central4(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+               (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+!ec
+To use this simple class hierarchy in an example, say we want to compute
+the derivative of $f(x)=\sin x$ for $x=\pi$ with the fourth order
+central difference formula:
+!bc pycod
+from math import sin
+mycos = Central4(sin)
+mycos(pi)
+!ec
+Here, the line `mycos = Central4(sin)` will create an instance of the
+`Central4` class by calling the constructor inherited from the superclass,
+while `mycos(pi)` calls the `__call__` method implemented in the subclass.
+
+As indicated by the $O(h^n)$ terms in the formulas above, the methods
+have different accuracy. We can empirically investigate the accuracy of the numerical
+differentiation formulas, using the class hierarchy created above.
+Using $f(x)=\sin x, x = \pi/4$ as an example, the code may look as follows
+!bc pycod
+# #if FORMAT != 'ipynb'
+from Diff import Forward1, Central2, Central4
+# #endif
+from math import pi, sin, cos
+import numpy as np
+
+h = [1.0/(2**i) for i in range(5)]
+ref = cos(pi/4)
+
+print(f'     h      Forward1      Central2      Central4')
+for h_ in h:
+    f1 = Forward1(sin,h_); c2 = Central2(sin,h_); c4 = Central4(sin,h_)
+    e1 = abs(f1(pi/4)-ref)
+    e2 = abs(c2(pi/4)-ref)
+    e4 = abs(c4(pi/4)-ref)
+    print(f'{h_:1.8f}  {e1:1.10f}  {e2:>1.10f}  {e4:>1.10f}')
+!ec
+# #if FORMAT != 'ipynb'
+!bc dat
+     h      Forward1      Central2      Central4
+1.00000000  0.4371522985  0.1120969417  0.0209220579
+0.50000000  0.2022210836  0.0290966823  0.0014299292
+0.25000000  0.0952716617  0.0073427121  0.0000913886
+0.12500000  0.0459766451  0.0018399858  0.0000057438
+0.06250000  0.0225501609  0.0004602661  0.0000003595
+!ec
+# #endif
+Notice that we create new instances `f1, c2`, and `c4` for each iteration of the
+loop, since we want a new value of $h$ in the formula. A more elegant solution
+could be to add a new method named `set_stepsize(h)` or similar, that would
+allow us to adjust $h$ for an existing instance. Such a method could easily be
+added to the superclass and inherited by all the subclasses. An examination of
+the output numbers confirm that the three methods behave as expected. For
+each row we reduce $h$ by a factor 2, and the  errors are reduced by a factor
+of about 2, 4, and 16. This is consistent with the theoretical accuracy of the
+formulas, which states that the errors should go like $h$, $h^2$, and $h^4$, respectively.
+
+======= Example; classes for numerical integration =======
+Just as numerical differentiation, numerical integration is a mainstay of
+computational mathematics. There are numerous methods to choose from, and they
+can all be written on the form
+!bt
+\[ \int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_i f(x_i) .\]
+!et
+and the
+Based on this general formula, different methods are realized by choosing the integration points
+$x_i$ and associated weights $w_i$. For instance, the Trapezoidal rule has
+!bt
+\[ x_i = a+ih, \quad w_0=w_{n-1}={h\over2},\ w_i=h\ (i\neq 0,n-1) ,
+\]
+!et
+with  $h=(b-a)/(n-1)$, the midpoint rule has
+!bt
+\[ x_i = a + {h\over 2} + ih,\quad w_i=h ,\]
+!et
+with $h=(b-a)/n$, and Simpson's rule has
+!bt
+\begin{align*}
+x_i &= a+ih,\quad h={b-a\over n-1}, \\
+w_0 &=w_{n-1}={h\over6}, \\
+w_i &= {h\over3}\hbox{ for }i\hbox{ even},\quad w_i={2h\over3}\hbox{ for }i\hbox{ odd} .
+\end{align*}
+!et
+Other methods have more complicated formulas for $w_i$ and $x_i$, and some methods
+choose the points randomly (Monte Carlo integration).
+
+A numerical integration formula can be implemented as a class, with
+$a$, $b$ and $n$ as attributes and an `integrate` method to evaluate the formula and compute
+the integral. As with the family of numerical differentiation methods considered above,
+all such classes will be quite similar. The evaluation of $\sum_jw_jf(x_j)$ is the same,
+and the only difference between the methods is the definition of the points and
+weights. Following the ideas above, it makes sense to place all common code in
+a superclass, and code specific to the different methods in subclasses. Here, we can
+put $\sum_jw_jf(x_j)$ in a superclass (method `integrate`), and let the subclasses extend this
+class with code specific to a specific formula, i.e. the choices of
+$w_i$ and $x_i$. This method-specific code
+can be placed inside a method, for instance named `construct_rule`. The superclass for the numerical
+integration hierarchy may look like this:
+!bc pycod
+class Integrator:
+    def __init__(self, a, b, n):
+        self.a, self.b, self.n = a, b, n
+        self.points, self.weights = self.construct_method()
+
+    def construct_method(self):
+        raise NotImplementedError('no rule in class %s' % \
+                                  self.__class__.__name__)
+
+    def integrate(self, f):
+        s = 0
+        for i in range(len(self.weights)):
+            s += self.weights[i]*f(self.points[i])
+        return s
+
+    def vectorized_integrate(self, f):
+        # f must be vectorized for this to work
+        return dot(self.weights, f(self.points))
+!ec
+Notice the implementation of `construct_method`, which will raise an error if
+it is called, indicating that the only purpose of the `Integrator` is as a
+superclass, it should not be used directly. Alternatively, we could of course
+just not include `construct_method` method in the superclass at all.
+However, the approach used here makes it even more obvious that the class is
+just a superclass and that this method needs to be implemented in subclasses.
+
+The superclass provides a common framework for implementing the different methods, which can
+then be realized as subclasses. The trapezoidal and midpoint methods may be implemented like this:
+!bc pycod
+class Trapezoidal(Integrator):
+    def construct_method(self):
+        h = (self.b - self.a)/float(self.n - 1)
+        x = linspace(self.a, self.b, self.n)
+        w = zeros(len(x))
+        w[1:-1] += h
+        w[0] = h/2;  w[-1] = h/2
+        return x, w
+
+class Midpoint(Integrator):
+    def construct_method(self):
+        a, b, n = self.a, self.b, self.n  # quick forms
+        h = (b-a)/float(n)
+        x = np.linspace(a + 0.5*h, b - 0.5*h, n)
+        w = np.zeros(len(x)) + h
+	return x, w
+!ec
+And the more complex Simpson's rule can be added in the following subclass:
+!bc pycod
+class Simpson(Integrator):
+    def construct_method(self):
+        if self.n % 2 != 1:
+            print ’n=%d must be odd, 1 is added’ % self.n
+            self.n += 1
+        x = np.linspace(self.a, self.b, self.n)
+        h = (self.b - self.a)/float(self.n - 1)*2
+        w = np.zeros(len(x))
+        w[0:self.n:2] = h*1.0/3
+        w[1:self.n-1:2] = h*2.0/3
+        w[0] /= 2
+        w[-1] /= 2
+        return x, w
+!ec
+Simpson's rule is more complex because it uses different weights for odd and even points. We
+present all the details here for completeness, but it is not really
+necessary to study the details of all the formulas. The important parts
+here are the class design and usage of the class hierarchy.
+
+To demonstrate how the class can be used, let us compute the integral
+$\int_0^2 x^2dx$ using 101 points:
+!bc pycod
+def f(x):
+    return x*x
+
+simpson = Simpson(0, 2, 101)
+print(simpson.integrate(f))
+trapez = Trapezoidal(0,2,101)
+print(trapez.integrate(f))
+!ec
+The program flow in this case may not be entirely obvious. When we construct the instance
+with `method = Simpson(0, 2, 101)`, it invokes the superclass constructor,
+but this method then calls `construct_method` in class `Simpson`. The
+call `method.integrate(f)` then invokes the `integrate` method inherited
+from the superclass. However, to us as users of
+the class none of these details really matter. We use the `Simpson` class just as if all
+the methods were implemented directly in the class, regardless of whether they were actually
+inherited from another class.
