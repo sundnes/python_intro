@@ -153,7 +153,7 @@ produced until we actually call the function, and forgetting to call the
 function is a common mistake when starting to program with functions.
 
 
-===== Function arguments and local variables =====
+======= Function arguments and local variables =======
 Just as in mathematics, we can define Python functions with more than one argument.
 The formula above involves both $P$ and $r$ in addition to $n$, and it could
 be useful to include them all as arguments. The function definition may then
@@ -464,7 +464,7 @@ n= 100 approx: 0.693147, error: 0.000000
 There is no need to return anything from this function, since the entire
 purpose is to print information to the screen.
 
-===== Default arguments and doc strings =====
+======= Default arguments and doc strings =======
 When we used the `range`-function in the previous chapter we saw that we could
 vary the number of arguments in the function call from one to three, and the
 non-specified arguments would get default values. We can achieve the same
