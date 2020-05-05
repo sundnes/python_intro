@@ -45,7 +45,7 @@ and that you have installed the right version. It also introduces the
 function `print`, which will be used virtually every time we program, and
 it illustrates how we use quotes to define a `string` in Python. While `print` is
 a word that Python understands, *hello* and *world* are not. By using the
-quotes, we tell Python that it should not try to understand (or interprete)
+quotes, we tell Python that it should not try to understand (or interpret)
 these words, but, rather, treat them as simple text that, in this case, is to be
 printed to the screen. We will come back to this topic in more detail later.
 
