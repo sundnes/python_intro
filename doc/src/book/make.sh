@@ -52,9 +52,9 @@ system doconce format pdflatex $name $opt $encoding --device=paper --exercise_nu
 
 system pdflatex $name
 #system bibtex $name
-#system makeindex $name
+system makeindex $name
 system pdflatex $name
-#system pdflatex $name
+system pdflatex $name
 #system makeindex $name
 #system pdflatex $name
 

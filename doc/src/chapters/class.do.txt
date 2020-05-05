@@ -1,49 +1,50 @@
-In this chapter we will introduce classes, which is a fundamental concept in
-programming. Most modern programming languages support classes or similar concepts,
-and we have already encountered classes earlier in this book. Recall
-for instance from Chapter ref{ch:formulas}
-how we could check the type of a variable with the `type` function,
-and the output would be on the form `<class 'int'>`,  `<class 'float'>`, etc.
+In this chapter, we introduce classes, which is a fundamental concept in programming.
+Most modern programming languages support classes or similar concepts, and we
+have already encountered classes earlier in this book. Recall, for instance,
+from Chapter ref{ch:formulas} how we can check the type of a variable with the `type` function,
+and the output will be of the form  `<class 'int'>`,  `<class 'float'>`, and so on.
 This simply states that the type of an object is defined in the form of a class.
-Every time we create for instance an integer variable in our program, we create
+Every time we create, for instance, an integer variable in our program, we create
 an object or *instance* of the `int` class. The class defines how the objects
-behave and what methods they contain. We have used a number of different methods bound
-to objects, such as the `append` method for list objects, `split` for strings,
-and many more. All such methods are part of the definition of the class that the
-object belongs to. So far we have only used Python's builtin classes to create
-objects, but in this chapter we will write our own classes and use them to create
-objects tailored to our particular needs.
+behave and what methods they contain. We have used a large number of different methods bound
+to objects, such as the `append` method for list objects and `split` for strings.
+All such methods are part of the definition of the class to which the object
+belongs. So far, we have only used Python's built-in classes to create
+objects, but in this chapter we will write our own classes and use them to
+create objects tailored to our particular needs.
 
 ======= Basics of classes =======
-A class packs together data and functions in a single unit. As we
-have seen in previous chapters, functions that are bound to a class or an object
+idx{class}
+A class packs together data and functions in a single unit. As
+seen in previous chapters, functions that are bound to a class or an object
 are usually called methods, and we will stick to this notation in the present chapter.
 Classes have some similarity with modules, which are also collections of variables and functions that naturally
-belong together. However, while there is only a single instance of a module, we can create multiple instances of a
-class. Different instances of the same class may contain different data, but
+belong together. However, while there can be only a single instance of a module, we can create multiple instances of a
+class. Different instances of the same class can contain different data, but
 they all behave in the same way and have the
-same methods. Think of a basic Python class like `int`; we can create many integer variables in a program, and they
+same methods. Think of a basic Python class such as `int`; we can create many integer variables in a program, and they
 obviously have different values (data), but we know that they all have the same general behavior and the same
-set of operations defined for them. The same goes for more complex Python classes like lists and strings; different
-objects contain different data but they all have the same methods. The classes
-we create in this chapter will behave in exactly the same way.
+set of operations defined for them. The same goes for more complex Python classes
+such as lists and strings; different objects contain different data, but they all
+have the same methods. The classes we create in this chapter behave in exactly
+the same way.
 
-=== First example; a class representing a function. ===
+=== First example: A class representing a function. ===
 To start with a familiar example, we return to the formula calculating
 atmospheric pressure $p$ as a function of altitude $h$. The formula we used is  a
 simplification of a more general *barometric formula*, given by:
 !bt
 \begin{equation}
-p = p_0 e^{-Mgh/RT} .
+p = p_0 e^{-Mgh/RT} ,
 \label{barometric1}
 \end{equation}
 !et
-Here $M$ is the molar mass of air, $g$ is the gravitational constant, $R$ is
-the gas constant, $T$ is temperature, and $p_0$ is the pressure at sea level. .
+where $M$ is the molar mass of air, $g$ is the gravitational constant, $R$ is
+the gas constant, $T$ is temperature, and $p_0$ is the pressure at sea level.
 We obtain the simpler formula used earlier by defining the scale height as
-$h_0 =  RT/Mg$. It may be interesting to evaluate (ref{barometric1}) for different
-temperatures, and for each value of $T$ to create a table or plot of how
-the pressure varies with altitude. For each value of $T$ we need to call the
+$h_0 =  RT/Mg$. It could be interesting to evaluate (ref{barometric1}) for different
+temperatures and, for each value of $T$, to create a table or plot of how
+the pressure varies with altitude. For each value of $T$, we need to call the
 function many times, with different values of $h$. How should we implement
 this in a convenient way? One possible solution would be
 to have both $h$ and $T$ as arguments:
@@ -59,15 +60,16 @@ def barometric(h, T):
     return p0 * exp(-M*g*h/(R*T))
 !ec
 This solution obviously works, but if we want to call the function many times
-for the same value of `T` then we still need to it as an argument every time
-it is called. And what
-if the function is to be passed as an argument to another function, which expects it to take a
-single argument only?[^func_arg] In this case our function with two arguments
+for the same value of `T` then we still need to pass it as an argument every time
+it is called. However, what if the function is to be passed as an argument
+to another function that expects it to take a
+single argument only?[^func_arg] In this case, our function with two arguments
 will not work. A partial solution would be to include a default value for
-the `T` argument, but then we would still have a problem if we want a
+the `T` argument, but we would still have a problem if we want a
 different value of `T`.
 
-Another solution would to have $h$ as the  only argument and $T$ as global variable:
+Another solution would be to have $h$ as the  only argument, and $T$ as
+a global variable:
 !bc pycod
 T = 245.0
 
@@ -79,30 +81,29 @@ def barometric(h):
 
     return p0 * exp(-M*g*h/(R*T))
 !ec
-We now have a function which only takes a single argument, but defining `T` as
+We now have a function that takes a single argument, but defining `T` as
 a global variable is not very convenient if we want to evaluate `y(t)` for
 different values of `T`. We could also set
-`T` as a local variable inside the function, and define different
+`T` as a local variable inside the function and define different
 functions `barometric1(h), barometric2(h)`, etc., for different values
 of `T`, but this is obviously inconvenient if we
 want many values of `T`. However, we shall see that programming
-with classes and objects offers exactly what we need; a convenient solution
+with classes and objects offers exactly what we need: a convenient solution
 to create a family of similar functions that all have their own value of `T`.
 
-[^func_arg]: This situation is quite common in Python programs. Consider for
-instance the implementation of Newton's method in Chapter ref{ch:funcif}, in
+[^func_arg]: This situation is quite common in Python programs. Consider, for
+instance, the implementation of Newton's method in Chapter ref{ch:funcif}, in
 the functions `Newton` and `Newton2`. These functions expect two
 functions as arguments (`f` and `dfdx`), and both are
 expected to take a single argument (`x`). Passing in a function that
 requires two or more arguments will lead to an error.
 
 As mentioned above, the idea of a class is to
-pack together a method (or function) and
-data that naturally belongs to the function.
+pack together data and methods (or functions) that naturally operate on the data.
 We can make a class `Barometric` for the formula at hand,
-with variables `R`, `T`,`M`, `g`, and `p0`, and a method `value(t)` for
+with the variables `R`, `T`,`M`, `g`, and `p0` as data, and a method `value(t)` for
 evaluating the formula. All classes should also have a method
-named `__init__` for initializing the variables. The following code defines our function class
+named `__init__` to initialize the variables. The following code defines our function class
 !bc pycod
 class Barometric:
     def __init__(self, T):
@@ -126,38 +127,40 @@ b2 = Barometric(T=273)
 p2 = b2.value(2469)
 !ec
 
-These code segments introduces a number of new concepts worth dissecting. First, a class definition
-which in Python always starts with the word `class`, followed by the name of the
+idx{constructor}idx{method}idx{instance}idx{class instance}idx{`__init__`}
+These code segments introduce a number of new concepts worth dissecting. First,
+we have a class definition that, in Python, always starts with the
+word `class`, followed by the name of the
 class and a colon. The following indented
 block of code defines the contents of the class. Just as we are used to when
-implementing functions, the indentation defines
+we implement functions, the indentation defines
 what belongs inside the class definition. The first contents of our class,
 and of most classes, is a method with the special name `__init__`,
 which is called the *constructor* of the class. This method is automatically called
 every time we create an instance in the class,
 as in the line `b1 = Barometric(T=245)` above. Inside the method, we define
-all the constants used in the formula; `self.T`, `self.g`, etc., where the prefix
+all the constants used in the formula -- `self.T`, `self.g`, and so on -- where the prefix
 `self` means that these variables become bound to the object created. Such bound
 variables are called *attributes*.
-Finally we define the method `value`, which evaluates the formula using the
-pre-defined and object-bound parameters `self.T, self.g, self.R, self.M`,
-and `self.p0`. After we have defined the class, every time we write a line like
+Finally, we define the method `value`, which evaluates the formula using the
+predefined and object-bound parameters `self.T, self.g, self.R, self.M`,
+and `self.p0`. After we have defined the class, every time we write a line such as
 !bc pycod
 b1 = Barometric(T=245)
 !ec
 we create a new variable (instance) `b1` of type `Barometric`. The line looks
-like a regular function call, but since `Barometric` is the definition of a class
+like a regular function call, but, since `Barometric` is the definition of a class
 and not a function, `Barometric(T=245)` is instead a call to the class' constructor.
-The constructor will create and return an instance of the class with the specified
+The constructor creates and returns an instance of the class with the specified
 values of the parameters, and we assign this instance to the variable `b`.
 All the `__init__` functions we encounter in
 this book will follow exactly the same recipe. Their purpose is to define a
 number of attributes for the class, and they will typically
-contain one or more lines on the form
+contain one or more lines of the form
 `self.A = A`, where A is either an argument passed to the constructor or a
 value defined inside it.
 
-As always in programming there are different ways to achieve the same thing,
+As always in programming, there are different ways to achieve the same thing,
 and we could have chosen a different implementation of the class above. Since
 the only argument to the constructor is `T`, the other attributes never change
 and they could have been local variables inside the `value` method:
@@ -171,15 +174,15 @@ class Barometric1:
         M = 0.02896; p0 = 100.0
         return p0 * exp(-M*g*h/(R*self.T))
 !ec
-Notice that inside the `value` method we only use the `self` prefix for `T`,
-since this is the only variable that is a class attribute. The others
-are in this version regular local variables defined inside the method.
-This class does exactly the same as the one defined above, and it may be argued
-that the implementation is better since it is shorter and simpler than the one
-above. However, defining all the physical constants in one place (in the constructor)
-can make the code easier to read, and can also make it easier to extend the
-class with more methods. As a third possible implementation we could move some
-of the calculations from the `value` method to the constructor:
+Notice that, inside the `value` method, we only use the `self` prefix for `T`,
+since this is the only variable that is a class attribute. In this version of
+the class the other variables are regular local variables defined inside the method.
+This class does exactly the same thing as the one defined above, and one could
+argue that this implementation is better, since it is shorter and simpler
+than the one above. However, defining all the physical constants in one
+place (in the constructor) can make the code easier to read, and the class
+easier to extend with more methods.  As a third possible implementation, we
+could move some of the calculations from the `value` method to the constructor:
 !bc pycod
 class Barometric2:
     def __init__(self, T):
@@ -193,18 +196,19 @@ class Barometric2:
     def value(self, h):
         return self.p0 * exp(-h/self.h0)
 !ec
-In this class we use the definition of the scale height from above, and
+In this class, we use the definition of the scale height from above and
 compute and store this value as an attribute inside the constructor. The
 attribute `self.h0` is then used inside the `value` method. Notice that the
-constants `g, R`, and `M` are in this case local variables in the constructor,
+constants `g, R`, and `M` are, in this case, local variables in the constructor,
 and neither these nor `T` are stored as attributes. They are only accessible
 inside the constructor, while `self.p0` and `self.h0` are stored and
-may be accessed later from inside other methods.
+can be accessed later from within other methods.
 
-At this point many will be confused by the `self` variable, and the fact that
-when we defined the methods `__init__` and `value` they took two arguments, but
-when calling them we only used one. The explanation for this behavior is
-that `self` represents the object itself, and this is automatically passed as
+idx{`self`}
+At this point, many will be confused by the `self` variable, and the fact that,
+when we define the methods `__init__` and `value` they take two arguments, but,
+when calling them, they take only one. The explanation for this behavior is
+that `self` represents the object itself, and it is automatically passed as
 the first argument when we call a method bound to the object. When we write
 !bc pycod
 p1 = b1.value(2469)
@@ -214,30 +218,30 @@ it is equivalent to the call
 p1 = Barometric.value(b1,2469)
 !ec
 Here we explicitly call the `value` method that belongs to the
-`Barometric` class, and
-pass the instance `b1` as the first argument.
-Inside the method, `b1` then becomes the local variable `self`, as usual when
+`Barometric` class and pass the instance `b1` as the first argument.
+Inside the method, `b1` then becomes the local variable `self`, as is usual when
 passing arguments to a function,
-and we can access its attributes `T, g`, etc. Exactly the same thing happens
+and we can access its attributes `T, g`, and so on. Exactly the same thing happens
 when we call `b1.value(2469)`, but
 now the object `b1` is automatically passed as the first argument to the method.
-It looks like we are calling the method with a single argument, but in reality it gets two.
+It looks as if we are calling the method with a single argument,
+but in reality it gets two.
 
 The use of the `self` variable in Python classes has been the subject of many
 discussions. Even experienced programmers find it confusing, and many have
-questioned why the language was designed in this way. There are some obvious
-advantages to the approach, for instance that it gives a very clear distinction
+questioned why the language was designed this way. There are some obvious
+advantages to the approach, for instance, it very clearly distinguishes
 between instance attributes (prefixed with `self`) and local variables defined
-inside a method. However, if one struggles to see the reasoning behind
-the `self` variable it is sufficient to remember the two rules; (i) `self` is
-always the first argument in a method definition, but never inserted when the
-method is called, and (ii) to access an attribute inside a method it needs to be
-prefixed with `self`.
+inside a method. However, if one is struggling to see the reasoning behind the
+`self` variable, it is sufficient to remember the following two rules: (i) `self` is
+always the first argument in a method definition, but is never inserted when the
+method is called, and (ii) to access an attribute inside a method, the attribute
+needs to be prefixed with `self`.
 
 An advantage of creating a class for our barometric function is that we can now send
 `b1.value` as an argument to any other function that expects a
-function argument `f` that takes a single argument. Consider for instance the following
-small example, where the function `make_table` will print a table of function
+function argument `f` that takes a single argument. Consider, for instance, the following
+small example, where the function `make_table` prints a table of the function
 values for any function passed to it:
 !bc pycod
 from math import sin, exp, pi
@@ -261,9 +265,9 @@ requirement, but we can still use different values of `T` by creating
 multiple instances.
 
 === More general Python classes. ===
-Of course, Python classes have far more general applicability than just to
-represent mathematical functions. A general Python class definition
-follows the recipe outlined in the example above:
+Of course, Python classes have far more general applicability than just
+the representation of mathematical functions. A general Python class
+definition follows the recipe outlined in the example above, as follows:
 !bc pycod-t
 class MyClass:
     def __init__(self, p1, p2,...):
@@ -286,27 +290,29 @@ class MyClass:
 !ec
 We can define as many methods as we want inside the class, with or without
 arguments. When we create an instance of the class the methods become bound
-to an instance, and are accessed with the prefix, for instance `m.method2()` if `m` is an
+to the instance, and are accessed with the prefix, for instance,
+`m.method2()` if `m` is an
 instance of `MyClass`. It is common to have a constructor where attributes
 are initialized, but this is not a requirement. Attributes can be defined
-whenever desired, for instance inside a method as in the
+whenever desired, for instance, inside a method, as in the
 line `self.attrx = arg` in the example above, or even from outside the class:
 !bc pycod-t
 m = MyClass(p1,p2, ...)
 m.new_attr = p3
 !ec
-The second line here will create a new attribute `new_attr` for the instance `m`
-of `MyClass`. Such addition of attributes is completely valid, but it is rarely
-good programming practice since we may end up with instances of the same class having
+The second line here creates a new attribute `new_attr` for the instance `m`
+of `MyClass`. Such addition of attributes is entirely valid, but it is rarely
+good programming practice since we can end up with instances of the same class having
 different attributes. It is a good habit to always equip a class with a
-constructor, and to primarily define attributes inside the constructor.
+constructor and to primarily define attributes inside the constructor.
 
 ======= Protected class attributes =======
+idx{protected attributes}
 For a more classical computer science example of a Python class, let us look at
-a class to represent a bank account. Natural
-attributes for such a class will be the name of the owner, the account number,
-and the balance, and we may include methods to deposit, withdraw, and print
-information about the account. The code for defining such a class may look like this:
+a class representing a bank account. Natural attributes for such a class will
+be the name of the owner, the account number, and the balance, and we can
+include methods for deposits, withdrawals, and printing information about the
+account. The code for defining such a class could look like this:
 !bc pycod
 class BankAccount:
     def __init__(self, first_name, last_name, number, balance):
@@ -329,8 +335,9 @@ class BankAccount:
         print(s)
 !ec
 
-Typical use of the class may be something like the following, where we create
-two different account instances and call the various methods to deposit, withdraw, and print:
+Typical use of the class could be something like the following, where we create
+two different account instances and call the various methods for deposits,
+withdrawals, and printing information:
 !bc pyshell
 >>> a1 = Account('John', 'Olsson', '19371554951', 20000)
 >>> a2 = Account('Liz', 'Olsson',  '19371564761', 20000)
@@ -345,25 +352,26 @@ John Olsson, 19371554951, balance: 13500
 >>> a2.print_info()
 Liz Olsson, 19371564761, balance: 9500
 !ec
-However, there is nothing preventing a user from changing the attributes of the account directly:
+However, there is nothing to prevent a user from changing the
+attributes of the account directly:
 !bc pyshell
 >>> a1.first_name = 'Some other name'
 >>> a1.balance = 100000
 >>> a1.number = '19371564768'
 !ec
-While it may be tempting to adjust a bank account balance when needed, it is not
+Although it can be tempting to adjust a bank account balance when needed, it is not
 the intended use of the class. Directly manipulating attributes in this way
-will very often lead to errors in large software systems, and is considered to be bad
+will very often lead to errors in large software systems, and is considered a bad
 programming style. Instead, attributes should always be changed by calling
-methods, in this case `withdraw` and `deposit`.
-Many programming languages have constructions that may limit the access to
+methods, in this case, `withdraw` and `deposit`.
+Many programming languages have constructions that can limit the access to
 attributes from outside the class, so that any attempt to access them will lead
 to an error message when compiling or running the code. Python has no technical way to
 limit attribute access, but it is common to mark attributes as *protected* by
-prefixing the name with an underscore (e.g. `_name`). This convention tells
+prefixing the name with an underscore (e.g., `_name`). This convention tells
 other programmers that a given attribute or method is not supposed to be accessed
-from outside the class, although it is still technically possible to do so. An
-account class with protected attributes may look like this:
+from outside the class, even though it is still technically possible to do so. An
+account class with protected attributes can look like the following:
 !bc pycod
 class BankAccountP:
     def __init__(self, first_name, last_name, number, balance):
@@ -382,7 +390,7 @@ class BankAccountP:
         return self._balance
 
     def dump(self):
-        print(f'{self._first_name} {self._last_name}, {self._no}, balance: {self._balance}')
+        print(f'{self._first_name} {self._last_name}, {self._number}, balance: {self._balance}')
 !ec
 When using this class, it will still be technically possible to access
 the attributes directly, as in
@@ -391,39 +399,40 @@ a1 = BankAccountP('John', 'Olsson', '19371554951', 20000)
 a1._number = '19371554955'
 !ec
 However, all experienced Python programmers will know that the second line
-is a serious violation of good coding practice, and will look for a better
-way to solve the problem. When using code libraries developed by others,
-breaking such conventions is risky since internal data structures may change,
-while the *interface* to the class is more static. The convention of protected
-variables is how programmers tell users of the class what may change and
-what is static. Library developers may decide to change the internal data structure of a class,
-but users of the class may not even notice this change if the methods to access
-the data remain unchanged. Since the class interface is not changed, users who
-followed the convention will be fine, but users who have
-accessed protected attributes directly may be in for a surprise.
-
-
+is a serious violation of good coding practice and will look for a better
+way to solve the task. When using code libraries developed by others,
+such conventions are risky to break, since internal data structures can
+change, while the *interface* to the class is more static. The convention of
+protected variables is how programmers tell users of the class what can
+change and what is static. Library developers can decide to change the internal
+data structure of a class, but users of the class might not even
+notice this change if the methods to access the data remain unchanged.
+Since the class interface is unchanged, users who followed the convention
+will be fine, but users who have accessed protected attributes directly could
+be in for a surprise.
 
 ======= Special methods =======
-In the examples above we defined a constructor for each class, identified
+idx{special method}
+In the examples above, we define a constructor for each class, identified
 by its special name `__init__(...)`. This name is recognized by Python, and
 the method is automatically called every time we create a new instance of the
 class. The constructor belongs to a family of methods known as *special methods*,
 which are all recognized by double leading and trailing underscores in the name.
-The term *special methods* may be a bit misleading, since the methods themselves
+The term *special methods* could be a bit misleading, since the methods themselves
 are not really special. The special thing about them is the name, which ensures
 that they are automatically called in different situations, such as the `__init__`
 function being called when class instances are created. There are many
-more such special methods, which we can use to create object types with
+more such special methods that we can use to create object types with
 very useful properties.
 
-Consider for instance the first example of this chapter, where the `Barometric`
-class contained a method `value(h)` to evaluate the mathematical function. After
+idx{`__call__`}
+Consider, for instance, the first example of this chapter, where the `Barometric`
+class contained the method `value(h)` to evaluate a mathematical function. After
 creating an instance named `baro`, we could call the method with
 `baro.value(t)`. However, it would be even more convenient if we could just write
-`baro(t)` as if the instance was a regular Python function. This behavior
+`baro(t)` as if the instance were a regular Python function. This behavior
 can be obtained by simply changing the name of the `value` method to one
-of the special method names that are automatically recognized by Python.
+of the special method names that Python automatically recognizes.
 The special method name for making an instance *callable* like a regular Python
 function is `__call__`:
 !bc pycod
@@ -444,20 +453,21 @@ Now we can call an instance of the class `Barometric` just as any other Python f
 baro = Barometric(245)
 p = baro(2346)          #same as p = baro.__call__(2346)
 !ec
-The instance `baro` behaves and looks like a function. The method does
+The instance `baro` now behaves and looks like a function. The method is
 exactly the same as the `value` method, but creating a special method by
-renaming it to `__call__` gives nicer syntax when the class is used.
+renaming it to `__call__` produces nicer syntax when the class is used.
 
+idx{`__str__`}
 === Special method for printing. ===
 We are used to printing an object `a` using `print(a)`, which works fine for
-Python's builtin object types such as strings, lists, etc. However, if `a` is
-an instance of a class we defined ourselves we do not get much useful information,
+Python's built-in object types such as strings and lists. However, if `a` is
+an instance of a class we defined ourselves, we do not obtain much useful information,
 since Python does not know what information to show. We can solve this problem
 by defining a special method named `__str__` in our class. The `__str__` method
-must return a string object, preferably a string that gives some
+must return a string object, preferably a string that provides
 useful information about the object, and it should not take any arguments except `self`.
-For the function class seen above, a suitable `__str__` method may look
-like this:
+For the function class seen above, a suitable `__str__` method could look
+like the following:
 !bc pycod-t
 class Barometric:
     ...
@@ -467,8 +477,8 @@ class Barometric:
     def __str__(self):
         return f'p0 * exp(-M*g*h/(R*T)); T = {self.T}'
 !ec
-If we now call print for an instance of the class, it will print the
-function expression and the value of `T` for that instance:
+If we now call `print` for an instance of the class, the function
+expression and the value of `T` for that instance will be printed, as follows:
 !bc pyshell
 >>> b = Barometric(245)
 >>> b(2469)
@@ -479,12 +489,12 @@ p0 * exp(-M*g*h/(R*T)); T = 245
 
 
 === Special methods for mathematical operations. ===
-So far we have seen three special methods; `__init__`, `__call__`, and `__str__`,
-but there are many more. We will not cover all of them in this book, but a few
+So far we have seen three special methods, namely, `__init__`, `__call__`, and `__str__`,
+but there are many more. We will not cover them all in this book, but a few
 are worth mentioning. For instance, there are special methods for
-arithmetic operations, such as `__add__`, `__sub__`, `__mul__`, etc. Defining
-these methods inside our class will enable us to perform operations like
-`c = a+b`, where `a,b` are instances of the class. Here are some some relevant
+arithmetic operations, such as `__add__`, `__sub__`, `__mul__`, and so forth. Defining
+these methods inside our class will enable us to perform operations such as
+`c = a+b`, where `a,b` are instances of the class. The following are relevant
 arithmetic operations and the corresponding special method that they will call:
 !bc pycod
 c = a + b    #  c = a.__add__(b)
@@ -497,8 +507,9 @@ c = a/b      #  c = a.__div__(b)
 
 c = a**e     #  c = a.__pow__(e)
 !ec
-It is natural in most cases, but not always, that these methods return an object
-of the same type as the operands. Similarly, there are special methods for comparing objects:
+It is natural, in most but not all cases, for these methods to return an object
+of the same type as the operands. Similarly, there are special methods for
+comparing objects,as follows:
 !bc pycod
 a == b       #  a.__eq__(b)
 
@@ -512,21 +523,23 @@ a > b        #  a.__gt__(b)
 
 a >= b       #  a.__ge__(b)
 !ec
-These should be implemented to return `True/False` to be consistent with the
+These methods should be implemented to return true or false, to be consistent with the
 usual behavior of the comparison operators. The actual contents of the special
-method are in all cases entirely up to the programmer. The only thing special
+method are in all cases entirely up to the programmer. The only special thing
 about the methods is their name, which ensures that they are automatically called
 by various operators. For instance, if you try to multiply two objects with a
-statement like `c = a*b`, Python will look for a method named `__mul__` in the
+statement such as `c = a*b`, Python will look for a method named `__mul__` in the
 instance `a`. If such a method exists, it will be called with the instance `b` as
-argument, and whatever the method `__mul__` returns will be the result of
+the argument, and whatever the method `__mul__` returns will be the result of
 our multiplication operation.
 
+idx{`__repr__`}
 === The `__repr__` special method. ===
-The last special method we will consider here is a method named `__repr__`, which is similar to `__str__` in the sense
-that it should return a string with info about the object. The difference is that while `__str__` should provide
-human readable information, the `__repr__` string shall contain all the information necessary to recreate the object. For an
-object `a`, the `__repr__` method is called if we call `repr(a)`, where `repr` is a builtin function. The intended function
+The last special method we will consider here is a method named `__repr__`,
+which is similar to `__str__` in the sense that it should return a string with
+information about the object. The difference is that, while `__str__` should provide
+human-readable information, the `__repr__` string should contain all the information necessary to recreate the object. For an
+object `a`, the `__repr__` method is called if we call `repr(a)`, where `repr` is a built-in function. The intended function
 of `repr` is such that `eval(repr(a)) == a`, i.e., running the string output by `a.__repr__` should recreate `a`.
 To illustrate its use, let us add a `__repr__` method to the class `Barometric` from the start of the chapter:
 !bc pycod-t
@@ -558,24 +571,25 @@ The last two lines confirm that the `repr` method works as intended, since
 running `eval(repr(b)` returns an object
 identical to `b`. Both `__repr__` and `__str__` return strings with information
 about an object, the difference being that `__str__` gives information to be read by humans,
-while the output of `__repr__` is intended to be read by Python.
+whereas the output of `__repr__` is intended to be read by Python.
 
-=== How can we know the contents of a class? ===
-Sometimes it is useful to be able to list the contents of a class, in particular
-for debugging. Consider the following dummy class, which does nothing useful
-except to define a doc string, a constructor and a single attribute:
+idx{`dir`}
+=== How to know the contents of a class. ===
+Sometimes listing the contents of a class can be useful, particularly for
+debugging. Consider the following dummy class, which does nothing useful
+except to define a doc string, a constructor, and a single attribute:
 !bc pycod
  class A:
     """A class for demo purposes."""
     def __init__(self, value):
         self.v = value
 !ec
-If we now write `dir(A)` we see that the class actually contains a lot more
+If we now write `dir(A)` we see that the class actually contains a great deal more
 than what we put into it, since Python automatically defines certain methods
 and attributes in all classes. Most of the items listed are default versions
-of special methods, which do nothing useful except to give an
-error message `NotImplemented` if they are called. However, if we create an instance of `A`, and
-use `dir` again on that instance, we get more useful information:
+of special methods, which do nothing useful except to give the
+error message `NotImplemented` if they are called. However, if we create an
+instance of `A`, and use `dir` on that instance, we obtain more useful information:
 !bc pyshell
 >>> a = A(2)
 >>> dir(a)
@@ -587,7 +601,7 @@ use `dir` again on that instance, we get more useful information:
 !ec
 We see that the list contains the same (mostly useless) default versions of
 special methods, but some of the items are more meaningful. If we continue the
-interactive session to examine some of the items, we get
+interactive session to examine some of the items, we obtain
 !bc pyshell
 >>> a.__doc__
 'A class for demo purposes.'
@@ -599,10 +613,10 @@ interactive session to examine some of the items, we get
 '__main__'
 !ec
 The `__doc__` attribute is the doc string we defined, while `__module__` is the
-name of the module that the
-class belongs to, which is simply `__main__` in this case since we defined it in the main program.
-However, the most useful item is probably `__dict__`, which is a dictionary containing names and
-values of all attributes of the object `a`. Any instance holds its attributes in the
+name of the module to which
+class belongs, which is simply `__main__` in this case, since we defined it in the main program.
+However, the most useful item is probably `__dict__`, which is a dictionary containing the
+names and values of all the attributes of the object `a`. Any instance holds its attributes in the
 `self.__dict__` dictionary, which is automatically created by Python. If we add new
 attributes to the instance, they are inserted into the `__dict__`:
 !bc pyshell
@@ -613,14 +627,15 @@ attributes to the instance, they are inserted into the `__dict__`:
 >>> a.__dict__
 {'myvar': 10, 'v': [1, 2]}
 !ec
-When programming with classes we are not supposed to use the internal data structures like `__dict__`
-explicitly, but it may be very useful to print it to check the values of class attributes
-if something goes wrong in our code.
+When programming with classes we are not supposed to use the internal data structures
+such as `__dict__` explicitly, but printing it to check the values of class
+attributes  can be very useful if something goes wrong in our code.
 
-======= Example; automatic differentiation of functions =======
+======= Example: Automatic differentiation of functions =======
+idx{numerical differentiation}
 To provide a more relevant and useful example of a
-`__call__` special method, consider the task of computing derivatives of an
-arbitrary function. Given some mathematical function in Python, say
+`__call__` special method, consider the task of computing the derivative of an
+arbitrary function. Given some mathematical function in Python, say,
 !bc pycod
 def f(x):
     return x**3
@@ -635,14 +650,14 @@ to evaluate the derivative of `f` in a point `x`:
 !bc pycod
 print(dfdx(2))   # computes 3*x**2 for x=2
 !ec
-It is tricky to make such a class using analytical differentiation rules, but
+It is tricky to create such a class using analytical differentiation rules, but
 we can write a generic class by using numerical differentiation:
 !bt
 \[ f'(x) \approx {f(x+h)-f(x)\over h} .\]
 !et
 For a small (yet moderate) $h$, say $h=10^{-5}$, this estimate will be sufficiently
 accurate for most applications. The key parts of the implementation are to let
-the function `f` be an attribute of the `Derivative` class, and then implement
+the function `f` be an attribute of the `Derivative` class and then implement
 the numerical differentiation formula in a `__call__` special method:
 !bc pycod
 class Derivative:
@@ -654,7 +669,7 @@ class Derivative:
         f, h = self.f, self.h      # make short forms
         return (f(x+h) - f(x))/h
 !ec
-The following interactive session demonstrates typical use of the class
+The following interactive session demonstrates typical use of the class:
 !bc pyshell
 >>> from math import *
 >>> df = Derivative(sin)
@@ -672,9 +687,9 @@ The following interactive session demonstrates typical use of the class
 3.000000248221113
 !ec
 For a particularly useful application of the `Derivative` class, consider
-the solution of nonlinear equations $f(x)=0$.
+the solution of a nonlinear equation $f(x)=0$.
 In Chapter ref{ch:funcif} we implement Newton's method as a general method
-for solving non-linear equations, but Newton's method uses
+for solving nonlinear equations, but Newton's method uses
 the derivative $f'(x)$, which needs to be provided as an argument to the function:
 !bc pycod-t
 def Newton2(f, dfdx, x0, max_it=20, tol= 1e-3):
@@ -682,7 +697,7 @@ def Newton2(f, dfdx, x0, max_it=20, tol= 1e-3):
     return x0, converged, iter
 !ec
 See Chapter ref{ch:funcif} for a complete implementation of the function.
-For many functions $f(x)$, finding $f'(x)$ may require lengthy
+For many functions $f(x)$, finding $f'(x)$ can require lengthy
 and boring derivations, and in such cases the `Derivative` class is quite handy:
 !bc pyshell
 >>> def f(x):
@@ -698,17 +713,17 @@ and boring derivations, and in such cases the `Derivative` class is quite handy:
 In Chapter ref{ch:funcif} we introduced test functions as a method to verify
 that our functions were implemented correctly, and the exact
 same approach can be used to test the implementation of classes.
-Inside the test function we define some parameters for which we know the
-expected output, and then call our class methods and compare the result with the
-expected. The only additional step when testing classes is that we
-will typically create one or more instances of the class inside the test function,
-and then call the methods of these instances. As an example, consider a test
+Inside the test function, we define parameters for which we know the
+expected output, and then call our class methods and compare the results with those
+expected. The only additional step involved when testing classes is that we
+will typically create one or more instances of the class inside the test function
+and then call their. As an example, consider a test
 function for the `Derivative` class of the previous section. How can we define
 a test case with known output for this class?
-Two possible methods are; (i) compute $(f(x+h)-f(x))/h$ by hand for
-some $f$ and $h$, or (ii) utilize that linear functions are differentiated
+Two possible methods are; (i) to compute $(f(x+h)-f(x))/h$ by hand for
+some $f$ and $h$, or (ii) utilize the fact that linear functions are differentiated
 exactly by our numerical formula,
-regardless of $h$. A test function based on (ii) may look as follows:
+regardless of $h$. A test function based on (ii) could look like the following:
 !bc pycod
 def test_Derivative():
     # The formula is exact for linear functions, regardless of h
@@ -718,11 +733,11 @@ def test_Derivative():
     diff = abs(dfdx(4.5) - a)
     assert diff < 1E-14, 'bug in class Derivative, diff=%s' % diff
 !ec
-This function follows the standard recipe for test functions; we construct a
-problem where we know the result, create an instance of the class, call the
-function and compare the result with the expected. However, some of the details inside
-the test function may be worth commenting. First, we use a lambda function to
-define `f(x)`. As we may recall from Chapter ref{ch:funcif},
+This function follows the standard recipe for test functions: we construct a
+problem with a known result, create an instance of the class, call the
+method, and compare the result with the expected result. However, some of the details inside
+the test function may be worth commenting on. First, we use a lambda function to
+define `f(x)`. As you may recall from Chapter ref{ch:funcif},
 a lambda function is simply a compact way of defining a function, with
 !bc pycod
 f = lambda x: a*x + b
@@ -732,29 +747,31 @@ being equivalent to
 def f(x):
     return a*x + b
 !ec
-The use of the lambda function inside the test function looks straightforward at first:
+The use of the lambda function inside the test function appears straightforward at first:
 !bc pycod-t
 f = lambda x: a*x + b
 a = 3.5; b = 8
 dfdx = Derivative(f, h=0.5)
 dfdx(4.5)
 !ec
-The function `f` is defined to take one argument `x`, and also uses two "global"
+The function `f` is defined to taking one argument `x` and also using
+two two local
 variables `a` and `b` that are defined outside the function before it is called.
-But looking at this code in more detail may give rise to some questions.
-When we call `dfdx(4.5)` it implies
-calling `Derivative.__call__` but how can this function know the values of
-know `a` and `b` when it calls our `f(x)` function?
-The answer is that a function defined inside another function "remembers", or
+However, looking at this code in more detail can raise questions.
+Calling `dfdx(4.5)` implies
+that `Derivative.__call__` is called, but how can this methods know the values of
+`a` and `b` when it calls our `f(x)` function? These variables are defined inside the
+test function and are therefore local, whereas the class is defined in the main program.
+The answer is that a function defined inside another function "remembers," or
 has access to, *all* the local variables of the function where it is defined.
-Therefore all variables defined inside `test_Derivative`
+Therefore, all the variables defined inside `test_Derivative`
 become part of the *namespace* of the function `f`, and `f` can access `a` and `b`
 in `test_Derivative` even when it is called from the `__call__` method in
-class `Derivative`. The construction is known as a *closure* in computer science.
+class `Derivative`. This construction is known as a *closure* in computer science.
 
-======= Example; a Polynomial class =======
-As a summarizing example for classes and special methods, we may
-consider the representation of polynomials introduced in Chapter
+======= Example: A polynomial class =======
+As a summarizing example of classes and special methods, we can consider the
+representation of polynomials introduced in  Chapter
 ref{ch:dictstring}. A polynomial can be specified
 by a dictionary or list representing its coefficients and powers. For example,
 $1 - x^2 + 2x^3$ is
@@ -762,9 +779,9 @@ $1 - x^2 + 2x^3$ is
 \[  1 + 0\cdot x - 1\cdot x^2 + 2\cdot x^3 \]
 !et
 and the coefficients can be stored as a list `[1, 0, -1, 2]`. We now want to
-create a class for such a Polynomial, and equip it with functionality for
-evaluating and printing a polynomial and to add two polynomials. Intended use of
-the class `Polynomial` may look as follows:
+create a class for such a polynomial and equip it with functionality
+to  evaluate and print polynomials and to add two polynomials.
+Intended use of the class `Polynomial` could look like the following:
 !bc pyshell
 >>> p1 = Polynomial([1, -1])
 >>> print(p1)
@@ -784,12 +801,12 @@ the class `Polynomial` may look as follows:
 !ec
 To make all these operations possible, the class needs the following special methods:
 * `__init__`, the constructor, for the line `p1 = Polynomial([1,-1])`
-* `__str__`, for pretty print, for doing `print(p1)`
+* `__str__`, for doing `print(p1)`
 * `__call__`, to enable the call `p3(2.0)`
 * `__add__`, to make `p3 = p1 + p2` work
 * `__mul__`, to allow `p4 = p1*p2`
-In addition, the class needs a method `differentiate`, which computes the derivative of a polynomial, and changes
-it in-place. Starting with the most basic ones, the constructor is fairly straightforward and the call method
+In addition, the class needs a method `differentiate` that computes the derivative of a polynomial, and changes
+it in-place. Starting with the most basic methods, the constructor is fairly straightforward and the call method
 simply follows the recipe from Chapter ref{ch:dictstring}:
 !bc pycod
 class Polynomial:
@@ -802,10 +819,13 @@ class Polynomial:
             s += self.coeff[i]*x**i
         return s
 !ec
-To enable adding two polynomials, we need to implement the `__add__` method, which should take one argument in addition
-to `self`. The methot should return a new `Polynomial` instance, since the sum of two polynomials is a polynomial, and
-the method needs to implement the rules of polynomial addition. This is basically to add together terms of equal
-order, which in our list representation means to loop over the `self.coeff` lists and add individual elements.
+To enable the addition of two polynomials, we need to implement the
+`__add__` method, which should take one argument in addition
+to `self`. The method should return a new `Polynomial` instance, since the
+sum of two polynomials is a polynomial, and the method needs to implement
+the rules of polynomial addition. Adding two polynomials means to add terms of equal
+order, which, in our list representation, means to loop over
+the `self.coeff` lists and add individual elements, as follows:
 !bc pycod
 class Polynomial:
     ...
@@ -827,19 +847,20 @@ class Polynomial:
 The order of the sum of two polynomials is equal to the highest order of the two,
 so the length of the returned polynomial must be equal to the length of the
 longest of the two `coeff` lists. We utilize this knowledge in the code by
-starting with a copy of the longest list, and then looping through the shortest
-and adding in each element.
+starting with a copy of the longest list and then looping through the shortest
+and adding to each element.
 
-Multiplication of two polynomials is slightly more complex than adding them, so it is worth writing down the
+The multiplication of two polynomials is slightly more complex than their addition,
+so it is worth writing down the
 mathematics before implementing the `__mul__` method. The formula looks like
 !bt
 \[ \left(\sum_{i=0}^Mc_ix^i\right)\left(\sum_{j=0}^N d_jx^j\right)
-= \sum_{i=0}^M \sum_{j=0}^N c_id_j x^{i+j} \]
+= \sum_{i=0}^M \sum_{j=0}^N c_id_j x^{i+j}, \]
 !et
-and in our list representation this means that the coefficient corresponding to power $i+j$ is $c_i\cdot d_j$. The
-list `r` of coefficients for the resulting polynomial should have length $N+M+1$, and an
+which, in our list representation, means that the coefficient corresponding to the
+power $i+j$ is $c_i\cdot d_j$. The list `r` of coefficients for the resulting polynomial should have length $N+M+1$, and an
 element `r[k]` should be the sum of all products `c[i]*d[j]` for which $i+j=k$.
-The implementation of the method may look like
+The implementation of the method could look like
 !bc pycod
 class Polynomial:
     ...
@@ -859,10 +880,11 @@ Turning now to the `differentiate` method, the rule for differentiating a genera
 !bt
 \[ {d\over dx}\sum_{i=0}^n c_ix^i = \sum_{i=1}^n ic_ix^{i-1}\]
 !et
-So if `c` is the list of coefficients, the derivative has a list
-of coefficients, `dc`, where `dc[i-1] = i*c[i]` for `i` running from 1 to the largest index in `c`.
-Note that `dc` will have one element less than `c`, since differentiating a polynomial reduces the order by 1.
-The full implementation of the `differentiate` method may look like this:
+Therefore, if `c` is the list of coefficients, the derivative has a list
+of coefficients `dc`, where `dc[i-1] = i*c[i]` for `i` from one to the largest index in `c`.
+Note that `dc` will have one element less than `c`, since differentiating a
+polynomial reduces the order by one.
+The full implementation of the `differentiate` method could look like the following:
 !bc pycod
 class Polynomial:
     ...
@@ -876,13 +898,16 @@ class Polynomial:
         dpdx.differentiate()
         return dpdx
 !ec
-Here, the `differentiate` method will change the polynomial itself, since this is the behavior indicated by how the function
-was used above. We have also added a separate function `derivative`, which does not change the polynomial but instead returns
+Here, the `differentiate` method will change the polynomial itself,
+since this is the behavior indicated by the way the function
+was used above. We have also added a separate function `derivative`
+that does not change the polynomial but, instead, returns
 its derivative as a new `Polynomial` object.
 
-Finally, let us implement the `__str__` method for pretty print of polynomials. This method should return a
-string representation of the polynomial, but achieving this can actually be fairly complicated. The following
-implementation does a reasonably good job:
+Finally, let us implement the `__str__` method for printing the polynomial in
+human-readable form. This method should return a string representation close
+to the way we write a polynomial in mathematics, but achieving this can be
+surprisingly complicated. The following implementation does a reasonably good job:
 !bc pycod
 class Polynomial:
     ...
@@ -890,22 +915,25 @@ class Polynomial:
         s = ''
         for i in range(0, len(self.coeff)):
             if self.coeff[i] != 0:
-                s += ' + %g*x^%d' % (self.coeff[i], i)
-        # fix layout (lots of special cases):
+                s += f' + {self.coeff[i]:g}*x^{i:g}'
+        # fix layout (many special cases):
         s = s.replace('+ -', '- ')
         s = s.replace(' 1*', ' ')
         s = s.replace('x^0', '1')
         s = s.replace('x^1 ', 'x ')
-        s = s.replace('x^1', 'x')
         if s[0:3] == ' + ':  # remove initial +
             s = s[3:]
         if s[0:3] == ' - ':  # fix spaces for initial -
             s = '-' + s[3:]
         return s
 !ec
-For all these special methods, and for special methods in general, it is important to be aware that the contents and
-behavior of the methods are entirely up to the programmer. The only *special* thing about special methods is their
-name, which ensures that they are automatically called by certain operations. What they actually do, and what they return,
-is up to the programmer when writing the class. If we want to write an `__add__` method that returns nothing, or
-returns something completely different from a sum, we are free to do so. But it is of course a good habit for the
+For all these special methods, as well as special methods in general, it is important
+to be aware that their contents and behavior are entirely up to the programmer.
+The only *special* thing about special methods is their
+name, which ensures that they are automatically called by certain operations.
+What they actually do and what they return
+are decided by the programmer writing the class. If we want to write
+an `__add__` method that returns nothing, or
+returns something completely different from a sum, we are free to do so. However, it is,
+of course, a good habit for the
 `__add__(self, other)` to implement something that seems like a meaningful result of `self + other`.
