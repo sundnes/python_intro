@@ -63,8 +63,8 @@ doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5
 
 rm -rf ${mainname}.aux ${mainname}.ind ${mainname}.idx ${mainname}.bbl ${mainname}.toc ${mainname}.loe
 system pdflatex ${mainname}
-bibtex ${mainname}
-makeindex ${mainname}
+#bibtex ${mainname}
+system makeindex ${mainname}
 system pdflatex ${mainname}
 system pdflatex ${mainname}
 mv -f ${mainname}.pdf ${nickname}-4print.pdf  # drop main_ prefix in PDF

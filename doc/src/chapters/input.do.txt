@@ -1,41 +1,41 @@
 So far, all the values we have assigned to variables have been written directly
 into our programs. If we want a different value of a variable, we need to edit
-the code and re-run the program. Of course, this is not how we are
+the code and rerun the program. Of course, this is not how we are
 used to interacting with computer programs. Usually, a program will receive
 some input from users, most often through a graphical user interface (GUI).
-However, although GUIs dominate in modern human-computer interaction, other
-ways of interacting with computer programs may be just as efficient, and in some
-cases far more suitable for processing large amounts of data and for automating
+However, although GUIs dominate in modern human--computer interaction, other
+ways of interacting with computer programs can be just as efficient and, in some
+cases, far more suitable for processing large amounts of data and automating
 repetitive tasks. In this chapter we will show how we can extend our programs
 with simple yet powerful systems for user input. In particular, we will see
-how a program can receive command-line arguments when it is run,
+how a program can receive command line arguments when it is run,
 how to make a program stop and ask for user input, and how a program can
 read data from files.
 
-A side-effect of allowing users to interact with programs is that things will
+A side effect of allowing users to interact with programs is that things will
 often go wrong. Users will often provide the wrong input, and programs should
-be able to handle this without simply stopping and writing a cryptic error message to the
-screen. We will introduce a concept known as *exception handling*,
+be able to handle such events without simply stopping and writing a
+cryptic error message to the screen. We will introduce a concept known as *exception handling*,
 which is a widespread system for handling
 errors in programs, used in Python and many other programming languages.
 
-Finally in this chapter, we shall see how we can *create our own modules*,
-which can be imported used in other programs just as we have done with modules
-like `math` and `sys`.
+Finally, in this chapter, we shall see how to create our own modules
+that can be imported for use in other programs, just as we have done with modules
+such as `math` and `sys`.
 
-======= Reading input data from users =======
-
+======= Reading user input data =======
+idx{user input}
 So far, we have implemented various mathematical formulas that involved input
-variables and parameter, but all of these values have been hardcoded into the
-programs. To introduce a new example, consider for instance the
+variables and parameters, but all of these values have been hard-coded into the
+programs. To introduce a new example, consider the
 following formula, which gives an
 estimate of the atmospheric pressure $p$ as a function of altitude $h$:
 !bt
-\[ p = p_0 e^{-h/h_0}. \]
+\[ p = p_0 e^{-h/h_0}, \]
 !et
-Here $p_0$ is the pressure at sea level ($\approx 100$ kPa) and
+where $p_0$ is the pressure at sea level ($\approx 100$ kPa) and
 $h_0$ is the so-called scale height ($\approx 8.4$km). A Python program for evaluating
-this formula may look like
+this formula could look like
 !bc pycod
 from math import exp
 
@@ -47,30 +47,31 @@ p = p0 * exp(-h/h0)
 print(p)
 !ec
 Of course, we are usually interested in evaluating the formula for
-different altitudes, which in this code would require editing the line
-`h = 8848` to change the respective variable, and then re-run the program.
-This solution may be acceptable for programs we write and use ourselves,
-but it is not how we are used to interact with computers. In particular, if we write
-programs that may be used by others, editing the code in this way
-is inconvenient and may easily introduce errors.
+different altitudes, which, in this code, would require editing the line
+`h = 8848` to change the respective variable, and then rerunning the program.
+This solution could be acceptable for programs we write and use ourselves,
+but it is not how we are used to interacting with computers. In particular,
+if we write programs that could be used by others, editing the code this way
+is inconvenient and can easily introduce errors.
 
-For our programs to be robust and usable they need to be able to read relevant
-input data from the user. There are several ways this can be accomplished, and
-we will here consider three different ones, each with its strengths and weaknesses.
-We will (i) create programs that stop and ask for input from the user, and then
-continue the execution when the input is received, (ii) enable our programs to
-receive *command line arguments*, i.e arguments provided when we run the
-program from the terminal, and (iii) make the programs read input data from files.
+For our programs to be robust and usable, they need to be able to read relevant
+input data from the user. We will consider three different ways to accomplish
+this, each with its strengths and weaknesses.
+We will (i) create programs that stop and ask for user input, and then
+continue the execution when the input is received; (ii) enable our programs to
+receive *command line arguments*, that is, arguments provided when we run the
+program from the terminal; and (iii) make the programs read input data from files.
 #This way of user interaction is not very common in professional programs, but it is quite intuitive and easy to use, and you may have seen
 #such behavior for instance in installers for other programs. These will often stop and ask questions about installation location etc.,
 #often through a GUI but sometimes in the standard terminal window. Second, we will see how our programs can receive
 #command line arguments, which is a standard way of interacting with programs in the terminal window. For instance, when you
 
-=== Getting input from questions and answers. ===
-A natural extension of this program is to let it ask the user for a value of `h`,
+idx{`input`}
+=== Obtaining input from questions and answers. ===
+A natural extension of this program is to allow it to ask the user for a value of `h`,
 and then compute and output the corresponding
 atmospheric pressure. A Python function called `input` provides exactly
-this functionality. For instance a code line like
+this functionality. For instance a line such as
 !bc pycod
 input('Input the altitude (in meters):')
 !ec
@@ -90,7 +91,7 @@ p = p0 * exp(-h/h0)
 print(p)
 !ec
 # #if FORMAT != 'ipynb'
-Running the program in a terminal window may look like:
+Running the program in a terminal window could look like:
 !bc sys
 Terminal> python altitude.py
 Input the altitude (in meters): 2469
@@ -98,15 +99,15 @@ Input the altitude (in meters): 2469
 !ec
 # #endif
 Notice in particular the line `h = float(h)`, which is an example of the
-type conversions we mentioned in Chapter ref{ch:formulas}.
+type conversions mentioned in Chapter ref{ch:formulas}.
 The `input` function will always return a text string, which
 must be converted to an actual number before we can use it in computations.
 Forgetting this line in the code above will lead to an error
-in the line that calculates `amount`, since we would try to multiply a string
-with a float. From these considerations we can also imagine
+in the line that calculates `amount`, since we would by trying to multiply a string
+with a float. From these considerations, we can also imagine
 how easy it is to break the program above. The user can type any string,
 or simply press enter (which makes `h` an empty string), but the
-conversion `h = float(h)` only works if the string is actually a number.
+conversion `h = float(h)` only works if the string is a number.
 
 As another example, consider a program that asks the user for an integer `n`
 and prints the `n` first even numbers:
@@ -117,17 +118,18 @@ for i in range(1, n+1):
     print(2*i)
 !ec
 Here we convert the input text using `int(...)`, since the `range` function only
-accepts integer arguments. Just as the example above, the code is not very
-robust since it will break from any input that cannot be converted to an integer.
-Later in this chapter we shall look at ways to handle such errors
+accepts integer arguments. Just as in the example above, the code is not very
+robust, since it will break from any input that cannot be converted to an integer.
+Later in this chapter we will look at ways to handle such errors
 and make the programs more robust.
 
-=== Command-line arguments are words written after the program name. ===
-When working in a Unix-style terminal window (i.e. Mac, Linux, Windows powershell, etc)
-we often provide arguments when we run
-a command. These arguments may for instance be names of files or directories,
-for instance when copying a file with `cp`, or they may
-change the output from the command, such as `ls -l` to get more detailed output
+idx{command line argument}
+=== Command line arguments are words written after the program name. ===
+When working in a Unix-style terminal window
+(e.g., Mac, Linux, Windows PowerShell), we often provide arguments when we run
+a command. These arguments can be names of files or directories,
+for example, when copying a file with `cp`, or they can
+change the output from the command, such as `ls -l` to obtain more detailed output
 from the `ls` command. Anyone who is used to working in Unix-style terminals
 will be familiar with commands like these:
 !bc sys
@@ -135,30 +137,30 @@ Terminal> cp -r yourdir ../mydir
 Terminal> ls -l
 terminal> cd ../mydir
 !ec
-Some commands require arguments, for instance you get an error message if
-you don't give two arguments to `cp`, while other arguments are optional.
+Some commands require arguments -- for instance, you receive an error message
+if you do not give two arguments to `cp` -- while other arguments are optional.
 Standard Unix programs make heavy use of
-command-line arguments, (try for instance typing `man ls`), because they are a very
-efficient way to provide input and modify the behavior of programs.
+command line arguments, (try, for instance, typing `man ls`), because they are a very
+efficient way of providing input and modifying program behavior.
 We will make our Python programs do the same, and write programs that
-can be run like
+can be run as
 !bc sys
 Terminal> python myprog.py arg1 arg2 arg3 ...
 !ec
-where `arg1 arg2 arg3` etc. are input arguments to the program.
+where `arg1 arg2 arg3`, and so forth are input arguments to the program.
 
-We consider again the air pressure calculation program above, but
+We again consider the air pressure calculation program above, but
 now we want the altitude to be specified as a
-command line argument rather than by stopping and asking for input. For
-instance, we want to run the program in like this:
+command line argument rather than obtained by stopping and asking for input. For
+instance, we want to run the program as followss:
 !bc sys
 Terminal> python altitude_cml.py 2469
 74.53297273796525
 !ec
 To use command line arguments in a Python program, we need to import a
 module named `sys`. More specifically, the command line arguments,
-or in reality any words we type after the command `python altitude.py`, are
-automatically stored in a list named `sys.argv` (short for argument values),
+or, in reality, any words we type after the command `python altitude.py`, are
+automatically stored in a list named `sys.argv` (short for argument values)
 and can be accessed from there:
 # #if FORMAT == 'ipynb'
 !bc pyhid
@@ -168,7 +170,7 @@ sys.argv[1] = '2469'
 !ec
 # #endif
 
-!bc pypro
+!bc pycod
 import sys
 from math import exp
 
@@ -181,23 +183,23 @@ h0 = 8400     #scale height (m)
 p = p0 * exp(-h/h0)
 print(p)
 !ec
-Here, we see that we pull out the element with index one of the `sys.argv`
-list, and convert  this to a float. Just as input provided with the
+Here, we see that we pull out the element with index one from the `sys.argv`
+list, and convert it to a float. Just as the input provided with the
 `input` function above, the command line arguments are always strings and
 need to be converted to floats or integers before they are used in computations.
 The `sys.argv` variable is simply a list that is created automatically when
-you run your Python program. The first element, `sys.argv[0]` is the name of
-the `.py`-file containing the program. The rest of the list is made up of whatever
-words that we type after the program file name. Words separated by space become separate
-elements in the list. A nice way to get a feel for the use of
+your Python program is run. The first element, `sys.argv[0]` is the name of
+the `.py`-file containing the program. The remainder of the list is made up of whatever
+words we type after the program filename. Words separated by a space become separate
+elements in the list. A nice way to gain a feel for the use of
 `sys.argv` is to test a simple program that will just print out the contents
-of the list, for instance by writing this simple code into the
+of the list, for instance, by writing this simple code into the
 file `print_cml.py`:
 !bc pycod
 import sys
 print(sys.argv)
 !ec
-Running this program in different ways illustrates how the list works, for instance
+Running this program in different ways illustrates how the list works; for instance,
 !bc sys
 Terminal> python print_cml.py 21 string with blanks 1.3
 ['print_cml.py', '21', 'string', 'with', 'blanks', '1.3']
@@ -205,27 +207,29 @@ Terminal> python print_cml.py 21 string with blanks 1.3
 Terminal> python print_cml.py 21 "string with blanks" 1.3
 ['print_cml.py', '21', 'string with blanks', '1.3']
 !ec
-We see from the second example that if we want to read in a string containing
+We see from the second example that, if we want to read in a string containing
 blanks as a single command line argument, we need to use quotation marks to
-override the default behavior of putting each word as a separate list element.
+override the default behavior of each word being treated as a separate list element.
 
 
 ======= Flexible user input with `eval` and `exec` =======
-In general, the safest way to handle input data in the form of text strings
-is to convert it to the specific variable type that we need in
+idx{`eval`}idx{exec}
+Generally, the safest way to handle input data in the form of text strings
+is to convert it to the specific variable type needed in
 the program. We did this above, using the type conversions `int(...)` and
-`float(...)`, and we shall see below how such conversions can be made failsafe
-and handle wrong input from the user. However, Python also offers a couple of more
-flexible functions to handle input data, named `eval` and `exec`, which are nice
-to know about. It is not recommended to use these functions extensively, especially not in larger
+`float(...)`, and we will see below how such conversions can be made failproof
+and handle imporper user input. However, Python also offers a couple of more
+flexible functions to handle input data, namely, `eval` and `exec`, which are nice
+to know about. Extensive use of these functions is not recommended,
+especially not in larger
 programs, since the code can become messy and error-prone. However, they offer
 some flexible and fun opportunities for handling input data.
 Starting with `eval`, this function simply takes a string `s` as
-input, and `eval(s)` will evaluate `s` as a regular Python expression,
-just as if it was written directly into the program. It is of course
-required that `s` is a legal Python expression, otherwise the code stops
+input and evaluates it as a regular Python expression,
+just as if it were written directly into the program. Of course, `s`
+must be a legal Python expression, otherwise the code stops
 with an error message.
-The following interactive Python session illustrates how eval works:
+The following interactive Python session illustrates how `eval` works:
 !bc pyshell
 >>> s = '1+2'
 >>> r = eval(s)
@@ -241,11 +245,11 @@ The following interactive Python session illustrates how eval works:
 <type 'list'>
 !ec
 Here, the line `r = eval(s)` is equivalent to writing `r = 1+2`, but
-using `eval` of course gives much more flexibility since
+using `eval` gives much more flexibility, of course, since
 the string is stored in a variable and can be read as input.
 
-Using `eval`, a small Python program can be quite flexible. Consider for
-instance the following code
+A small Python program using `eval` can be quite flexible. Consider, for
+instance, the following code
 !bc pycod
 i1 = eval(input('operand 1: '))
 i2 = eval(input('operand 2: '))
@@ -254,7 +258,7 @@ print(f'{type(i1)} + {type(i2)} becomes {type(r)} with value{r}')
 !ec
 This code can handle multiple input types. If we save the code
 in a file `add_input.py` and run it from the terminal,
-we can for instance add integer and float:
+we can, for instance, add integer and float numbers, as in:
 !bc sys
 Terminal> python add_input.py
 operand 1: 1
@@ -262,7 +266,7 @@ operand 2: 3.0
 <type 'int'> + <type 'float'> becomes <type 'float'>
 with value 4
 !ec
-or two lists:
+or two lists, as follows:
 !bc sys
 Terminal> python add_input.py
 operand 1: [1,2]
@@ -271,12 +275,11 @@ operand 2: [-1,0,1]
 with value [1, 2, -1, 0, 1]
 !ec
 We could achieve similar flexibility with conventional type conversion,
-i.e. using `float(i1)`, `int(i1)`, etc., but it would
+that is, using `float(i1)`, `int(i1)`, and so on, but that would
 require much more programming to correctly process the input strings.
 The `eval` function makes such flexible input handling
-extremely compact and efficient, but it also quickly breaks if we give it
-slightly wrong input. Consider for instance
-the following examples
+extremely compact and efficient, but it also quickly breaks if the input
+is slightly wrong. Consider the following examples:
 !bc sys
 Terminal> python add_input.py
 operand 1: (1,2)
@@ -294,11 +297,11 @@ Traceback (most recent call last):
   File "<string>", line 1, in <module>
 NameError: name 'one' is not defined
 !ec
-In the first of these examples we try to add a tuple and a list, which one
+In the first of these examples, we try to add a tuple and a list, which one
 could easily imagine would work, but Python
-does not allow this and therefore the program breaks. In the second example
+does not allow this and therefore the program breaks. In the second example,
 we try to make the program add two strings,
-which usually works fine, for instance `"one" +"one"` becomes the
+which usually works fine; for instance `"one" +"one"` becomes the
 string `"oneone"`. However, the eval function breaks when
 we try to input the first string. To understand why, we need to think about
 what the corresponding line really means.
@@ -315,17 +318,17 @@ operand 2: "two"
 !ec
 These examples illustrate the benefits of the `eval` function, and also how
 it easily breaks programs and is generally not
-recommended for "real" programs. It is useful for quick prototypes, but should usually
-be avoided in programs that we expect to be used by others, or that we expect
+recommended for "real programs". It is useful for quick prototypes, but should usually
+be avoided in programs that we expect others to use or that we expect
 to use ourselves over a longer time frame.
 
-The other "magic" text handling function is named `exec`, and is fairly
-similar to `eval`. However, while `eval` evaluates an *expression*, `exec` will
-execute a string argument as one or more complete statements. For instance,
-if we define a string `s = "r = 1+1"`, `eval(s)` is illegal since the value
+The other "magic" text handling function is named `exec`, and it is fairly
+similar to `eval`. However, whereas `eval` evaluates an *expression*, `exec`
+executes a string argument as one or more complete statements. For instance,
+if we define a string `s = "r = 1+1"`, `eval(s)` is illegal, since the value
 of `s` (`"r = 1+1"`) is a statement (an assignment), and not a Python
 expression. However, `exec(s)` will work
-fine, and is the same as including the line `r = 1+1` directly in the code.
+fine and is the same as including the line `r = 1+1` directly in the code.
 The following code illustrates the difference:
 !bc pycod
 expression = '1+1'	    #store expression in a string
@@ -346,13 +349,13 @@ def f(t):
 """
 exec(somecode)  # execute the string as Python code
 !ec
-Here, the `exec`-line will simply execute the string `somecode`, just as if we
+Here, the `exec` line will simply execute the string `somecode`, just as if we
 had typed the code directly in our program. After the call to `exec` we have defined the
 function `f(t)` and can call this function in the usual way.
-Although this example does not
-not very useful, if we combine exec with actual user input its flexibility
-becomes more apparent. For instance, consider the following code, which will
-ask the user to type a mathematical expression involving $x$, and then embed
+Although this example does not seem very useful, the flexibility of `exec`
+becomes more apparent if we combine it with actual user input.
+For instance, consider the following code, which
+asks the user to type a mathematical expression involving $x$ and then embeds
 this expression in a Python function:
 !bc pycod
 formula = input('Write a formula involving x: ')
@@ -360,7 +363,7 @@ code = f"""
 def f(x):
     return {formula}
 """
-from math import *  # make sure we have sin, cos, log, etc
+from math import *  # make sure we have sin, cos, log, etc.
 exec(code)          # turn string formula into live function
 
 
@@ -380,10 +383,10 @@ answer is `None`, and the program evaluates the function
 about the user's choice of `f(x)` when the program is written, which
 demonstrates the flexibility offered by the `exec` and `eval` functions.
 
-To consider another example, say we want to create a program `diff.py`, which
+To consider another example, say, we want to create a program `diff.py` that
 evaluates the numerical derivative of a mathematical expression $f(x)$ for a
-given value of $x$. The mathematical expression and the $x$ value shall be
-given as command line arguments. Usage of the program may look as follows:
+given value of $x$. The mathematical expression and the $x$ value will be
+given as command line arguments. The program could be used as follows:
 !bc sys
 Terminal> python diff.py 'exp(x)*sin(x)' 3.4
 Numerical derivative: -36.6262969164
@@ -393,9 +396,9 @@ finite difference:
 !bt
 \[ f'(x)\approx \frac{f(x+h)-f(x-h)}{2h} ,\]
 !et
-for some small $h$. The implementation of the `diff.py` program may look like
-# Must use pypro-t here since the notebook cannot handle sys.argv[1]
-!bc pypro-t
+for some small $h$. The implementation of the `diff.py` program could look like
+# Must use pycod-t here since the notebook cannot handle sys.argv[1]
+!bc pycod-t
 from math import *
 import sys
 
@@ -418,11 +421,12 @@ implement fairly advanced functionality in a very compact program.
 
 
 ======= Reading data from files =======
+idx{file reading}
 Scientific data are often available in files, and reading and processing data
-from files has always been an important task in programming. The
-data science revolution that we have witnessed in recent years only increases
-this importance further, since all data analysis starts with being able to read
-data from files and store it in suitable data structures.
+from files have always been important tasks in programming. The
+data science revolution that we have witnessed in recent years has only increased
+their importance further, since all data analysis starts with being able to read
+data from files and store them in suitable data structures.
 To start with a simple example, consider a file named `data.txt` containing
 a single column of numbers:
 !bc
@@ -434,7 +438,7 @@ a single column of numbers:
 17.8
 !ec
 We assume that we know in advance that there is one number per line, but we
-don't know the number of lines. How can we read these numbers into a Python program?
+do not know the number of lines. How can we read these numbers into a Python program?
 
 # #if FORMAT == 'ipynb'
 # Have to make a tmp.txt file with the right content
@@ -451,8 +455,9 @@ f.close()
 !ec
 # #endif
 
+idx{`open`}
 The basic way to read a file in Python is to use the function `open`, which
-takes a file name as argument. The following code illustrates its use:
+takes a file name as an argument. The following code illustrates its use:
 !bc pycod-t
 infile = open('data.txt', 'r')    # open file
 for line in infile:
@@ -462,25 +467,25 @@ infile.close()                    # close file
 Here, the first line opens the file `data.txt` for reading, as specified
 with the letter `r`, and creates a file object named `infile`. If we want to
 open a file for writing, which we will consider later, we have to
-use `open('data.txt','w')`. The default is `r`, so for reading a file we
+use `open('data.txt','w')`. The default is `r`, so, to read a file we
 could also write `infile = open('data.txt')`. However, including the `r` can
-be a good habit since it makes the purpose of the line more obvious to
-anyone reading the code. In the second line we enter a regular for loop, which
+be a good habit, since it makes the purpose of the line more obvious to
+anyone reading the code. In the second line, we enter a regular for loop, which
 will treat the object `infile` as a list-like object and step through the
 file line by line. For each pass through the for loop, a single line of the
 file is read and stored in the string variable `line`, and inside the for loop
 we add any code we want for processing this line.
-When there are no more lines in the file the for loop ends, just as when
+When there are no more lines in the file, the for loop ends, just as when
 looping over a regular list.
 The final line, `infile.close()`, closes the file and makes it unavailable
 for further reading. This line is not very important when reading from
-files, but it is a good habit to always include it, since it may make a
-difference when we write to files.
+files, but it is a good habit to always include it, since it can make a
+difference when writing to files.
 
 To return to the concrete data file above, say the only processing we
-want to do is to compute the mean values of the
+want is to compute the mean value of the
 numbers in the file. The complete code could look like this:
-!bc pypro
+!bc pycod
 infile = open('data.txt', 'r')    # open file
 mean = 0
 lines = 0
@@ -494,29 +499,30 @@ for line in infile:
 mean = mean/lines
 print(f'The mean value is {mean}')
 !ec
-This is a standard way to read files in Python, but as usual in programming there are multiple ways to do things.
+This is a standard way to read files in Python, but, as usual, in
+programming there are multiple ways to do things.
 An alternative way of opening a file, which many will consider more modern, is by
-the following code:
+using the following code:
 !bc pycod-t
 with open('data.txt', 'r') as infile:   # open file
      for line in infile:
      	 # do something with line
 !ec
-The first line, using `with` and `as` probably does not look familiar, but does
+The first line, using `with` and `as` probably does not look familiar, but it does
 essentially the same thing as the line
-`infile = open(...)` in the first example. One important different is that if we
+`infile = open(...)` in the first example. One important difference is that, if we
 use `with` we see that all file reading and processing
-is put inside an indented block of code, and the file is automatically closed
-when this block is over. For this reason the use of `with` to open files
-is quite popular, and you are likely to see examples of this in Python programs
-you encounter. The keyword `with` has other uses in Python too, which we will
+must be put inside an indented block of code, and the file is automatically closed
+when this block has been completed. Therefore, the use of `with` to open files
+is quite popular, and you are likely to see it in Python programs
+you encounter. The keyword `with` has other uses in Python that we will
 not cover in this book, but it is particularly common and
 convenient for reading files and therefore worth mentioning here.
 
-For actually reading the file, after it has been opened, there are also a
-couple of alternatives to the approach used above.
-For instance, we may read all lines into a list of strings (lines), and then
-process the list items one by one:
+idx{`readlines`}
+To actually read a file after it has been opened, there are a couple of
+alternatives to the approach above. For instance, we can read all the lines
+into a list of strings (lines) and then process the list items one by one:
 !bc pycod-t
 lines = infile.readlines()
 infile.close()
@@ -525,25 +531,26 @@ for line in lines:
 !ec
 This approach is very similar to the one used above, but here we are done
 working directly with the file after the first line,
-and the for loop instead traverses a list of strings. In practice there is
-not much difference. Usually, reading and processing files line by line is
+and the for loop instead traverses the list of strings. In practice there is
+not much difference. Usually, processing files line by line is
 very convenient, and our good friend the for loop makes such processing quite
-easy. However, for files with no natural line structure it may sometimes be
+easy. However, for files with no natural line structure, it can sometimes be
 easier to read the entire text file into a single string:
 !bc pycod-t
 text = infile.read()
 # process the string text
 !ec
 
-The `data.txt` file above contained a single number for each line, which is
+idx{`split`}
+The `data.txt` file above contain a single number for each line, which is
 usually not the case. More often, each line contains
-many data items, typically both text and numbers, and we may want to treat each
+many data items, typically both text and numbers, and we might want to treat each
 one differently. For this purpose Python's string type has a built-in
-method named `split`, which is extremely useful. Say we define a string
-variable `s` with some words separated by blanks. Then, calling `s.split()`
+method named `split` that is extremely useful. Say we define a string
+variable `s` with some words separated by blank spaces. Then, calling `s.split()`
 will simply return a list containing the individual words in the string. By
-default the words are assumed to be separated by blanks, but if we want a
-different separator we can pass it as an argument
+default, the words are assumed to be separated by blanks, but if we want a
+different separator, we can pass it as an argument
 to `split`. The following code gives some examples:
 !bc pycod
 s = "This is a typical string"
@@ -557,13 +564,13 @@ print(csvline.split(';'))
 ['Excel;sheets;often;use;semicolon;as;separator']
 ['Excel', 'sheets', 'often', 'use', 'semicolon', 'as', 'separator']
 # #endif
-We see that the first attempt to split the `csvline` does not work very well,
+We see that the first attempt to split the string `csvline` does not work very well,
 since the string contains no spaces and the
 result is therefore a list of length one. Specifying the correct separator, as
 in the last line, solves the problem.
 
-To illustrate the use `split` in the context of file data, assume we have a
-file with data about rainfall:
+To illustrate the use of `split` in the context of file data, assume we have a
+file with data on rainfall:
 !bc
 Average rainfall (in mm) in Rome: 1188 months between 1782 and 1970
 Jan  81.2
@@ -580,10 +587,10 @@ Nov  111.0
 Dec  97.9
 Year 792.9
 !ec
-Although this is very small, it is a fairly typical example of a data file.
+Although this data file is very small, it is a fairly typical example.
 Often, there are one or more header lines with information that we are not
 really interested in processing, and
-the rest of the lines contain a mix of text and numbers. How can we read such a file?
+the remainder of the lines contain a mix of text and numbers. How can we read such a file?
 # #if FORMAT == 'ipynb'
 # Have to make a rainfall.txt file with the right content
 !bc pyhid
@@ -606,8 +613,8 @@ Year 792.9
 f.close()
 !ec
 # #endif
-The key to processing each line is to use `split` to separate the two words,
-and for instance store them in two separate lists for later processing:
+The key to processing each line is to use `split` to separate the two words
+and, for instance, store them in two separate lists for later processing:
 !bc pycod-t
 months = []
 values = []
@@ -618,12 +625,12 @@ for line in infile:
 !ec
 These steps, involving a for loop and then `split` to process each line, will
 be the fundamental recipe for all file processing throughout this book.
-It is important to understand it properly, and well worth spending some
-time reading small data files and playing around with `split` to get familiar
+It is important to understand these steps properly and well worth spending some
+time reading small data files and playing around with `split` to become familiar
 with its use. To write the complete program for reading the rainfall data,
 we must also account for the header line and the fact that the last line
-contains data of a different type. The complete code may look like:
-!bc pypro
+contains data of a different type. The complete code could look like:
+!bc pycod
 def extract_data(filename):
     infile = open(filename, 'r')
     infile.readline() # skip the first line
@@ -646,22 +653,23 @@ for month, value in zip(months, values):
 print('The average rainfall for the year:', avg)
 !ec
 This code is merely a combination of tools and functions that we have already
-introduced above and in earlier chapters, so nothing is truly new. Note however
+introduced above and in earlier chapters, so nothing is truly new. Note, however,
 how we skip the first line with a single call to `infile.readline()`, which will
-simply read the first line and move to the next, thereby being ready to read the
-lines we are interested in. If there were multiple header lines we would simply
-add multiple `readline` calls to skip whatever we don't want to process.
+simply read the first line and move to the next one, thus being ready to read the
+lines in which we are interested. If there are multiple header lines in the file
+we can simply add multiple `readline` calls to skip whatever we don't want to process.
 Notice also how list slicing is used to remove the yearly data from the lists.
-Negative indices in Python lists run backward starting from the last element,
+Negative indices in Python lists run backward, starting from the last element,
 so `annual_avg = rainfall[-1]` will extract the last value in the `rainfall` list and assign it to
 `annual_avg`. The list slicing `months[:-1]`, `rainfall[:-1]` will extract
 all elements from the lists up to, but not including
-the last, thereby removing the yearly data from both lists.
+the last one, thereby removing the yearly data from both lists.
 
 ======= Writing data to files =======
+idx{file writing}
 Writing data to files follows the same pattern as reading. We open a file for
-writing, and typically use a for loop to traverse
-the data we and write it to the file using `write`:
+writing and typically use a for loop to traverse
+the data, which we then write to the file using `write`:
 !bc pycod-t
 outfile = open(filename, 'w')  # 'w' for writing
 
@@ -671,28 +679,30 @@ for data in somelist:
 outfile.close()
 !ec
 Notice the inclusion of `\n` in the call to `write`. Unlike `print`, a call
-to `write` will not by default add a linebreak after each call, so if we don't
-add this explicitly the resulting file will consist a single long line. It is often more
+to `write` will not by default add a line break after each call by defauls,
+so if we do not
+add this explicitly, the resulting file will consist of a single long line. It is often more
 convenient to have a line-structured file, and for this we include the `\n`,
-which adds a linebreak. The alternative way
-of opening files can also be used for writing, and ensures that the file is
+which adds a line break. The alternative way
+of opening files can also be used for writing, and it ensures that the file is
 automatically closed:
 !bc pycod-t
 with open(filename, 'w') as outfile:  # 'w' for writing
      for data in somelist:
      	 outfile.write(sometext + '\n')
 !ec
-One should use some caution when writing to files from Python programs. If you
-call `open(filename,'w')` with a file name that does not exist, a new file will be created.
-However, if a file with that name exists it will simply be deleted and replaced by an
-empty file. So even if we don't actually write any data to the file, simply
+One should use caution when writing to files from Python programs. If you
+call `open(filename,'w')` with a filename that does not exist, a new file
+will be created; however, if a file with that name exists,
+it will simply be deleted and replaced by an
+empty file. Therefore, even if we do not actually write any data to the file, simply
 opening it for reading will erase all its contents.
 A safer way to write to files is to use `open(filename,`a`), which
-will *append* data at the end of the file if it already
+will *append* data to the end of the file if it already
 exists, and create a new file if it does not exist.
 
-To look at a concrete example, consider the task of writing information
-from a nested list to a file. We have the nested list (rows and columns):
+For a concrete example, consider the task of writing information
+from a nested list to a file. We have following the nested list (rows and columns):
 !bc pycod
 data = \
 [[ 0.75,        0.29619813, -0.29619813, -0.75      ],
@@ -710,7 +720,7 @@ with open('tmp_table.dat', 'w') as outfile:
             outfile.write(f'{column:14.8f}')
         outfile.write('\n')
 !ec
-The resulting file looks like:
+The resulting file looks like
 !bc dat
     0.75000000    0.29619813   -0.29619813   -0.75000000
     0.29619813    0.11697778   -0.11697778   -0.29619813
@@ -719,24 +729,28 @@ The resulting file looks like:
 !ec
 The nicely aligned columns are caused by the format specifier given to the f-string in the `write` call.
 The code will work fine without the format specifier, but the columns will not be aligned, and we
-also need to add a space (' ') after every number,
-otherwise each line will just be a long string of numbers that are difficult to separate.
-Another part worth stepping through in the code above is the structure of the nested for loop.
+also need to add a space after every number or,
+otherwise, each line will just be a long string of numbers that are difficult to separate.
+The structure of the nested for loop is also worth stepping through in the code above.
 The innermost loop traverses each row, writing the numbers one by one to the file.
 When this inner loop is done the program moves to the next
 line (`outfile.write('\n')`), which writes a linebreak to the file to end
-the line. After this line we have finished one pass of the outer for loop, and the
-program moves to the next iteration and the next line in the table. The code
-for writing each number belongs inside the innermost loop, while writing
-the linebreak is done in the outer loop, since we only want one linebreak for each line.
-
+the line. After this line, one pass of the outer for loop is finished and
+the program moves to the next iteration and the next line in the table.
+The code for writing each number belongs inside the innermost loop, whereas
+the code for writing the line break is in the outer loop, since we only want
+one line break for each line.
 
 ======= Handling errors in programs =======
-As demonstrated above, allowing user input in our programs will often introduce errors, and as our programs grow in
-complexity there may be multiple other sources of errors as well. Python has a general set of tools for handling such errors,
-which is commonly referred to as *exception handling* and is used in many different programming languages. As a motivating
-example, let us return to the example with the atmospheric pressure formula:
-!bc pypro-t
+idx{error handling}idx{exception handling}
+As demonstrated above, allowing user input in our programs will
+often introduce errors, and, as our programs grow in
+complexity, there can be multiple other sources of errors as well.
+Python has a general set of tools for handling such errors that
+is commonly referred to as *exception handling*, and it used in many
+different programming languages. To illustrate how it works,
+let us return to the example with the atmospheric pressure formula:
+!bc pycod-t
 import sys
 from math import exp
 
@@ -746,11 +760,11 @@ h = float(h)
 p0 = 100.0; h0 = 8400
 print(p0 * exp(-h/h0))
 !ec
-As we mentioned above, this code can easily break if the user provides a
-command line argument that cannot be converted to a
-float, i.e. any argument that is not a pure number. What may be even worse is that
-our program will fail with a fairly cryptic error message
-if the user does not include a command line argument at all, as in:
+As mentioned above, this code can easily break if the user provides a
+command line argument that cannot be converted to a float, that is,
+any argument that is not a pure number. Potentially even worse is
+our program failing with a fairly cryptic error message if the user does
+not include a command line argument at all, as in the following:
 !bc sys
 Terminal> python altitude_cml.py
 Traceback (most recent call last):
@@ -758,13 +772,13 @@ Traceback (most recent call last):
     h = sys.argv[1]
 IndexError: list index out of range
 !ec
-How can we fix such problems, and make the program more robust with respect to
+How can we fix such problems and make the program more robust with respect to
 user errors? One possible solution is to add an if-test to check if any command line arguments
 have been included:
 !bc pycod-t
 import sys
 if len(sys.argv) < 2:
-    print('You failed to provide a command-line arg.!')
+    print('You failed to provide a command line arg.!')
     exit()  # abort
 
 h = float(sys.argv[1])
@@ -778,14 +792,14 @@ extension solves part of the problem. The program will still stop if it is used 
 it will provide a more sensible and useful error message:
 !bc sys
 Terminal> python altitude_cml.py
-You failed to provide a command-line arg.!
+You failed to provide a command line arg.!
 !ec
 However, we only handle one of the potential errors, and using if-tests to test for
 every possible error can lead to quite
 complex programs. Instead, it is common in Python and many other languages
-to *try* to do what we intend to,
-and if it fails, we recover from the error. This principle makes use of
-a try-except block, which has the following general
+to *try* to do what we intend to
+and, if it fails, to recover from the error. This principle uses
+the try-except block, which has the following general
 structure:
 !bc pycod-t
 try:
@@ -794,56 +808,57 @@ except:
     <statements for handling errors>
 !ec
 If something goes wrong in the `try` block, Python will raise an *exception*
-and the execution jumps to the `except` block. Inside the `except` block we
+and the execution jumps to the `except` block. Inside the `except` block, we
 need to add our own code for *catching* the exception, basically to detect
-what went wrong and try to fix it. If no errors occur inside the `try` block
-the code inside the `except` block is not run, and the program simply moves
+what went wrong and try to fix it. If no errors occur inside the `try` block,
+the code inside the `except` block is not run and the program simply moves
 on to the first line after the try-except block.
 
-=== Improving the atmospheric pressiure program with try-except. ===
+idx{try-except}
+=== Improving the atmospheric pressure program with try-except. ===
 To apply the try-except idea to the air pressure program, we can try to read `h` from
-the command-line and convert it to a float, and if this fails we
+the command line and convert it to a float, and, if this fails, we
 tell the user what went wrong and stop the program:
 !bc pycod-t
 import sys
 try:
     h = float(sys.argv[1])
 except:
-    print('You failed to provide a command-line arg.!')
+    print('You failed to provide a command line arg.!')
     exit()
 
 p0 = 100.0; h0 = 8400
 print(p0 * exp(-h/h0))
 !ec
-One may argue that this is not very different from the one using the if-test,
-but we shall see that the try-except block gives
+One could argue that this is not very different from the program using the if-test,
+but we shall see that the try-except block has
 some benefits. First, we can try to run this program with different input,
 which immediately reveals a problem:
 !bc sys
 Terminal> python altitude_cml_except1.py
-You failed to provide a command-line arg.!
+You failed to provide a command line arg.!
 
 Terminal> python altitude_cml_except1.py 2469m
-You failed to provide a command-line arg.!
+You failed to provide a command line arg.!
 !ec
-Regardless of what goes wrong inside our try-block, Python will raise an
-exception which needs to be handled by the except-block. The problem in our code
-is that all possible errors will be handled in the same way.
-In the first case the problem was that there were no arguments, i.e. `sys.argv[1]`
-does not exist, which gives an `IndexError`.
-This is handled correctly by our code. In the second case we provide an argument,
-so the indexing of `sys.argv` goes fine, but the conversion
-fails since Python does not know how to convert the string `2469m` to a float.
+Regardless of what goes wrong inside our try block, Python will raise an
+exception that needs to be handled by the except block. The problem with our
+code is that all possible errors will be handled the same way. In the first case,
+the problem is that there are no arguments, that is, `sys.argv[1]`
+does not exist, which leads to an `IndexError`.
+This situation is correctly handled by our code. In the second case, we provide
+an argument, so the indexing of `sys.argv` goes well, but the conversion
+fails, since Python does not know how to convert the string `2469m` to a float.
 This is a different type of error, known as a `ValueError`,
 and we see that it is not treated very well by our except block. We can improve
-the code by letting the except-block test for different types of errors, and
-handle each one differently:
+the code by letting the except block test for different types of errors, and
+handling each one differently:
 !bc pycod-t
 import sys
 try:
     h = float(sys.argv[1])
 except IndexError:
-    print('No command-line argument for h!')
+    print('No command line argument for h!')
     sys.exit(1)  # abort execution
 except ValueError:
     print(f'h must be a pure number, not {sys.argv[1]}')
@@ -856,19 +871,21 @@ The following two examples illustrate how this more specific error handling
 works:
 !bc sys
 Terminal> python altitude.py
-No command-line argument for h!
+No command line argument for h!
 
 Terminal> python altitude.py 2469m
 The altitude must be a pure number, not "2469m"
 !ec
-Of course, a drawback of this approach is that we need to predict in advance
-what could possibly go wrong inside the
+Of course, a drawback of this approach is that we need to guess in advance
+what could go wrong inside the
 try-block, and write code to handle all possible errors. However, with
-some experience this is usually not very difficult. Python has many builtin error types, but only
-a few that are likely to occur and and need to be considered in the programs we
-encounter throughout this book. In the code above, if the try-block would lead to a different exception
-than what we catch in our except-block,
-the code will simply end with a standard error message from Python.
+some experience, this is usually not very difficult. Python has many built-in
+error types, but only
+a few that are likely to occur and which need to be considered in the programs we
+encounter throughout this book. In the code above, if the try block would
+leads to a different exception
+than what we catch in our except block,
+the code will simply end with a standard Python error message.
 If we want to avoid this behavior, and catch all
 possible exceptions, we could add a generic except block such as
 !bc pycod-t
@@ -878,18 +895,19 @@ except:
 !ec
 Such a block should be added after the `except ValueError` block in the code
 above, and will catch any exception that is
-not an `IndexError` nor a `ValueError`. In this particular case it may be difficult
-to imagine what kind of error that would be, but if it occurs it will be caught
-and handled by our generic except-block.
+not an `IndexError` nor a `ValueError`. In this particular case, it can be difficult
+to imagine what kind of error that would be, but if it occurs, it will be caught
+and handled by our generic except block.
 
+idx{raising exceptions}
 === The programmer can also raise exceptions. ===
 In the code above, the exceptions were raised by standard Python functions,
 and we wrote the code to catch them. Instead of just letting Python raise
 exceptions, we can raise our own and tailor the error messages to the problem at hand.
-We provide two examples for when this can be used:
-  * catching an exception, but raising a new one (re-raising) with an improved (tailored) error message
-  * raising an exception because of input data that we know is wrong, although
-    Python accepts it
+We provide two examples of such use:
+  * Catching an exception, but raising a new one (re-raising) with an improved (tailored) error message.
+  * Raising an exception because of input data that we know are wrong, although
+    Python accepts the data.
 The basic syntax both for raising and re-raising an exception
 is `raise ExceptionType(message)`. The following code includes both examples:
 !bc pycod-t
@@ -913,29 +931,31 @@ def read_altitude():
     return h
 !ec
 Here we have defined a function to handle the user input, but the code is
-otherwise quite similar to the previous examples. As above, the except-blocks
-will catch two different types of error, but instead handling them (i.e. stopping the program),
+otherwise quite similar to the previous examples. As above, the except blocks
+will catch two different types of error, but, instead of
+handling them (i.e., stopping the program),
 the blocks here will equip the exceptions with more specific error messages, and
 then pass them on to be handled somewhere else in our program.
-For this particular case the difference is not very large, and one may argue
-that our first approach is simpler and therefore better, but in larger
-programs it may often be better to re-raise exceptions and handle them elsewhere.
+For this particular case, the difference is not very large, and one could argue
+that our first approach is simpler and therefore better; however, in larger
+programs it can often be better to re-raise exceptions and handle them elsewhere.
 The last part of the function is different, since the error raised here is not
 an error as far as Python is concerned. We can input any value of `h` into our
-formula, and unless we input a large negative number it will not give rise to a
+formula, and, unless we input a large negative number, it will not give rise to a
 Python error[^overflow]. However, as an estimate of air pressure the formula is only valid in
-the troposphere, the lower part of the earth's atmosphere. The troposphere stretches
-to around 13km above sea level, and the lowest point on earth (on land) is
-430 m below sea level. We can therefore choose to let the program raise a `ValueError`
-for any `h` outside this range, even if it is not a Python error in the usual sense.
+the troposphere, the lower part of the Earth's atmosphere, which extends
+from the lowest point on Earth (on land), at 430 m below sea level, to
+around 13 km above sea level. We can therefore let the program raise a `ValueError`
+for any `h` outside this range, even if it does not involve a Python error in the usual sense.
 
-[^overflow]: If we set `h` to be a large negative number, the argument to the `exp` function
-becomes large and positive, and leads to an `OverflowError`. But this error
-would only occur for values far outside the range of validity for our air pressure estimate.
+[^overflow]: If we set `h` to be a large negative number, the argument
+for the `exp` function becomes large and positive, and leads to
+an `OverflowError`. However, this error will occur only for values far
+outside the range of validity for our air pressure estimate.
 
 The following code shows how we can use the function above, and how we can catch and print the error message
-provided with the exceptions. The construction `except <error> as e` is used to be able to access the error and use
-it inside the except-block.
+provided with the exceptions. The construction `except <error> as e` is used
+to access the error and use it inside the except block, as follows:
 !bc pycod-t
 try:
     h = read_altitude()
@@ -944,7 +964,7 @@ except (IndexError, ValueError) as e:
     print(e)
     exit()
 !ec
-We can run the code in the terminal to confirm that we get the correct error messages:
+We can run the code in the terminal to confirm that we obtain the correct error messages:
 !bc sys
 Terminal> python altitude_cml_except2.py
 The altitude must be supplied on the command line.
@@ -960,8 +980,9 @@ Terminal> python altitude_cml_except2.py 8848
 !ec
 
 ======= Making your own modules =======
-So far in this course we have frequently used modules like `math` and `sys`, by importing them
-into our code:
+idx{modules, writing}
+So far in this course we have frequently used modules such as
+`math` and `sys`, by importing them into our code:
 !bc pycod
 from math import log
 r = log(6)   # call log function in math module
@@ -969,10 +990,12 @@ r = log(6)   # call log function in math module
 import sys
 x = eval(sys.argv[1])  # access list argv in sys module
 !ec
-Modules are extremely useful in Python program, as they contain a collection of useful data and functions
-(later also classes), that we can reuse in our code. But what if you have written some general and useful functions
-yourself, that you would like to reuse in more than one program? In such cases it would be convenient to make your own
-module that you can import in other programs when neededs. Fortunately, this task is very simple in Python; just
+Modules are extremely useful in Python programs, since they contain a collection of useful data and functions
+(as well as classes later), that we can reuse in our code. But what if you have written some general and useful functions
+yourself that you would like to reuse in more than one program? In such
+cases it would be convenient to make your own
+module that you can import into other programs when needed. Fortunately,
+this task is very simple in Python; just
 collect the functions you want in a file, and you have a new module!
 
 To look at a specific example, say we want create a module containing the interest formula considered earlier
@@ -989,8 +1012,8 @@ r &=  100 \left(\left({A\over P}\right)^{1/n} - 1\right),
 label{input:mod:eq4}
 \end{align}
 !et
-where as above $P$ is the initial amount, $p$ the interest rate (percent), $n$ is the number
-of years and $A$ is the final amount.
+where, as above, $P$ is the initial amount, $r$ is the interest rate (percent), $n$ is the number
+of years, and $A$ is the final amount.
 We now want to implement these formulas as Python functions and make a module of them. We write the
 functions in the usual way:
 !bc pycod
@@ -1008,8 +1031,9 @@ def years(P, A, r):
 def annual_rate(P, A, n):
     return 100*((A/P)**(1.0/n) - 1)
 !ec
-If we now save these functions in a file `interest.py`, it becomes a module that we can import as we are used to
-with the builtin Python modules.
+If we now save these functions in a file `interest.py`, it becomes a
+module that we can import, just as we are used to
+with built-in Python modules.
 # #if FORMAT == 'ipynb'
 Write the module code to file:
 
@@ -1032,8 +1056,10 @@ def annual_rate(A0, A, n):
 """)
 !ec
 # #endif
-As an example of use, say we want to know how long it takes to double an amount of money, for an interest
-rate of 5%. The `years` function in the module provides the right formula, and we can import and use it in our program:
+As an example, say we want to know how long it takes to double our money with
+ an interest rate of 5%. The `years` function in the
+module provides the right formula, and we can import and use it in our
+program, as follows:
 !bc pycod
 from interest import years
 P = 1; r = 5
@@ -1041,28 +1067,31 @@ n = years(P, 2*P, p)
 print(f'Money has doubled after {n} years')
 !ec
 
-
+idx{test block}
 === We can add a *test block* to a module file. ===
 If we try to run the module file above with `python interest.py` from the terminal, no output is produced since
-the functions are never called. Sometimes it can be useful to be able to add some examples of use in a module file,
-which demonstrate how the functions are called and used, and gives some sensible output
-if we run the file with `python interest.py`. However, if we add regular function calls, print statements
+the functions are never called. Sometimes it can be useful to be able to add
+some examples of use in a module file, to demonstrate how the functions are
+called and used and give sensible output if we run the file
+with `python interest.py`. However, if we add regular function calls, print statements
 and other code to the file, this code will also be run whenever we import the module, which is usually not what we want.
 The solution is to add such example code in a *test block* at the end of the module file. The test block includes
 an if-test to check if the file is imported as a module or if it is run as a regular Python program. The code inside the test block
-is then executed only when the file is run as a program, not when it is imported as a module into another program.
-The structure of the if-test and the test block looks as follows:
+is then executed only when the file is run as a program, and not when it is imported
+as a module into another program. The structure of the if-test and the test
+block is as follows:
 !bc pycod-t
 if __name__ == '__main__': # this test defines the test block
     <block of statements>
 !ec
-The key is the first line, which checks the value of the builtin variable `__name__`. This string variable is
+The key is the first line, which checks the value of the built-in variable `__name__`. This string variable is
 automatically created and is always defined when Python runs.
 (Try putting `print(__name__)` inside one of your programs or type it
-in an interactive session.) Inside an imported module, `__name__` holds the name of the module, while in the main
+in an interactive session.) Inside an imported module, `__name__` holds the
+name of the module, whereas in the main
 program its value is `"__main__"`.
 
-For our specific case, the complete test block may look like
+For our specific case, the complete test block can look like
 !bc pycod
 if __name__ == '__main__':
     A = 2.31525
@@ -1075,11 +1104,12 @@ if __name__ == '__main__':
     r_ = annual_rate(P, A, n)
     print(f'A={A_} ({A}) P={P_} ({A}) n={n_} ({n}) r={r_} ({p})')
 !ec
-Test blocks are often included simply for demonstrating and documenting how modules used, or used
+Test blocks are often included simply for demonstrating and documenting
+how modules are used, or they are included
 in files that we sometimes use as stand-alone programs and sometimes as modules. As indicated by the name, they are also
-frequently used to test modules. Using what we learnt about test functions in the previous chapter, we can do this
+frequently used to test modules. Using what we learned about test functions in the previous chapter, we can do this
 by writing a standard test function that tests the functions in the module, and
-then simply call this function from inside the test block:
+then simply calling this function from inside the test block:
 !bc pycod
 def test_all_functions():
     # Define compatible values
@@ -1103,50 +1133,62 @@ def test_all_functions():
 if __name__ == '__main__':
     test_all_functions()
 !ec
-Since we have followed the naming convention of test functions, the function will be called if we run for instance
-`pytest interest.py`, but since we call it from inside the test block the test can also be run simply
-by `python interest.py`. In the latter case the test will produce no output unless there are errors.
-However, if we import the module to use it in another program, the test function is not run because
+Since we have followed the naming convention of test functions, the function
+will be called if we run, for instance,
+`pytest interest.py`, but since we call it from inside the test block,
+the test can also be run simply
+by `python interest.py`. In the latter case, the test will produce no output unless there are errors.
+However, if we import the module to use in another program, the test function
+is not run, because
 the variable `__name__` will be the name of the module (i.e. `interest`)  and the
-test `__name__ == '__main__'` will evaluate to False.
+test `__name__ == '__main__'` will be evaluated as false.
 
-=== How can Python find our new module? ===
-Python has a number of designated places where it looks for modules. The first place it looks is in the same folder as
-the main program, so if we put our module files there it will always be found. However, this is not
-very convenient if we write a more general module that we plan to use from several other programs. Such modules
+=== How Python finds our new module. ===
+Python has a number of designated places where it looks for modules. The first
+place it looks is in the same folder as the main program; therefore,
+if we put our module files there, they will always be found. However,
+this is not very convenient if we write more general modules that we plan to
+use from several other programs. Such modules
 can be put in a designated directory, say `/Users/sundnes/lib/python/mymods` or any other directory name that
-you choose. Then we need to tell Python that it should look for modules in this directory, otherwise it will not find
-the module. On Unix-like systems (Linux, Mac, etc.), the standard way to tell Python where to look is to
-edit the *environment variable* called `PYTHONPATH`. Environment variables are variables that
-hold important information used by the operating system, and `PYTHONPATH` is used to specify folders
-where Python should look for modules. If you type `echo $PYTHONPATH` in the terminal window you will most likely
-get no output, since you have not added any folder names to this variable. We can put our new folder name in this
+you choose. Then we need to tell Python to look for modules in this directory;
+otherwise, it will not find the module. On Unix-like systems (Linux, Mac, etc.),
+the standard way to tell Python where to look is by  editing
+the *environment variable* called `PYTHONPATH`. Environment variables are variables that
+hold important information used by the operating system, and `PYTHONPATH` is
+used to specify the folders
+where Python should look for modules. If you type `echo $PYTHONPATH` in the
+terminal window, you will most likely
+obtain no output, since you have not added any folder names to this variable. We can put our new folder name in this
 variable by running the command
 !bc sys
 export PYTHONPATH=/Users/sundnes/lib/python/mymods
 !ec
-However, if the `PYTHONPATH` already contained some folders these would now be lost, so to be on the
-safe side it is better to use
+However, if the `PYTHONPATH` already contained any folders, these will now be lost;
+therefore, to be on the safe side, it is better to use
 !bc sys
 export PYTHONPATH=$PYTHONPATH:/Users/sundnes/lib/python/mymods
 !ec
-This latter command will simply add our new folder at the end of what is already in our `PYTHONPATH` variable.
-To avoid having to run this command every time we want to import some modules, we can put it in the file `.bashrc`,
-which ensures it is run automatically when we open a new terminal window. The `.bashrc` file should be in
-your home directory (e.g. `/Users/sundnes/.bashrc'), and will show up with `ls -a`. (The dot at the start of the
-filename makes this a *hidden* file, so it will not show up simply with `ls`.) If the file is not there, you can simply
+This last command will simply add our new folder to the end of what is already in our `PYTHONPATH` variable.
+To avoid having to run this command every time we want to import a module, we
+can put it in the file `.bashrc`,
+to ensure that it is run automatically when we open a new terminal window. The `.bashrc` file should be in
+your home directory (e.g. `/Users/sundnes/.bashrc'), and will be listed with `ls -a`. (The dot at the start of the
+filename makes it a *hidden* file, so it will not show up with just `ls`.) If the file is not there, you can simply
 create it in an editor and save it in your home directory, and the system should find it and read it automatically
-the next time you open a terminal window. As an alternative to editing the system-wide environment variable,
+the next time you open a terminal window. As an alternative to editing the systemwide environment variable,
 we can also add our directory to the path from inside the
-program. Putting a line like this inside your code, before you import the module, should make Python able to find it:
+program. Putting a line such as this inside your code, before you import the module,
+should allow Python to find it:
 !bc pycod-t
 sys.path.insert(0, '/Users/sundnes/lib/python/mymods')
 !ec
 
-As an alternative to creating our own directory for modules, and then tell Python where to find it,
-we can place our modules in one of the places where Python always looks for modules. The location of these vary a
+As an alternative to creating your own directory for modules, and
+then tell Python where to find them, you can place the modules in one of the
+places where Python always looks for modules. The location of these varies a
 bit between different Python installations, but the directory itself is usually named `site-packages`. If you have
-installed `numpy`[^numpy] or another package which is not part of the standard Python distribution, you can locate the
+installed NumPy[^numpy] or another package that is not part of the
+standard Python distribution, you can locate the
 correct directory by importing this package. For instance, type the following in an interactive Python shell:
 !bc pyshell
 >>> import numpy
@@ -1154,11 +1196,11 @@ correct directory by importing this package. For instance, type the following in
 '/Users/sundnes/anaconda3/lib/python3.7/site-packages/numpy/__init__.py'
 >>>
 !ec
-The last line reveals the location of the `site-packages` directory, and placing your own modules here will ensure that
-Python finds them.
+The last line reveals the location of the `site-packages` directory, and
+placing your own modules there will ensure Python will find them.
 
-[^numpy]: Numpy is a package for numerical calculations. It is not part of the
+[^numpy]: NumPy is a package for numerical calculations. It is not part of the
 standard Python distribution, but it is often installed automatically if you install Python from
-other sources, for instance from  Anaconda.  Otherwise it can be installed for
-instance with `pip` or other tools. The Numpy package will be
+other sources, for instance, from  Anaconda.  Otherwise, it can be installed for
+instance, with `pip` or other tools. The NumPy package will be
 used extensively in the next chapter.
