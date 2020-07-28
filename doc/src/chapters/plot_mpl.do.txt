@@ -17,7 +17,7 @@ named NumPy, which is useful for storing storing *arrays* of data for efficient
 computations.
 
 
-======= NumPy and array computing =======
+======= NumPy and Array Computing =======
 idx{array}idx{NumPy}idx{vectorize}
 The standard way to plot a curve $y=f(x)$ is to draw straight lines between
 points along the curve, and for this purpose we need to store the coordinates of the points.
@@ -243,7 +243,7 @@ we can certainly do this, and in most cases it will work fine, but the functions
 in `math` are more optimized for single numbers (scalars) and are therefore faster.
 One will rarely notice the difference, but there can be applications
 where the extra efficiency matters. There are also functions in `math`
-(e.g, `factorial`) that do not have a corresponding version in NumPy.
+(e.g., `factorial`) that do not have a corresponding version in NumPy.
 
 We started this chapter by computing points along a curve using lists
 and for loops. Now that we have introduced NumPy, we can solve this task
@@ -281,7 +281,7 @@ will not work if the input argument is an array, because a test such as `if x > 
 has no precise meaning if `x` is an array. There are ways, however, to solve this
 problem, which we will look into later in the chapter.
 
-======= Plotting curves with Matplotlib =======
+======= Plotting Curves with Matplotlib =======
 idx{plotting}idx{Matplotlib}
 The motivation for introducing NumPy arrays was to plot mathematical
 functions, and now that we have introduced all the necessary tools
@@ -310,11 +310,12 @@ The last two lines carry out the actual plotting: the
 call `plt.plot(x,y)` first creates the plot of the curve, and then
 `plt.show()` displays the plot on the screen. The reason for keeping these
 separate is to make it easy to plot multiple curves in a single plot,
-by calling `plot` multiple times followed by a single call to `show`.
+by calling `plot` multiple times followed by a single call to `show`. The resulting
+plot is shown in Figure ref{fig:plot1a}.
 A common mistake is to forget the `plt.show()` call, and the program will
 then simply end without displaying anything on the screen.
 
-FIGURE: [../chapters/fig-plot/plot1a_pylab, width=300 frac=0.5]
+FIGURE: [../chapters/fig-plot/plot1a_pylab, width=600 frac=0.8] Simple plot of a function using Matplotlib. label{fig:plot1a}
 
 The plot produced by the code above is very simple and contains no title,
 axis labels, or other information. We can easily add such information in the
@@ -342,7 +343,8 @@ plt.savefig('fig.pdf')   # make PDF image for reports
 plt.savefig('fig.png')   # make PNG image for web pages
 plt.show()
 !ec
-Most of the lines in this code should be self-explanatory, but some are worth
+The plot resulting from this code is shown in Figure ref{fig:plot1c}.
+Most of the lines in the code should be self-explanatory, but some are worth
 a comment. The call to `legend` will create a legend for the plot,
 using the information provided in the `label` argument passed to `plt.plot`. This is
 very useful when plotting multiple curves in a single plot. The `axis`
@@ -354,7 +356,8 @@ in this case, the axes will have to be set to fixed lengths. Finally,
 the two calls to `savefig` will save our plot in two different file formats,
 automatically determined by the file name provided.
 
-FIGURE: [../chapters/fig-plot/plot1c_pylab, width=600 frac=0.9]
+FIGURE: [../chapters/fig-plot/plot1c_pylab, width=600 frac=0.9] Example plot with more information added. label{fig:plot1c}
+
 
 If we plot multiple curves in a single plot, Matplotlib will choose the color of
 each curve automatically. This default choice usually
@@ -400,7 +403,7 @@ The following code lines will plot the same two curves as in the
 example above, using just three lines:
 !bc pycod
 t = np.linspace(0, 8, 201)
-plt.plot(x, np.exp(-x)*np.sin(2*np.pi*x), x, np.exp(-2*x)*np.sin(4*np.pi*x))
+plt.plot(x,np.exp(-x)*np.sin(2*np.pi*x),x,np.exp(-2*x)*np.sin(4*np.pi*x))
 plt.show()
 !ec
 As always, the effort we put in depends on what the resulting plot will be
@@ -447,7 +450,7 @@ standard mathematical terminology, such as `sin(x) + x**2` (rather than `np.sin(
 work, we need to import all the mathematical functions from NumPy without a prefix.
 
 
-======= Plotting discontinuous and piecewise-defined functions =======
+======= Plotting Discontinuous and Piecewise-Defined Functions =======
 idx{Heaviside function}
 Discontinuous functions, and functions defined in a piecewise manner, are common in science and engineering.
 We saw in Chapter ref{ch:funcif} how these could be implemented in
@@ -583,8 +586,8 @@ than the other versions. Efficiency is sometimes important when working with
 large arrays.
 
 
-======= Making a movie of a plot =======
-idx{animation}
+======= Making a Movie of a Plot =======
+idx{animation}idx{Gaussian function}
 It is often useful to make animations or movies of plots, for instance if the plot represents some physical
 phenomenon that changes with time, or if we want to visualize the effect of changing
 parameters. Matplotlib has multiple tools for creating such plots, and we will explore some of them here.
@@ -593,12 +596,14 @@ To start with a specific case, consider again the well-known Gaussian bell funct
 \[ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\over s}\right)^2\right]} \]
 !et
 The parameter $m$ is the location of the function's peak, while $s$ is a measure of the width of
-the bell curve. To illustrate the effects of changing these parameters, we want to make a movie (animation) of how
+the bell curve. Plots of this function for different values of $s$ are shown in
+Figure ref{fig:plot_gauss}. As an alternative illustration of how the parameters
+change the function we can make a movie (animation) of how
 $f(x;m,s)$ changes shape as $s$ goes from two to 0.2.
 
 
 !bslidecell 01
-FIGURE: [../chapters/fig-plot/plot4_thick, width=600 frac=0.8]
+FIGURE: [../chapters/fig-plot/plot4_thick, width=600 frac=0.8] The Gaussian bell function plotted for different values of $s$. label{fig:plot_gauss}
 !eslidecell
 
 
@@ -823,7 +828,7 @@ is sufficient to view this as a regular function call that returns an object of 
 on all platforms.
 
 
-======= More useful array operations =======
+======= More Useful Array Operations =======
 idx{`zeros_like`}
 At the start of this chapter we introduced the most essential operations
 needed to use arrays in computations and for plotting, but NumPy arrays can do much more. Here we introduce a few additional operations that are convenient

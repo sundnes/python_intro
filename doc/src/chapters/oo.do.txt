@@ -13,7 +13,7 @@ This is the topic of the present chapter. We will learn how to collect
 classes in families (hierarchies) and let child classes inherit
 attributes and methods from parent classes.
 
-======= Class hierarchies and inheritance =======
+======= Class Hierarchies and Inheritance =======
 idx{class hierarchy}idx{object-oriented programming}idx{inheritance}
 A class hierarchy is a family of closely related classes organized in a
 hierarchical manner. A key concept is *inheritance*, which means that
@@ -231,7 +231,7 @@ Notice that this version allows even more code reuse than the previous one,
 since both `__call__` and `table` can be reused without changes.
 
 
-======= Example: Classes for numerical differentiation =======
+======= Example: Classes for Numerical Differentiation =======
 idx{numerical differentiation}
 Common tasks in scientific computing, such as differentiation and integration,
 can be carried out with a large variety of numerical methods. Many such methods
@@ -399,7 +399,7 @@ of about two, four, and 16, respectively. This result is consistent with the
 theoretical accuracy of the
 formulas, which states that the errors should be proportional to $h$, $h^2$, and $h^4$, respectively.
 
-======= Example: Classes for numerical integration =======
+======= Example: Classes for Numerical Integration =======
 idx{numerical integration}idx{trapezoidal rule}idx{Simpson's rule}
 Just as numerical differentiation, numerical integration is a mainstay of
 computational mathematics. There are numerous methods to choose from, and they

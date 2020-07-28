@@ -163,6 +163,7 @@ list-like objects that can be looped over or converted to a list:
 26.0
 >>> keys_list = list(temps.keys())
 !ec
+idx{`keys` (dictionary method)}idx{`values` (dictionary method)}
 
 Just as with lists, when we assign an existing dictionary to a new variable,
 the dictionary is not copied. Instead,
@@ -211,7 +212,7 @@ for dictionary keys and will also be the most common through this book.
 However, there are applications where other types of keys can be useful,
 as we see in the following examples.
 
-======= Example: A dictionary for polynomials =======
+======= Example: A Dictionary for Polynomials =======
 idx{polynomial dictionary}
 The information in a polynomial such as
 !bt
@@ -297,7 +298,7 @@ function. Lists in Python cannot have negative indices (since indexing a list wi
 implies counting indices from the end of the list), and extending the list
 representation to handle negative powers is not a trivial task.
 
-======= Example: Reading file data into a dictionary =======
+======= Example: Reading File Data to a Dictionary =======
 Say we have a file `deg2.txt`, containing temperature data for a number of cities:
 !bc dat
 Oslo:          21.8
@@ -326,7 +327,7 @@ we add a new key--value pair with the line `temps[city] = float(temp)`. Apart fr
 difference, the recipe for populating a dictionary is exactly the same as for lists.
 
 
-======= String manipulation =======
+======= String Manipulation =======
 idx{string}
 We have already worked with strings (having type `str`)in previous chapters, for instance introducing
 the very useful `split`-method:
@@ -381,6 +382,7 @@ Iterating over a string also works as we would expect:
     	print(s_, end=' ')
 !ec
 
+idx{`find` (string method)}idx{`index` string/list method}
 Strings have a method named `find` that searches the string for a given substring, and returns
 the index of its location, as follows:
 !bc pyshell
@@ -495,9 +497,10 @@ with open('cities.txt') as infile:
         data['pop'] = int(words[4])
         cities[name] = data
 !ec
-Here the line `name = ', '.join(words[:2])` creates strings such as `'Tromso, Norway'`,
-which are then used as dictionary keys. The value associated with each key is
+Here the line `name = ', '.join(words[:2])` will create strings such as `'Tromso, Norway'`,
+which are then used as dictionary (keys). The value associated with each key is
 a dictionary containing the latitude and longitude data.
+idx{nested dictionary}
 
 In most of the examples considered so far we have mostly used `split` for processing text
 files line by line, but in some cases we have a string with a great deal of text on
@@ -527,7 +530,7 @@ both line separators:
 ['1st line', '2nd line', '3rd line']
 !ec
 
-idx{immutable}
+idx{immutable objects}
 === Strings are constant -- immutable -- objects. ===
 In many of the examples above, we highlighted the similarity
 between strings and lists, since we are very familiar with lists

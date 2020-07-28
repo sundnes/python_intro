@@ -13,7 +13,7 @@ belongs. So far, we have only used Python's built-in classes to create
 objects, but in this chapter we will write our own classes and use them to
 create objects tailored to our particular needs.
 
-======= Basics of classes =======
+======= Basics of Classes =======
 idx{class}
 A class packs together data and functions in a single unit. As
 seen in previous chapters, functions that are bound to a class or an object
@@ -306,7 +306,7 @@ good programming practice since we can end up with instances of the same class h
 different attributes. It is a good habit to always equip a class with a
 constructor and to primarily define attributes inside the constructor.
 
-======= Protected class attributes =======
+======= Protected Class Attributes =======
 idx{protected attributes}
 For a more classical computer science example of a Python class, let us look at
 a class representing a bank account. Natural attributes for such a class will
@@ -389,8 +389,11 @@ class BankAccountP:
     def get_balance(self):    # NEW - read balance value
         return self._balance
 
-    def dump(self):
-        print(f'{self._first_name} {self._last_name}, {self._number}, balance: {self._balance}')
+    def print_info(self):
+        first = self.first_name; last = self.last_name
+        number = self.number; bal = self.balance
+        s = f'{first} {last}, {number}, balance: {balance}'
+        print(s)
 !ec
 When using this class, it will still be technically possible to access
 the attributes directly, as in
@@ -411,7 +414,7 @@ Since the class interface is unchanged, users who followed the convention
 will be fine, but users who have accessed protected attributes directly could
 be in for a surprise.
 
-======= Special methods =======
+======= Special Methods =======
 idx{special method}
 In the examples above, we define a constructor for each class, identified
 by its special name `__init__(...)`. This name is recognized by Python, and
@@ -426,8 +429,9 @@ more such special methods that we can use to create object types with
 very useful properties.
 
 idx{`__call__`}
-Consider, for instance, the first example of this chapter, where the `Barometric`
-class contained the method `value(h)` to evaluate a mathematical function. After
+Consider, for instance, the first example of this chapter, where the class
+`Barometric`
+contained the method `value(h)` to evaluate a mathematical function. After
 creating an instance named `baro`, we could call the method with
 `baro.value(t)`. However, it would be even more convenient if we could just write
 `baro(t)` as if the instance were a regular Python function. This behavior
@@ -538,10 +542,14 @@ idx{`__repr__`}
 The last special method we will consider here is a method named `__repr__`,
 which is similar to `__str__` in the sense that it should return a string with
 information about the object. The difference is that, while `__str__` should provide
-human-readable information, the `__repr__` string should contain all the information necessary to recreate the object. For an
-object `a`, the `__repr__` method is called if we call `repr(a)`, where `repr` is a built-in function. The intended function
-of `repr` is such that `eval(repr(a)) == a`, i.e., running the string output by `a.__repr__` should recreate `a`.
-To illustrate its use, let us add a `__repr__` method to the class `Barometric` from the start of the chapter:
+human-readable information, the `__repr__` string will contain all the
+information necessary to recreate the object. For an
+object `a`, the `__repr__` method is called if we call `repr(a)`,
+where `repr` is a built-in function. The intended function
+of `repr` is such that `eval(repr(a)) == a`, that is, running the string
+output by `a.__repr__` should recreate `a`.
+To illustrate its use, let us add a `__repr__` method to the class `Barometric`
+from the start of the chapter:
 !bc pycod-t
 class Barometric:
     ...
@@ -573,7 +581,7 @@ identical to `b`. Both `__repr__` and `__str__` return strings with information
 about an object, the difference being that `__str__` gives information to be read by humans,
 whereas the output of `__repr__` is intended to be read by Python.
 
-idx{`dir`}
+idx{`dir` function}
 === How to know the contents of a class. ===
 Sometimes listing the contents of a class can be useful, particularly for
 debugging. Consider the following dummy class, which does nothing useful
@@ -594,10 +602,11 @@ instance of `A`, and use `dir` on that instance, we obtain more useful informati
 >>> a = A(2)
 >>> dir(a)
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__',
-'__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__',
-'__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__',
-'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__',
-'__str__', '__subclasshook__', '__weakref__', 'v']
+'__format__', '__ge__', '__getattribute__', '__gt__', '__hash__',
+'__init__', '__init_subclass__', '__le__', '__lt__', '__module__',
+'__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__setattr__', '__sizeof__', '__str__', '__subclasshook__',
+'__weakref__', 'v']
 !ec
 We see that the list contains the same (mostly useless) default versions of
 special methods, but some of the items are more meaningful. If we continue the
@@ -631,7 +640,7 @@ When programming with classes we are not supposed to use the internal data struc
 such as `__dict__` explicitly, but printing it to check the values of class
 attributes  can be very useful if something goes wrong in our code.
 
-======= Example: Automatic differentiation of functions =======
+======= Example: Automatic Differentiation of Functions =======
 idx{numerical differentiation}
 To provide a more relevant and useful example of a
 `__call__` special method, consider the task of computing the derivative of an
@@ -709,7 +718,7 @@ and boring derivations, and in such cases the `Derivative` class is quite handy:
 (1.093562409134085, True, 4)
 !ec
 
-======= Test functions for classes =======
+======= Test Functions for Classes =======
 In Chapter ref{ch:funcif} we introduced test functions as a method to verify
 that our functions were implemented correctly, and the exact
 same approach can be used to test the implementation of classes.
@@ -769,7 +778,7 @@ become part of the *namespace* of the function `f`, and `f` can access `a` and `
 in `test_Derivative` even when it is called from the `__call__` method in
 class `Derivative`. This construction is known as a *closure* in computer science.
 
-======= Example: A polynomial class =======
+======= Example: A Polynomial Class =======
 As a summarizing example of classes and special methods, we can consider the
 representation of polynomials introduced in  Chapter
 ref{ch:dictstring}. A polynomial can be specified

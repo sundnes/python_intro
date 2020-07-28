@@ -15,7 +15,7 @@ true, one set of operations is performed, and if the expression is false, a
 different set of operations is. Such tests are essential for controlling the
 flow of a computer program.
 
-======= Programming with functions =======
+======= Programming with Functions =======
 idx{function}
 We have already used a number of Python functions in the previous chapters. The mathematical
 functions from the `math` module are essentially the same as we are used to from mathematics
@@ -156,7 +156,7 @@ produced until we actually call the function, and forgetting to call the
 function is a common mistake when starting to program with functions.
 
 
-======= Function arguments and local variables =======
+======= Function Arguments and Local Variables =======
 idx{argument}idx{local variable}idx{global variable}
 Just as in mathematics, we can define Python functions with more than one argument.
 The formula above involves both $P$ and $r$ in addition to $n$, and including
@@ -271,6 +271,7 @@ print(r)
 5.0
 !ec
 # #endif
+idx{`global`}
 As revealed by the print statements, `r` is set to 4.0 inside the function, but
 the global variable `r` remains unchanged after the function has been called.
 Since the line `r = 4.0` occurs inside a function, Python will treat this as
@@ -480,7 +481,7 @@ n= 100 approx: 0.693147, error: 0.000000
 This function does not need to return anything, since entire
 purpose is to print information to the screen.
 
-======= Default arguments and doc strings =======
+======= Default Arguments and Doc Strings =======
 idx{default argument}
 When we used the `range`-function in the previous chapter, we saw that we could
 vary the number of arguments in the function call from one to three, and the
@@ -581,7 +582,7 @@ Much of the online documentation of Python libraries and modules is
 automatically generated from doc strings included in the code.
 
 
-======= If-tests for branching the program flow =======
+======= If-Tests for Branching the Program Flow =======
 idx{branching}idx{if-test}idx{`if`}idx{`else`}
 In computer programs we often want to perform different actions depending
 on a condition. As usual, we can find a similar
@@ -723,7 +724,7 @@ def f(x):
 !ec
 
 
-======= Functions as arguments to functions =======
+======= Functions as Arguments to Functions =======
 Arguments to Python functions can be any Python object, including another
 function. This functionality is quite useful for many scientific applications,
 where we need to define mathematical functions that operate on or make use of
@@ -795,7 +796,7 @@ Using lambda functions in this way can be quite convenient in cases in which we
 need to pass a simple mathematical expression as an argument to a Python function.
 We save some typing, and could also improve the code's readability.
 
-======= Solving equations with Python functions =======
+======= Solving Equations with Python Functions =======
 Solving equations of the form $f(x) = 0$ is a frequently occuring task in all
 branches of science and engineering. For special cases, such as a
 linear or quadratic $f$, we have simple formulas that give us the solution
@@ -841,7 +842,7 @@ def bisection(f,a,b,tol= 1e-3):
 f = lambda x: x**2-4*x+exp(-x)
 sol = bisection(f,-0.5,1,1e-6)
 
-print(f'x = {sol:g} is an approximate root, with f({sol:g}) = {f(sol):g}')
+print(f'x = {sol:g} is an approximate root, f({sol:g}) = {f(sol):g}')
 !ec
 We see that the `bisection` function takes four arguments: the mathematical
 function $f(x)$ implemented as a Python function, the bounds for our initial
@@ -897,7 +898,7 @@ dfdx = lambda x: 2*x-4-exp(-x)
 
 sol = Newton(f,dfdx,0,1e-6)
 
-print(f'x = {sol:g} is an approximate root, with f({sol:g}) = {f(sol):g}')
+print(f'x = {sol:g} is an approximate root, f({sol:g}) = {f(sol):g}')
 !ec
 Notice how the `x0` variable is updated inside the loop. The algorithm only needs
 to know the value at one iteration to compute the next one, so for each iteration
@@ -938,7 +939,7 @@ manually differentiated. In Chapter ref{ch:class} we will see some examples
 of how this step can be avoided.
 
 
-======= Writing test functions to verify our programs =======
+======= Writing Test Functions to Verify our Programs =======
 idx{test functions}
 In the first part of this chapter, we mentioned the idea of writing tests to verify that
 functions work as intended. This approach
@@ -1091,7 +1092,9 @@ def test_f():
     	assert abs(f(x)-exp) < tol, \
 	       f'Failed for x = {x}, expected {exp}, but got {f(x)}'
 !ec
-
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{-3mm}
+#endif
 idx{`pytest`}
 === Python tools for automatic testing. ===
 An advantage of following the naming convention for test functions defined
@@ -1104,10 +1107,16 @@ for your own projects. The recommended and most widely used tool is
 called `pytest` or `py.test`, where `pytest` is simply the new name for `py.test`.
 We can run `pytest` from the terminal window, and pass it either a file name or
 a folder name as an argument, as in
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{-3mm}
+#endif
 !bc sys
 Terminal> pytest .
 Terminal> pytest my_python_project.py
 !ec
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{-3mm}
+#endif
 If we pass it a file name, `pytest` will look for functions in this file with a name starting with `test_`, as specified by
 the naming convention above. All these functions will be identified as test functions and called by `pytest`, regardless of
 whether the test functions are actually called from elsewhere in the code.

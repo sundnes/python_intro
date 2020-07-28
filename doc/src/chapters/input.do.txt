@@ -20,10 +20,10 @@ which is a widespread system for handling
 errors in programs, used in Python and many other programming languages.
 
 Finally, in this chapter, we shall see how to create our own modules
-that can be imported for use in other programs, just as we have done with modules
-such as `math` and `sys`.
+that can be imported for use in other programs, just as we have done with the
+`math` module in previous chapters.
 
-======= Reading user input data =======
+======= Reading User Input Data =======
 idx{user input}
 So far, we have implemented various mathematical formulas that involved input
 variables and parameters, but all of these values have been hard-coded into the
@@ -149,6 +149,7 @@ Terminal> python myprog.py arg1 arg2 arg3 ...
 !ec
 where `arg1 arg2 arg3`, and so forth are input arguments to the program.
 
+idx{`sys.argv`}
 We again consider the air pressure calculation program above, but
 now we want the altitude to be specified as a
 command line argument rather than obtained by stopping and asking for input. For
@@ -212,8 +213,8 @@ blanks as a single command line argument, we need to use quotation marks to
 override the default behavior of each word being treated as a separate list element.
 
 
-======= Flexible user input with `eval` and `exec` =======
-idx{`eval`}idx{exec}
+======= Flexible User Input with `eval` and `exec` =======
+idx{`eval`}idx{`exec`}
 Generally, the safest way to handle input data in the form of text strings
 is to convert it to the specific variable type needed in
 the program. We did this above, using the type conversions `int(...)` and
@@ -314,7 +315,8 @@ as in the following example
 Terminal> python add_input.py
 operand 1: "one"
 operand 2: "two"
-<class 'str'> + <class 'str'> becomes <class 'str'> with value onetwo
+<class 'str'> + <class 'str'> becomes <class 'str'>
+with value onetwo
 !ec
 These examples illustrate the benefits of the `eval` function, and also how
 it easily breaks programs and is generally not
@@ -420,7 +422,7 @@ Again we see that the flexibility of the `exec` function enables us to
 implement fairly advanced functionality in a very compact program.
 
 
-======= Reading data from files =======
+======= Reading Data from Files =======
 idx{file reading}
 Scientific data are often available in files, and reading and processing data
 from files have always been important tasks in programming. The
@@ -468,7 +470,7 @@ Here, the first line opens the file `data.txt` for reading, as specified
 with the letter `r`, and creates a file object named `infile`. If we want to
 open a file for writing, which we will consider later, we have to
 use `open('data.txt','w')`. The default is `r`, so, to read a file we
-could also write `infile = open('data.txt')`. However, including the `r` can
+could also simply write `infile = open('data.txt')`. However, including the `r` can
 be a good habit, since it makes the purpose of the line more obvious to
 anyone reading the code. In the second line, we enter a regular for loop, which
 will treat the object `infile` as a list-like object and step through the
@@ -560,9 +562,11 @@ print(csvline.split())
 print(csvline.split(';'))
 !ec
 # #if FORMAT != 'ipynb'
+!bc dat
 ['This', 'is', 'a', 'typical', 'string']
 ['Excel;sheets;often;use;semicolon;as;separator']
 ['Excel', 'sheets', 'often', 'use', 'semicolon', 'as', 'separator']
+!ec
 # #endif
 We see that the first attempt to split the string `csvline` does not work very well,
 since the string contains no spaces and the
@@ -665,7 +669,7 @@ so `annual_avg = rainfall[-1]` will extract the last value in the `rainfall` lis
 all elements from the lists up to, but not including
 the last one, thereby removing the yearly data from both lists.
 
-======= Writing data to files =======
+======= Writing Data to Files =======
 idx{file writing}
 Writing data to files follows the same pattern as reading. We open a file for
 writing and typically use a for loop to traverse
@@ -741,7 +745,7 @@ The code for writing each number belongs inside the innermost loop, whereas
 the code for writing the line break is in the outer loop, since we only want
 one line break for each line.
 
-======= Handling errors in programs =======
+======= Handling Errors in Programs =======
 idx{error handling}idx{exception handling}
 As demonstrated above, allowing user input in our programs will
 often introduce errors, and, as our programs grow in
@@ -979,7 +983,7 @@ Terminal> python altitude_cml_except2.py 8848
 34.8773231887747
 !ec
 
-======= Making your own modules =======
+======= Making Modules =======
 idx{modules, writing}
 So far in this course we have frequently used modules such as
 `math` and `sys`, by importing them into our code:

@@ -13,7 +13,7 @@ addition to the loop concept, we will introduce Boolean expressions, which
 are expressions with a true/false value, and a new variable type called a list,
 which is used to store sequences of data.
 
-======= Loops for automating repetitive tasks =======
+======= Loops for Automating Repetitive Tasks =======
 idx{loops}idx{while loop}
 To start with a motivating example, consider again the simple interest
 calculation formula;
@@ -131,7 +131,7 @@ forever. If you run the program from the terminal window it can be stopped
 with `Ctrl+C`, so you can correct the mistake and re-run the program.
 
 
-======= Boolean expressions =======
+======= Boolean Expressions =======
 idx{Boolean expressions}
 An expression with a value of true or false is called a Boolean expression.
 Boolean expressions are essential in while loops and other important
@@ -203,7 +203,7 @@ idea to explore fundamental concepts such as this by typing in a few examples
 in an interactive Python shell.
 
 
-======= Using *lists* to store sequences of data =======
+======= Using Lists to Store Sequences of Data =======
 idx{lists}
 So far, we have used one variable to refer to one number (or string).
 Sometimes we naturally have a collection of numbers, such as the $n$-values
@@ -263,6 +263,7 @@ number of elements in the list. This function works on
 lists and any other object that has a natural length (e.g., strings),
 and is very useful.
 
+idx{`append` (list method)} idx{`del` function}
 Other built-in list operations allow us, for instance,
 to append an element to a list, add two lists together, check if a list contains
 a given element, and delete an element from a list:
@@ -303,7 +304,7 @@ this case, just two variables pointing to the exact same list. If we actually wa
 to create a copy of the original list, we need to state this explicitly with
 `b = a.copy()`.
 
-======= Iterating over a list with a for loop =======
+======= Iterating Over a List with a for Loop =======
 idx{for loop}
 Having introduced lists, we are ready to look at the second type of loop
 we will use in this book: the for loop. The
@@ -652,7 +653,7 @@ function also works for lists of different lengths.
 In this case, the for loop will simply stop when it reaches the end of the
 shortest list, and the remaining elements of the longer lists are not visited.
 
-======= Nested lists and list slicing =======
+======= Nested Lists and List Slicing =======
 idx{nested lists}
 As described above, lists in Python are quite general and can store *any*
 object, including another list. The resulting list of lists
@@ -678,6 +679,7 @@ is the first element of the first list contained in `amounts`.
 Playing a bit with indexing nested lists in the interactive Python shell is a
 useful exercise to understand how they are used.
 
+idx{nested loops}
 Iterating over nested lists also works as expected. Consider, for instance,
 the following code
 !bc pycod-t
@@ -797,7 +799,7 @@ and and slicing:
 >>> 6 in t                         # membership
 True
 !ec
-idx{immutable}idx{mutable}
+idx{immutable objects}idx{mutable objects}
 However, tuples are *immutable*, which means that they cannot be changed.
 Therefore, some operations we are used to from lists will not work. Continuing the
 interactive session from above, the following are some examples of illegal tuple operations:
@@ -828,7 +830,7 @@ replaced with a new one.
 
 A natural question to ask, then, is why do we need tuples at all, when lists can do the same job and are
 much more flexible? The main reason for this is that, in many cases, it is
-convenient to work with an item that is constant, since it is protected against accidental
+convenient to work on item that is constant, since it is protected against accidental
 changes and can be used as a key in so-called *dictionaries*,
 an important Python datastructure that will be introduced in
 Chapter ref{ch:dictstring}.

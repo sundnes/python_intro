@@ -4,7 +4,7 @@ Such formulas are essential parts of most programs written for scientific
 applications, and they are also useful for introducing the concept of
 *variables*, which is a fundamental part of all programming languages.
 
-======= Programming simple mathematics =======
+======= Programming Simple Mathematics =======
 To introduce the concepts of this chapter, we first consider a simple formula
 for calculating the interest on a bank deposit:
 !bt
@@ -88,7 +88,7 @@ in order to make the code as readable as possible to humans, since Python will
 ignore it anyway.
 
 
-======= Variables and variable types =======
+======= Variables and Variable Types =======
 idx{variables}
 We are used to variables in mathematics, such as $P$, $r$ and $n$ in the interest
 formula above. We can use variables in a
@@ -211,12 +211,13 @@ very useful for increasing readability, but they should not be over-used.
 Comments that say no more than the code, for instance, `a = 5  # set a to 5`,
 are not very useful.
 
-idx{types}idx{`int`}idx{`float`}idx{`string`}
+idx{types}idx{`int`}idx{`float`}idx{object}
 === All variables have types. ===
 So far all the variables we have used have been numbers, which is also how
 we are used to thinking of variables in mathematics. However, in
 a computer program we can have many different kinds of variables, not
-just numbers. All variables have a *type*, which, in Python is
+just numbers. More precisely, a variable is a name for a Python *object*,
+and all objects have a *type*. The type of a variable Python is
 usually decided automatically based on the value we assign to it.
 For instance, the statement `n = 7` will create
 a variable of the type *integer*, or `int`, whereas `r = 5.0`
@@ -315,7 +316,7 @@ error message. There are numerous other built-in functions for converting betwee
 types, such as `int` for conversion to an integer and `str` for conversion to a
 string. Throughout this book we will mostly use the `float` conversion.
 
-======= Formatting text output =======
+======= Formatting Text Output =======
 idx{f-string}idx{text formatting}
 The calculations in the programs above would output a single number, and
 simply print this number to the screen.
@@ -446,7 +447,7 @@ With the format specifier: a = 7.86346e+08, b = 1.2345.
 !ec
 # #endif
 
-======= Importing modules =======
+======= Importing Modules =======
 idx{modules}idx{`import`}idx{`math`}
 We have seen that standard arithmetic operations are directly available
 in Python, with no extra effort. However, what if more advanced mathematical
@@ -492,6 +493,7 @@ the habit of importing modules in this manner right away, although, in small
 programs where we import only a single module, there is nothing wrong
 with `from math import *`.
 
+idx{Gaussian function}
 As another example of computing with functions from `math`, consider evaluating
 the bell-shaped Gaussian function
 !bt
@@ -548,7 +550,7 @@ print(dir(math))
 
 
 !split
-======= Pitfalls when programming mathematics =======
+======= Pitfalls When Programming Mathematics =======
 
 Usually, the mathematical operations described above work as expected.
 When the results are not as expected, the cause is usually a trivial
@@ -657,7 +659,7 @@ natural to not use them as variable names. However, for programming
 physics and mathematics, it could be worth noting  `lambda`, since the Greek
 letter $\lambda$ is common in physics and mathematics formulas. Since
 Python does not understand Greek letters,  it is common to just spell
-them out when programming a formula, i.e. $\alpha$ becomes `alpha` etc.
+them out when programming a formula, that is, $\alpha$ becomes `alpha`, and so on.
 However, using this approach for $\lambda$ will lead to an error, and the error
 message might not be very easy to understand. The problem is easily solved by
 introducing a small intentional typo and writing `lmbda` or similar.

@@ -1,7 +1,7 @@
 # Note on the Springer T4 style: here we use the modifications
 # introduced in t4do.sty and svmonodo.sty (both are bundled with DocOnce).
 
-TITLE:  Introduction to scientific programming with Python
+TITLE:  Introduction to Scientific Programming with Python
 AUTHOR: Joakim Sundnes at {\ \ }Simula Research Laboratory and Department of Informatics, University of Oslo.
 DATE: today
 
@@ -18,49 +18,54 @@ Dedicated to the memory of Hans Petter Langtangen.
 # #endif
 
 
+# #if FORMAT in ("latex", "pdflatex")
+\setcounter{page}{9}
+# #endif
 ========= Preface  =========
 label{ch:preface}
-
+# #if FORMAT in ("latex", "pdflatex")
+\markboth{Preface}{Preface}
+# #endif
 # #include "../chapters/preface.do.txt"
 
 TOC: on
 
 !split
-========= Getting started with Python =========
+========= Getting Started with Python =========
 label{ch:intro}
 # #include "../chapters/intro.do.txt"
 
-========= Computing with formulas =========
+========= Computing with Formulas =========
 label{ch:formulas}
 # #include "../chapters/formulas.do.txt"
 
 !split
-========= Loops and lists =========
+========= Loops and Lists =========
 label{ch:looplist}
 # #include "../chapters/looplist.do.txt"
 
 !split
-========= Functions and branching =========
+========= Functions and Branching =========
 label{ch:funcif}
 # #include "../chapters/funcif.do.txt"
 
 !split
-========= User input and error handling =========
+========= User Input and Error Handling =========
 label{ch:input}
 # #include "../chapters/input.do.txt"
 
 !split
-========= Arrays and plotting =========
+========= Arrays and Plotting =========
 label{ch:array_plot}
 # #include "../chapters/plot_mpl.do.txt"
 
 # !split
-# ========= Difference equations =========
+# ========= Difference Equations =========
 # label{ch:diff_eq}
 # # #include "../chapters/diffeq.do.txt"
 
 !split
-========= Dictionaries and strings =========
+========= Dictionaries and Strings =========
 label{ch:dictstring}
 # #include "../chapters/dictstring.do.txt"
 
@@ -70,7 +75,7 @@ label{ch:class}
 # #include "../chapters/class.do.txt"
 
 !split
-========= Object-oriented programming =========
+========= Object-Oriented Programming =========
 label{ch:oo}
 # #include "../chapters/oo.do.txt"
 
