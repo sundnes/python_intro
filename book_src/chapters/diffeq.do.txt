@@ -500,9 +500,10 @@ function value and its derivatives for $x=0$, we can approximate the function
 value at any $x$ by evaluating a polynomial. For practical applications, we always work
 with a truncated version of the Taylor series:
 !bt
-\beq f(x) \approx \sum_{k=0}^{N}
+\begin{equation}
+f(x) \approx \sum_{k=0}^{N}
 \frac{1}{k!}(\frac{d^kf(0)}{dx^k} )x^k .
-\label{taylor0}\eeq
+\label{taylor0}\end{equation}
 !et
 The approximation improves as $N$ is increased, but the most popular
 choice is actually $N=1$, which gives a reasonable approximation close to $x=0$ and
