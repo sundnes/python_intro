@@ -1,3 +1,6 @@
+# #if FORMAT == 'ipynb'
+========= Classes =========
+# #endif
 In this chapter, we introduce classes, which is a fundamental concept in programming.
 Most modern programming languages support classes or similar concepts, and we
 have already encountered classes earlier in this book. Recall, for instance,
@@ -91,12 +94,14 @@ want many values of `T`. However, we shall see that programming
 with classes and objects offers exactly what we need: a convenient solution
 to create a family of similar functions that all have their own value of `T`.
 
+# #if FORMAT != 'ipynb'
 [^func_arg]: This situation is quite common in Python programs. Consider, for
 instance, the implementation of Newton's method in Chapter ref{ch:funcif}, in
 the functions `Newton` and `Newton2`. These functions expect two
 functions as arguments (`f` and `dfdx`), and both are
 expected to take a single argument (`x`). Passing in a function that
 requires two or more arguments will lead to an error.
+# #endif
 
 As mentioned above, the idea of a class is to
 pack together data and methods (or functions) that naturally operate on the data.

@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= User Input and Error Handling =========
+# #endif
+
 So far, all the values we have assigned to variables have been written directly
 into our programs. If we want a different value of a variable, we need to edit
 the code and rerun the program. Of course, this is not how we are
@@ -952,10 +956,12 @@ from the lowest point on Earth (on land), at 430 m below sea level, to
 around 13 km above sea level. We can therefore let the program raise a `ValueError`
 for any `h` outside this range, even if it does not involve a Python error in the usual sense.
 
+# #if FORMAT != 'ipynb'
 [^overflow]: If we set `h` to be a large negative number, the argument
 for the `exp` function becomes large and positive, and leads to
 an `OverflowError`. However, this error will occur only for values far
 outside the range of validity for our air pressure estimate.
+# #endif
 
 The following code shows how we can use the function above, and how we can catch and print the error message
 provided with the exceptions. The construction `except <error> as e` is used
@@ -1203,8 +1209,10 @@ correct directory by importing this package. For instance, type the following in
 The last line reveals the location of the `site-packages` directory, and
 placing your own modules there will ensure Python will find them.
 
+# #if FORMAT != 'ipynb'
 [^numpy]: NumPy is a package for numerical calculations. It is not part of the
 standard Python distribution, but it is often installed automatically if you install Python from
 other sources, for instance, from  Anaconda.  Otherwise, it can be installed for
 instance, with `pip` or other tools. The NumPy package will be
 used extensively in the next chapter.
+# #endif

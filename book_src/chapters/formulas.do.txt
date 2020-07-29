@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= Computing with Formulas =========
+# #endif
+
 In this chapter, we will go one step beyond the Hello, World! example of
 the first chapter, and introduce programming with mathematical formulas.
 Such formulas are essential parts of most programs written for scientific

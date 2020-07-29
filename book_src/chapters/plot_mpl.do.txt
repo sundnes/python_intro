@@ -1,3 +1,6 @@
+# #if FORMAT == 'ipynb'
+========= Arrays and Plotting =========
+# #endif
 In this chapter, we will learn to visualize mathematical functions and the results of
 mathematical calculations. You have probably used a variety of different
 plotting tools in the past, and we will now do much of the same thing in Python.
@@ -183,12 +186,14 @@ contain a for loop, since they need to
 traverse all the elements of the array, but this loop is written in very
 efficient C code and is therefore much faster than Python loops we write ourselves.
 
+# #if FORMAT != 'ipynb'
 [^speed]: For the small array considered here, containing just 11 numbers, the
 efficiency gain does not matter at all. It will be difficult to detect a difference
 between the two versions even if
 we measure the run time of our program. However, certain numerical programs
 can use nested arrays containing tens of millions of numbers, and in such
 cases the difference between loops and vectorized code becomes very noticeable.
+# #endif
 
 A function `f(x)` that was written to work a for a single number `x` will
 often work well for an array as well. If the function uses only basic mathematical
@@ -549,12 +554,14 @@ Although this approach is obviously better, in the sense that the conversion
 is automatic so we need to write very little new code, it is about as slow as
 the two approaches using for loops.
 
+# #if FORMAT != 'ipynb'
 [^vector]: It is a fairly common misconception to believe that vectorizing a computation or making a vectorized
 version of a function, always involves using the function `numpy.vectorize`. This is not the case. In most cases,
 we only need to make sure that we use array-ready functions, such as `numpy.sin, numpy.exp`, etc., instead of
 the scalar version from `math`, and code all calculations so that they work on an entire array instead of
 stepping through the elements with a for loop. The `vectorize`-function is usually only necessary for functions
 containing if-tests.
+# #endif
 
 A third approach is to write a new function where the if-test is coded differently:
 !bc pycod
@@ -819,6 +826,7 @@ Matplotlib documentation for the details.
 After the object is created, we call the `save` method of the `FuncAnimation` class to create a movie file,[^anim]
 or the usual `show()` to play it directly on the screen.
 
+# #if FORMAT != 'ipynb'
 [^class]:Technically, what happens here is that we call the *constructor* of
 the class `FuncAnimation` to create an object of this class. We will cover
 classes and constructors in detail in Chapter 7, but, for now, it
@@ -826,7 +834,7 @@ is sufficient to view this as a regular function call that returns an object of 
 
 [^anim]:This call relies on external software being installed and integrated with Matplotlib, so it might not work
 on all platforms.
-
+# #endif
 
 ======= More Useful Array Operations =======
 idx{`zeros_like`}
@@ -945,6 +953,8 @@ convenient to use `zeros` to create an array of the right size and then fill
 in the nonzero values. Alternatively, we could create a nested list and convert it to
 an array with the `array` function used in the beginning of the chapter.
 
+# #if FORMAT != 'ipynb'
 [^indexing]: Notice that the first index is the row and the second is the column.
 This ordering is consistent with how matrices are indexed in mathematics, but
 can seem counter-intuitive when compared with a regular Cartesian coordinate system.
+# #endif

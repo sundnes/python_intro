@@ -59,11 +59,6 @@ label{ch:input}
 label{ch:array_plot}
 # #include "../chapters/plot_mpl.do.txt"
 
-# !split
-# ========= Difference Equations =========
-# label{ch:diff_eq}
-# # #include "../chapters/diffeq.do.txt"
-
 !split
 ========= Dictionaries and Strings =========
 label{ch:dictstring}

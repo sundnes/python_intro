@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= Loops and Lists =========
+# #endif
+
 In this chapter, programming starts to become useful.
 The concepts introduced in the previous chapter are essential building blocks
 in all computer programs, but our example programs only performed a
@@ -454,13 +458,14 @@ with it. A good way to gain a feel for how the `range`-function works is to test
 statements such as `print(list(range(start,stop,inc)))` in an
 interactive Python shell, for different argument values.
 
+# #if FORMAT != 'ipynb'
 [^range]:In Python 3, `range` does not technically produce a list, but a
 list-like object called an iterator. In terms of use in a for loop, which
 is the most common use of `range`, there is no practical difference between a list and an iterator. However, if we
 try, for instance, `print(range(3))` the output does not look like a list. To obtain
 output that looks like a list, which can be useful
 for debugging, the iterator must be converted to an actual list: `print(list(range(3)))`.
-
+# #endif
 
 === Filling a list with values using a for loop. ===
 One motivation for introducing lists is to conveniently store a sequence of

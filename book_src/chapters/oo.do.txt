@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= Object-Oriented Programming =========
+# #endif
+
 Upon reading the chapter title, one could wonder why object-oriented programming
 (OOP) is introduced only now.  We have used objects
 since Chapter ref{ch:formulas}, and we started making our own
@@ -192,11 +196,13 @@ We will not use these methods much in practical applications[^isinstance], but
 they are very useful for gaining a feel for class relationships when
 learning OOP.
 
+# #if FORMAT != 'ipynb'
 [^isinstance]:If you have to use `isinstance` in your code to check what
 kind of object you are working with, it is usually a sign that
 the program is poorly designed. There are exceptions, but
 normally `isinstance` and `issubclass` should only be used for
 learning and debugging.
+# #endif
 
 Mathematically oriented readers might have noticed a logical fault in the small
 class hierarchy we have presented so far. We stated that a subclass

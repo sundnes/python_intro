@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= Dictionaries and Strings =========
+# #endif
+
 In this chapter we will mainly focus on two data types: dictionaries and strings.
 Dictionaries can be considered a generalization of the list data type, where
 the indices are not required to be integers. We have already used strings

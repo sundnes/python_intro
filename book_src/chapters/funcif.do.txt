@@ -1,3 +1,7 @@
+# #if FORMAT == 'ipynb'
+========= Functions and Branching =========
+# #endif
+
 This chapter introduces two fundamental programming concepts: *functions* and *branching*.
 We are used to *functions* from mathematics, where we typically define a function $f(x)$ as
 some mathematical expression of $x$, and then we can then evaluate the function for different
@@ -148,13 +152,14 @@ types are not obvious, we can insert a comment immediately after the header,
 a so-called *doc string*, to tell users what the arguments should be. We will
 return to the topic of doc strings later in this chapter.
 
+# #if FORMAT != 'ipynb'
 [^fun]: This is not entirely true, since defining the function creates a function
 object, which we can see by defining a dummy
 function in the Python shell and then calling `dir()` to obtain a list of
 defined variables. However, no visible output is
 produced until we actually call the function, and forgetting to call the
 function is a common mistake when starting to program with functions.
-
+# #endif
 
 ======= Function Arguments and Local Variables =======
 idx{argument}idx{local variable}idx{global variable}
