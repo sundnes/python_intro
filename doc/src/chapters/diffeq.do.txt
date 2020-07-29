@@ -4,7 +4,7 @@
 
 Although the main focus of these notes is on solvers for *differential equations*, this first
 chapter is devoted to the closely related class of problems known as *difference equations*. The
-motivation for introducing this topic first is that the mathematical formulation of
+main motivation for introducing this topic first is that the mathematical formulation of
 difference equations is very easy to translate into a computer program.
 When we move on to ODEs in the next chapter, we shall
 see that such equations are typically solved by applying some numerical scheme to turn the
@@ -47,11 +47,13 @@ Some familiar examples include the annual value of a loan or an investment.
 In many cases it is impossible to derive an explicit formula for the
 entire sequence, and $x_n$ is instead
 given by a relation involving $x_{n-1}$ and possibly $x_{n-2}$. Such equations
+are called *difference equations*, and they
 can be challenging to solve with analytical methods, since in order to compute the $n$-th term of a sequence
 we need to compute the entire sequence $x_0, x_1, \ldots, x_{n-1}$. This can be very tedious to do by hand or using
 a calculator, but on a computer the equation is easy to solve with a for-loop. Combining sequences and difference
 equations with programming therefore enables us to consider far more interesting and useful cases.
 
+=== A difference equation for computing interest. ===
 To start with a simple example, consider the problem of computing how an invested sum of money grows over time.
 In its simplest form, this problem can be written as putting $x_0$ money in a bank at year 0, with interest rate
 $p$ percent per year. What is then the value after $N$ years? You may recall from earlier in IN1900
@@ -60,16 +62,18 @@ formula
 $$x_n = x_0 (1 + p/100)^n,$$
 so there is really no need to formulate and solve the problem as
 a difference equation. However, very simple generalizations, such as a non-constant interest rate,
-makes this formula difficult to apply, while a difference equation is still
-applicable. To formulate the problem as a
-difference equation, the relation between the value at year $n$, $x_n$, and the value $x_{n-1}$ for the previous year
-is given by
+makes this formula difficult to apply, while a formulation based on a
+difference equation will still be applicable. To formulate the problem as a
+difference equation, we use the fact that the amount $x_n$ at year $n$ is simply the
+amount at year $n-1$ plus the interest for year $n-1$. This gives the following
+relation between $x_n$ and $x_{n-1}$:
 !bt
 \[ x_{n} = x_{n-1} + {p\over 100}x_{n-1} . \]
 !et
 If we want to compute $x_n$, we can now simply start with the known $x_0$, and compute $x_1, x_2, \ldots, x_n$.
 The procedure involves repeating a simple calculation many times, which is tedious to do by
-hand but very well suited for a computer. The complete program for solving this difference equation may look like:
+hand but very well suited for a computer. The complete program for solving this
+difference equation may look like:
 !bc pycod
 import numpy as np
 import matplotlib.pyplot as plt
@@ -91,8 +95,10 @@ plt.show()
 This code only involves tools that we have introduced earlier in the course. %IN1900
 Notice that we store the result of the call to `range` in a variable
 `index_set`, which will be a list-like object of numbers from 0 to $N$ (representing the years). We could
-also have called `range` directly everywhere we need it, but since we use it in three places in the code it is convenient
-to use a variable. The core of the program is the three lines starting with `x[0] = x0`. We here initialize the
+also have called `range` directly everywhere we need it, but since we use it in
+three places in the code it is more convenient
+to use a variable. The core of the program is the three lines
+starting with `x[0] = x0`. We here initialize the
 first element in our solution array with the known `x0`, and then step into the for-loop to compute the rest.
 The loop variable `n` runs from 1 to $N (=4)$, and the formula inside the loop computes `x[n]` from the known `x[n-1]`.
 
@@ -104,7 +110,7 @@ for n in index_set[:-1]:
 !ec
 Here `n` runs from 0 to 3, and all the indices inside the loop have been increased by one so that the
 end result is the same. In this case it is easy to verify that the two loops give the same result,
-mixing up the two formulations will easily lead to a loop that runs out of bounds (an `IndexError`)
+but mixing up the two formulations will easily lead to a loop that runs out of bounds (an `IndexError`)
 or a loop where some of the sequence elements are never computed. Such mistakes are probably the
 most common type of programming error when solving difference
 equations, and it is a good habit to always examine the loop formulation carefully.
@@ -201,13 +207,14 @@ This program is slightly more sophisticated than the first one, but one may stil
 equation is unnecessarily complex, since we could just apply
 the well-known formula $x_n =x_0(1+\frac{r}{100})^n$
 to compute any $x_n$ we want. However, we know that interest rates change quite often, and
-the formula is only valid for a constant $r$. However, the difference equation is still valid, and only minor
-changes are needed in the program to handle a varying interest rate.
+the formula is only valid for a constant $r$. For the program based on solving the
+difference equation, on the other hand, only minor changes are
+needed in the program to handle a varying interest rate.
 The simplest approach is to let `p` be an array of the same length as the number of days, and fill
 it with the correct interest rates for each day. The modifications to the program above may look like this:
 !bc pycod
 p = np.zeros(len(index_set))
-# fill p[n] for n in index_set (might be non-trivial...)
+# fill p[n] with correct values
 
 r = p/360.0                      # daily interest rate
 x = np.zeros(len(index_set))
@@ -218,9 +225,12 @@ for n in index_set[1:]:
 !ec
 The only real difference from the previous example is that we initialize `p` as an array,
 and then `r = p/360.0` becomes an array of the same length. In
-the formula inside the for-loop we then look up the correct value `r[n-1]` for each iteration  of the loop. As noted, filling `p`
-with the correct values can be non-trivial, but many cases can be handled quite easily. For instance, say the interest rate
-is piecewise constant and increases from 4.0% to 5.0% on a given date. Code for filling the array with values may then
+the formula inside the for-loop we then look up the correct value `r[n-1]` for
+each iteration  of the loop. Filling `p`
+with the correct values can be non-trivial, but many cases can be
+handled quite easily. For instance, say the interest rate
+is piecewise constant and increases from 4.0% to 5.0% on a given date.
+Code for filling the array with values may then
 look like this
 !bc pycod-t
 date0 = datetime.date(2017, 9, 29)
@@ -297,7 +307,7 @@ No programming or math course is complete without an example on Fibonacci number
 !et
 This sequence was originally derived by Fibonacci for modeling rat populations, but it has a range of
 peculiar mathematical properties and has therefore attracted much attention from mathematicians.
-The equation differs from the ones above since $x_n$ depends on the two previous values ($n-1$, $n-2$), which
+The equation differs from the previous ones, since $x_n$ depends on the two previous values ($n-1$, $n-2$), which
 makes this a *second order difference equation*. This classification is important for mathematical
 solution techniques, but in a program the difference between first and second order equations is small.
 The complete code to solve this difference equation and generate the Fibonacci numbers can be written as
@@ -323,9 +333,8 @@ $10^{19}$, so it is very rarely a problem). We can fix the problem by avoiding N
 the standard Python `int` type, but we will not go into these details here.
 
 === Logistic growth ===
-If we return to the initial problem of calculating growth of money in a bank, we can write the solution
-formula more compactly as
-problem can be written on the form
+If we return to the initial problem of calculating growth of money in a bank, we can write the
+classical solution formula more compactly as
 !bt
 \[ x_n = x_0 (1 + p/100)^n = x_0C^n \quad (= x_0e^{n\ln C}) .
 \]
@@ -339,12 +348,13 @@ However, most environments can only support a finite number $R$ of individuals, 
 the population will continue to grow indefinitely. How can we alter the equation to be a more realistic model for growing populations?
 
 [^expo]: The formula $x= x_0e^{\lambda t}$ is the solution of the *differential equation* $dx/dt = \lambda x$, and
-this formulation may be more familiar to some readers. As discussed at the start of the chapter,
+this formulation may be more familiar to some readers. As mentioned at the start of the chapter,
 differential equations and difference equations are closely related, and these relations are
-explored in more detail in Chapter ref{ch:odesys}.
+discussed in more detail in Chapter ref{ch:ode_intro}.
 
 Initially, when resources are abundant, we want the growth to be exponential,
-i.e., to follow the standard difference equation for interest introduced above:
+i.e., to grow with a given rate $r$\% per year according to the difference
+equation introduced above:
 !bt
 \[ x_n = x_{n-1} + (r/100) x_{n-1} .\]
 !et
@@ -370,7 +380,7 @@ x[n] = x[n-1] + (p/100.0)*x[n-1]
 !ec
 by
 !bc pycod
-x[n] = x[n-1] + (rho/100) *x[n-1]*(1 - x[n-1]/R)
+x[n] = x[n-1] + (rho/100)*x[n-1]*(1 - x[n-1]/R)
 !ec
 A complete program may look like
 !bc pycod
@@ -418,7 +428,7 @@ The following difference equation has $x_n=n!$ as solution and can be used to co
 As above, a natural question to ask is whether such a difference equation is
 very useful, when we can simply use (ref{factorial}) to compute
 the factorial for any value of $n$. One answer to this question is that in
-many applications, for instance the Taylor series considered below,
+many applications, some of which will be considered below,
 we need to compute the
 entire sequence of factorials $x_n=n!$ for $n=0, \ldots N$.
 We could still apply (ref{factorial}) to compute each one, but it
@@ -467,7 +477,7 @@ and both must therefore be callable. The `x` argument is the initial guess for t
 and the two optional arguments at the end are the tolerance and the maximum
 number of iteration. Although the method is implemented as a while-loop rather
 than a for-loop, the main structure of the algorithm is exactly the same as for the
-difference equations considered above.
+other difference equations considered earlier.
 
 ======= Taylor Series and Approximations =======
 One extremely important use of sequences and series is for approximating
@@ -487,29 +497,32 @@ and an even more amazing result discovered by Taylor in 1715:
 Here, the notation $d^kf(0)/dx^k$ means the $k$-th derivative of $f$ evaluated
 at $x=0$. Taylor's result means that for any function $f(x)$, if we can compute the
 function value and its derivatives for $x=0$, we can approximate the function
-value at any $x$ by evaluating a polynomial. For practical applications, we work
+value at any $x$ by evaluating a polynomial. For practical applications, we always work
 with a truncated version of the Taylor series:
 !bt
-\[ f(x) \approx \sum_{k=0}^{N}
-\frac{1}{k!}(\frac{d^kf(0)}{dx^k} )x^k .\]
+\beq f(x) \approx \sum_{k=0}^{N}
+\frac{1}{k!}(\frac{d^kf(0)}{dx^k} )x^k .
+\label{taylor0}\eeq
 !et
 The approximation improves as $N$ is increased, but the most popular
 choice is actually $N=1$, which gives a reasonable approximation close to $x=0$ and
 has been essential in developing physics and technology.
 
 As an example, consider the Taylor approximation to the exponential function.
-Using the fact that $d^k e^x/dx^k = e^x$ for all $k$, and that $e^0 = 1$, we have
+For this function we have that $d^k e^x/dx^k = e^x$ for all $k$, and $e^0 = 1$,
+and inserting this into (ref{taylor0}) yields
+we have
 !bt
 \begin{align*}
 e^x &= \sum_{k=0}^\infty \frac{x^k}{k!} \\
-    &\approx \sum_{k=0}^N \frac{x^k}{k!}
+    &\approx \sum_{k=0}^N \frac{x^k}{k!} .
 \end{align*}
 !et
 Choosing, for instance, $N=1$ and $N=4$, we get
 !bt
 \begin{align*}
-e^x&\approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3,\\
-e^x&\approx 1 + x ,
+e^x&\approx 1 + x , \\
+e^x&\approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3,
 \end{align*}
 !et
 respectively.
@@ -558,10 +571,46 @@ Now we can formulate a system of two difference equations for the Taylor polynom
 the $a_n$ equation and sum the terms via the $e_n$ equation:
 !bt
 \begin{align*}
-e_n &= e_{n-1} + a_{n-1},\quad e_0 = 0,\ a_0 = 1\\
-a_n &= \frac{x}{n} a_{n-1} .
+e_n &= e_{n-1} + a_{n-1},\quad e_0 = 0, \\
+a_n &= \frac{x}{n} a_{n-1} , \quad a_0 = 1.
 \end{align*}
 !et
 Although we are here solving a system of two difference equations, the computation
 is far more efficient than solving the single equation in (ref{taylor_diffeq0})
 directly, since we avoid the repeated multiplications involved in the factorial computation.
+
+A complete Python code for solving the difference equation to compute the Taylor approximation
+to the exponential function may look like
+!bc pycod
+import numpy as np
+
+x = 0.5 #approximate exp(x) for x = 0.5
+
+N = 5
+index_set = range(N+1)
+a = np.zeros(len(index_set))
+e = np.zeros(len(index_set))
+a[0] = 1
+
+print(f'Exact: exp({x}) = {np.exp(x)}')
+for n in index_set[1:]:
+    e[n] = e[n-1] + a[n-1]
+    a[n] = x/n*a[n-1]
+    print(f'n = {n}, approx. {e[n]}, error = {np.abs(e[n]-np.exp(x)):4.5f}')
+!ec
+
+# #if FORMAT != 'ipynb'
+!bc dat
+Exact: exp(0.5) = 1.64872
+n = 1, approx. 1.00000, error = 0.64872
+n = 2, approx. 1.50000, error = 0.14872
+n = 3, approx. 1.62500, error = 0.02372
+n = 4, approx. 1.64583, error = 0.00289
+n = 5, approx. 1.64844, error = 0.00028
+!ec
+# #endif
+This small program first prints the exact value $e^x$ for $x=0.5$, and then
+the Taylor approximation and associated error for $n=1$ to $n=5$. The Taylor series
+approximation is most accurate close to $x=0$, so choosing a larger value
+of $x$ leads to larger errors, and we need to also increase $n$ for the appoximation
+to be accurate.

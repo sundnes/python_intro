@@ -7,12 +7,12 @@ Many interesting processes can be described
 by systems of ODEs, i.e., multiple ODEs where the right hand side of one equation depends on the solution of the others. Such equation
 systems are also referred to as vector ODEs. One simple example is
 !bt
-\begin{align*}
-u' &= v, u(0) = 1\\
-v' &= -u, v(0) = 0.
-\end{align*}
+\begin{alignat*}{2}
+u' &= v, \quad &&u(0) = 1\\
+v' &= -u, \quad &&v(0) = 0.
+\end{alignat*}
 !et
-The solution of this system is $u=cos(t), v=sin(t)$ which can easily be verified by insterting the solution into the equations
+The solution of this system is $u=\cos t, v=\sin t$ which can easily be verified by insterting the solution into the equations
 and initial conditions. For more general cases, it is usually even more difficult to find analytical solutions of ODE systems
 than of scalar ODEs, and numerical methods are usually required. In this chapter we will extend the solvers introduced in
 Chapter ref{ch:ode_intro} to be able to solve systems of ODEs. We shall see that such an extension requires relatively small
@@ -56,15 +56,24 @@ implementation just as general.
 ======= An `ODESolver` class for systems of ODEs =======
 The `ODESolver` class above was written for a scalar ODE. We now want to make it work for a system
 $u'=f$, $u(0)=U_0$, where $u$, $f$ and $U_0$ are vectors (arrays). To identify how the code needs to be changed, let us start with
-the simplest method. Applying the forward Euler method to a system of ODEs yields the update formula
+the simplest method. Applying the forward Euler method to a system of ODEs yields an update formula that
+looks exactly as for the scalar case, but where all the terms are vectors:
 !bt
 \[
 \underbrace{u_{k+1}}_{\mbox{vector}} =
 \underbrace{u_k}_{\mbox{vector}} +
-\Delta t\, \underbrace{f(u_k, t_k)}_{\mbox{vector}}.
+\Delta t\, \underbrace{f(u_k, t_k)}_{\mbox{vector}} .
 \]
 !et
-In Python code, this may look identical to the version for scalar ODEs;
+We could also write this formula in terms of the individual components, as in
+!bt
+\[
+u^{(i)}_{k+1} = u^{(i)}_{k} + \Delta t f^{(i)}(u_{k},t_k), \mbox{ for } i = 0,\ldots , {n-1},
+\]
+!et
+but the compact vector notation is much easier to read. Fortunately, the way we write the vector
+version of the formula is also how NumPy arrays are used in calculations. The
+Python code for the formula above may therefore look idential to the version for scalar ODEs;
 !bc pycod
 u[k+1] = u[k] + dt*f(u[k], t)
 !ec
@@ -102,12 +111,12 @@ u[1] = [1.4 1.1]
 
 [^numpy]: This compact notation requires that the solution vector `u` is represented by
 a NumPy array. We could also, in principle, use lists to hold the solution components, but
-the resulting code would be far more complex and less elegant.
+the resulting code would need to loop over the components and be far less elegant and readable.
 
 To make a generic `ODESolver` class that works both with scalars and systems, we need to make the
 following changes to the class from the previous chapter:
  * Ensure that `f(u,t)` always returns an array.
- * Inspect $U_0$ to see if it is a number or a list/array/tuple and
+ * Inspect $U_0$ to see if it is a single number or a list/array/tuple and
    make the corresponding `u` a one-dimensional or two-dimensional  array
 If these two items are handled and initialized correctly, the rest of the code from
 Chapter ref{ch:ode_intro} will work with no modifications.
@@ -146,8 +155,8 @@ class ODESolver:
         return self.u, self.t
 !ec
 It is worth commenting on some parts of this code. First, the constructor looks
-almost identical to the scalar case, but the construction with a lambda function and
-`asarray` will convert any `f` that returns a list or tuple to a function
+almost identical to the scalar case, but we use a lambda function and
+`asarray` to convert any `f` that returns a list or tuple to a function
 returning a NumPy array. This modification is not strictly
 needed, since we could just assume that the user implements `f` so that it returns
 an array, but it makes the class more robust and flexible. Similar tests are
@@ -165,17 +174,19 @@ To demonstrate the use of
 the extended `ODESolver` hierarchy, let us consider a system of ODEs
 describing the trajectory of a ball.
 We define $x(t),y(t)$ to be the position of the ball, $v_x$ and $v_y$ the velocity components,
-and $a_x,a_y$ the acceleration components. If we neglect air resistance there are no
-forces acting on the ball in the $x$-direction, so from Newton's second law $a_x = 0$.
-The acceleration in the $y$-direction must be equal to the acceleration of gravity.  We get
+and $a_x,a_y$ the acceleration components. From the definition of velocity and acceleration, we
+have $v_x = dx/dt, v_y = dy/dt, a_x = dv_x/dt$, and $a_y = dv_y/dt$. If we neglect air resistance there are no
+forces acting on the ball in the $x$-direction, so from Newton's second law $a_x = 0$,
+while the acceleration in the $y$-direction must be equal to the acceleration of gravity.
+We get
 !bt
 \begin{alignat*}{2}
-a_x &= 0 \Rightarrow &\frac{dv_x}{dt} = 0 \mbox{\ } & \frac{dx}{dt} = v_x, \\
-a_y &= -g \Rightarrow \mbox{\ \ }&\frac{dv_y}{dt} = -g\mbox{\ } & \frac{dy}{dt} = v_y .
+a_x &= 0 \Rightarrow &\frac{dv_x}{dt} = 0, \\
+a_y &= -g \Rightarrow \mbox{\ \ }&\frac{dv_y}{dt} = -g\mbox{\ } .
 \end{alignat*}
 !et
 We can easily add air resistance or other additional physics to these equations
-later if needed. The ODE system can be written as
+later if needed. The complete ODE system can be written as
 !bt
 \begin{align*}
 {dx\over dt} &= v_x,\\
@@ -184,8 +195,8 @@ later if needed. The ODE system can be written as
 {dv_y\over dt} &= -g,
 \end{align*}
 !et
-To solve the system we need to define initial conditions for all these
-variables, i.e. we need to know the initial position and velocity of the ball.
+and solve the system we need to define initial conditions for all these
+variables, i.e., we need to know the initial position and velocity of the ball.
 We want to use the `ODESolver` class hierarchy to solve the system, and
 first need to implement the right hand side as a Python function:
 !bc pycod
@@ -221,5 +232,5 @@ plt.plot(x, y)
 plt.show()
 !ec
 Notice that since `u` is a two-dimensional array, we use array slicing to extract and plot the individual components.
-A call like `plt.plot(t,u)` will also work, but this will plot all components in the same window which is not very useful
-in this case.
+A call like `plt.plot(t,u)` will also work, but it will plot all the solution
+components in the same window, which is not very useful in this case.
