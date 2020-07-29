@@ -1,6 +1,0 @@
-# #include "part1.do.txt"
-
-# #include "part2.do.txt"
-
-# #include "part3.do.txt"
-
