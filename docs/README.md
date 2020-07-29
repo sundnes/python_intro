@@ -9,9 +9,10 @@ The book gives a brief introduction to Python programming for scientific and com
 ## Jupyter notebooks for all book chapters
 All the chapters of the book are available as Jupyter notebooks:
 * Click [here](./ipynb.zip) to download all the notebooks in a  single zip file.
-* Or browse the individual chapter files [here](./ipynb/). The ipynb files will render
-  nicely if you view them on github, but to run the embedded Python code and make full
-  use of the notebook format you need to download the files and run them locally using jupyter-notebook.
+* Or browse the individual chapter files [here](https://github.com/sundnes/python_intro/docs/ipynb/).
+  The ipynb files will render nicely when you view them on github, but to run the
+  embedded Python code and make full use of the notebook format you need to
+  download the files and run them locally using jupyter-notebook.
 
 ## Source code for code examples
 Most of the code examples are available for download as regular .py files:
