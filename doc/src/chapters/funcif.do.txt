@@ -1094,7 +1094,7 @@ def test_f():
 !ec
 # #if FORMAT in ("latex", "pdflatex")
 \vspace{-3mm}
-#endif
+# #endif
 idx{`pytest`}
 === Python tools for automatic testing. ===
 An advantage of following the naming convention for test functions defined
@@ -1109,14 +1109,14 @@ We can run `pytest` from the terminal window, and pass it either a file name or
 a folder name as an argument, as in
 # #if FORMAT in ("latex", "pdflatex")
 \vspace{-3mm}
-#endif
+# #endif
 !bc sys
 Terminal> pytest .
 Terminal> pytest my_python_project.py
 !ec
 # #if FORMAT in ("latex", "pdflatex")
 \vspace{-3mm}
-#endif
+# #endif
 If we pass it a file name, `pytest` will look for functions in this file with a name starting with `test_`, as specified by
 the naming convention above. All these functions will be identified as test functions and called by `pytest`, regardless of
 whether the test functions are actually called from elsewhere in the code.
