@@ -28,7 +28,7 @@ of the following:
   for a static book-style and not intended to be live code. Most of the cells will
   run nicely if all previous cells have been run, but some will have problems with
   undefined variables and functions.
-* Some of the user input examples of Chapter 5 do not make sense in a notebook format. A few
+* A few of the user input examples of Chapter 5 do not make sense in a notebook format. Some
   of the cells have been altered to make the code run, but not all of them will work
   as intended. The notebook format is not ideal for presenting these tools and techniques,
   since they are really only relevant when running regular .py-files.
