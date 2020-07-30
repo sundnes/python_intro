@@ -20,6 +20,7 @@ All the chapters of the book are available as Jupyter notebooks.
   The ipynb files will render nicely when you view them on github, but to run the
   embedded Python code and make full use of the notebook format you need to
   download the files and run them locally using jupyter-notebook.
+
 It should be noted that the notebooks have been automatically generated from the book
 source files and may contain minor bugs and inconsistencies. Be particularly aware
 of the following:
@@ -27,9 +28,7 @@ of the following:
   for a static book-style and not intended to be live code. Most of the cells will
   run nicely if all previous cells have been run, but some will have problems with
   undefined variables and functions.
-* Some code cells have unintentionally been converted to markdown cells. Most of these
-  should run if the cell type is changed.
-* The user input examples of Chapter 5 do not make sense in a notebook format. Some
+* Some of the user input examples of Chapter 5 do not make sense in a notebook format. A few
   of the cells have been altered to make the code run, but not all of them will work
   as intended. The notebook format is not ideal for presenting these tools and techniques,
   since they are really only relevant when running regular .py-files.
@@ -38,4 +37,4 @@ of the following:
 There are a few known bugs in the code examples of the
 [published book](https://www.springer.com/gp/book/9783030503550). A list can be
 found [here](./errata.md). The list is most likely incomplete, so if you discover
-new bugs and typos please report them to sundnes@simula.no. 
+new bugs and typos please report them to sundnes@simula.no.
