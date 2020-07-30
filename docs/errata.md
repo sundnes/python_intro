@@ -14,7 +14,7 @@ are still present in the [published version](https://www.springer.com/gp/book/97
 * In the block in the middle of page 84, the variable 'y' is never defined. For the
   loop to work this needs to be initialized to an array having the same length
   as 'x'.
-* In the formula at the top of page 86, the bounds for $x$ are first defined in the
+* In the formula at the top of page 86, the bounds for *x* are first defined in the
   formula and then again on the next line. The definition in the formula makes most
   sense, and is consistent with the code.
 
