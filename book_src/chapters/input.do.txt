@@ -1112,7 +1112,7 @@ if __name__ == '__main__':
     P_ = initial_amount(A, r, n)
     n_ = years(P, A, r)
     r_ = annual_rate(P, A, n)
-    print(f'A={A_} ({A}) P={P_} ({A}) n={n_} ({n}) r={r_} ({p})')
+    print(f'A={A_} ({A}) P={P_} ({A}) n={n_} ({n}) r={r_} ({r})')
 !ec
 Test blocks are often included simply for demonstrating and documenting
 how modules are used, or they are included

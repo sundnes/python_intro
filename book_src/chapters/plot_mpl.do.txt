@@ -168,6 +168,7 @@ this using a for loop
 import numpy as np
 from math import cos
 x = np.linspace(0,1,11)
+y = np.zeros(len(x))
 
 for i in range(len(x)):
     y[i] = cos(x[i])
@@ -255,9 +256,9 @@ and for loops. Now that we have introduced NumPy, we can solve this task
 much more easily by using arrays and array computations. Say
 we want to compute points on the curve described by the function
 !bt
-\[ f(x) = e^{-x}\sin(2\pi x),\quad x\in [0, 4]\]
+\[ f(x) = e^{-x}\sin(2\pi x),\quad x\in [0, 4].\]
 !et
-for $x\in [0,4*\pi]$. The vectorized code can look as follows:
+The vectorized code can look as follows:
 !bc pycod
 import numpy as np
 

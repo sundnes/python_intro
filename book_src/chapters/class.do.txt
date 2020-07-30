@@ -340,17 +340,19 @@ class BankAccount:
         print(s)
 !ec
 
-Typical use of the class could be something like the following, where we create
+Typical use of the class could be something like the following, assuming that
+the class definition is saved in a file `account.py`. We create
 two different account instances and call the various methods for deposits,
 withdrawals, and printing information:
 !bc pyshell
->>> a1 = Account('John', 'Olsson', '19371554951', 20000)
->>> a2 = Account('Liz', 'Olsson',  '19371564761', 20000)
+>>> from account import BankAccount
+>>> a1 = BankAccount('John', 'Olsson', '19371554951', 20000)
+>>> a2 = BankAccount('Liz', 'Olsson',  '19371564761', 20000)
 >>> a1.deposit(1000)
 >>> a1.withdraw(4000)
 >>> a2.withdraw(10500)
 >>> a1.withdraw(3500)
->>> print "a1's balance:", a1.balance
+>>> print("a1's balance:", a1.balance)
 a1's balance: 13500
 >>> a1.print_info()
 John Olsson, 19371554951, balance: 13500
@@ -381,7 +383,7 @@ account class with protected attributes can look like the following:
 class BankAccountP:
     def __init__(self, first_name, last_name, number, balance):
         self._first_name = first_name
-        self._last_name = name
+        self._last_name = last_name
         self._number = number
         self._balance = balance
 
@@ -395,9 +397,9 @@ class BankAccountP:
         return self._balance
 
     def print_info(self):
-        first = self.first_name; last = self.last_name
-        number = self.number; bal = self.balance
-        s = f'{first} {last}, {number}, balance: {balance}'
+        first = self._first_name; last = self._last_name
+        number = self._number; bal = self._balance
+        s = f'{first} {last}, {number}, balance: {bal}'
         print(s)
 !ec
 When using this class, it will still be technically possible to access

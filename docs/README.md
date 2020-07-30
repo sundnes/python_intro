@@ -32,4 +32,10 @@ of the following:
 * The user input examples of Chapter 5 do not make sense in a notebook format. Some
   of the cells have been altered to make the code run, but not all of them will work
   as intended. The notebook format is not ideal for presenting these tools and techniques,
-  since they are really only relevant when running regular .py-files. 
+  since they are really only relevant when running regular .py-files.
+
+## Known bugs and typos in the published version of the book
+There are a few known bugs in the code examples of the
+[published book](https://www.springer.com/gp/book/9783030503550). A list can be
+found [here](./errata.md). The list is most likely incomplete, so if you discover
+new bugs and typos please report them to sundnes@simula.no. 
