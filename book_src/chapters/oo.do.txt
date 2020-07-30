@@ -481,8 +481,8 @@ be implemented as follows:
 class Trapezoidal(Integrator):
     def construct_method(self):
         h = (self.b - self.a)/float(self.n - 1)
-        x = linspace(self.a, self.b, self.n)
-        w = zeros(len(x))
+        x = np.linspace(self.a, self.b, self.n)
+        w = np.zeros(len(x))
         w[1:-1] += h
         w[0] = h/2;  w[-1] = h/2
         return x, w
@@ -500,7 +500,7 @@ The more complex Simpson's rule can be added in the following subclass:
 class Simpson(Integrator):
     def construct_method(self):
         if self.n % 2 != 1:
-            print ’n=%d must be odd, 1 is added’ % self.n
+            print(f'n={self.n} must be odd, 1 is added')
             self.n += 1
         x = np.linspace(self.a, self.b, self.n)
         h = (self.b - self.a)/float(self.n - 1)*2

@@ -336,7 +336,7 @@ class BankAccount:
     def print_info(self):
         first = self.first_name; last = self.last_name
         number = self.number; bal = self.balance
-        s = f'{first} {last}, {number}, balance: {balance}'
+        s = f'{first} {last}, {number}, balance: {bal}'
         print(s)
 !ec
 
@@ -507,7 +507,7 @@ arithmetic operations, such as `__add__`, `__sub__`, `__mul__`, and so forth. De
 these methods inside our class will enable us to perform operations such as
 `c = a+b`, where `a,b` are instances of the class. The following are relevant
 arithmetic operations and the corresponding special method that they will call:
-!bc pycod
+!bc pycod-t
 c = a + b    #  c = a.__add__(b)
 
 c = a - b    #  c = a.__sub__(b)
@@ -521,7 +521,7 @@ c = a**e     #  c = a.__pow__(e)
 It is natural, in most but not all cases, for these methods to return an object
 of the same type as the operands. Similarly, there are special methods for
 comparing objects,as follows:
-!bc pycod
+!bc pycod-t
 a == b       #  a.__eq__(b)
 
 a != b       #  a.__ne__(b)
@@ -572,7 +572,6 @@ class Barometric:
 !ec
 Again, we can illustrate how it works in an interactive shell:
 !bc pyshell
->>> from tmp import *
 >>> b = Barometric(271)
 >>> print(b)
 p0 * exp(-M*g*h/(R*T)); T = 245

@@ -446,21 +446,6 @@ a single column of numbers:
 We assume that we know in advance that there is one number per line, but we
 do not know the number of lines. How can we read these numbers into a Python program?
 
-# #if FORMAT == 'ipynb'
-!bc pyhid
-#For the notebook to work we first make a file data.txt file with the right content
-f = open('data.txt', 'w')
-f.write("""21.8
-18.1
-19
-23
-26
-17.8
-""")
-f.close()
-!ec
-# #endif
-
 idx{`open`}
 The basic way to read a file in Python is to use the function `open`, which
 takes a file name as an argument. The following code illustrates its use:
@@ -599,28 +584,6 @@ Although this data file is very small, it is a fairly typical example.
 Often, there are one or more header lines with information that we are not
 really interested in processing, and
 the remainder of the lines contain a mix of text and numbers. How can we read such a file?
-# #if FORMAT == 'ipynb'
-# Have to make a rainfall.txt file with the right content
-!bc pyhid
-f = open('rainfall.txt', 'w')
-f.write("""Average rainfall (in mm) in Rome: 1188 months between 1782 and 1970
-Jan  81.2
-Feb  63.2
-Mar  70.3
-Apr  55.7
-May  53.0
-Jun  36.4
-Jul  17.5
-Aug  27.5
-Sep  60.9
-Oct  117.7
-Nov  111.0
-Dec  97.9
-Year 792.9
-""")
-f.close()
-!ec
-# #endif
 The key to processing each line is to use `split` to separate the two words
 and, for instance, store them in two separate lists for later processing:
 !bc pycod-t
@@ -1044,28 +1007,7 @@ def annual_rate(P, A, n):
 If we now save these functions in a file `interest.py`, it becomes a
 module that we can import, just as we are used to
 with built-in Python modules.
-# #if FORMAT == 'ipynb'
-Write the module code to file:
 
-!bc pycod
-with open('interest.py', 'w') as outfile:
-    outfile.write("""
-from math import log as ln
-
-def present_amount(A0, p, n):
-    return A0*(1 + p/(360.0*100))**n
-
-def initial_amount(A, p, n):
-    return A*(1 + p/(360.0*100))**(-n)
-
-def years(A0, A, p):
-    return ln(A/A0)/ln(1 + p/(360.0*100))
-
-def annual_rate(A0, A, n):
-    return 360*100*((A/A0)**(1.0/n) - 1)
-""")
-!ec
-# #endif
 As an example, say we want to know how long it takes to double our money with
  an interest rate of 5%. The `years` function in the
 module provides the right formula, and we can import and use it in our

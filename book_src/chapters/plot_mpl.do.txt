@@ -847,7 +847,7 @@ be done in several ways, for instance, using the `zeros` function introduced abo
 !bc pycod
 import numpy as np
 x = np.linspace(0,10,101)
-a = zeros(x.shape, x.dtype)
+a = np.zeros(x.shape, x.dtype)
 !ec
 or by copying the `x` array,
 !bc pycod

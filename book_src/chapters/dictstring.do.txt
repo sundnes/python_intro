@@ -68,7 +68,7 @@ curly brackets, as in the example
 above. Alternatively, we can use the built-in function `dict`, which takes a
 number of key--value pairs as
 arguments and returns the corresponding dictionary. The two approaches can look like
-!bc pycod
+!bc pycod-t
 mydict = {'key1': value1, 'key2': value2, ...}
 
 temps = {'Oslo': 13, 'London': 15.4, 'Paris': 17.5}
@@ -94,13 +94,13 @@ small but important difference that looping over a dictionary means looping over
 its keys, and not the values. If we want to access the values we need to look them
 up in the dictionary using the keys. For instance, generic code to print all the
 values of a dictionary would appear as follows:
-!bc pycod
+!bc pycod-t
 for key in dictionary:
     value = dictionary[key]
     print(value)
 !ec
 A concrete example based on the example above could look like
-!bc pycod
+!bc pycod-t
 temps = {'Oslo': 13, 'London': 15.4, 'Paris': 17.5, 'Madrid': 26}
 for city in temps:
     print(f'The {city} temperature is temps{city}')
@@ -122,7 +122,7 @@ using the built-in function `sorted`:
 !bc pycod
 for city in sorted(temps):   # alphabetic sort of keys
     value = temps[city]
-    print value
+    print(value)
 !ec
 There can be applications where sorting the keys in this manner is important,
 but usually the order of a dictionary is insignificant.
@@ -405,15 +405,15 @@ will return $-1$ if the substring does not exist in the string, `index`
 will end with an error message. If we want to know if a substring is
 part of a string and do not really care about its location, we can also use `in`:
 !bc pyshell
->>> 'Berlin' in s:
+>>> 'Berlin' in s
 True
->>> 'Oslo' in s:
+>>> 'Oslo' in s
 False
 
 >>> if 'C' in s:
-...     print 'C found'
+...     print('C found')
 ... else:
-...     print 'no C'
+...     print('no C')
 ...
 C found
 !ec
@@ -555,7 +555,7 @@ by adding pieces of the original string or use the `replace` method introduced a
 >>> s2 = s[:18] + '5' + s[19:]
 >>> s2
 'Berlin: 18.4 C at 5 pm'
->>> s2 = s.replace(s[18],5)
+>>> s2 = s.replace(s[18],'5')
 >>> s2
 'Berlin: 18.4 C at 5 pm'
 !ec

@@ -326,7 +326,7 @@ def amount(n,r):
     a = P*(1+r/100)**n
     return a, r
 
-a0, r = amount(7)
+a0, r = amount(7,r)
 print(a0, r)
 !ec
 Notice that, here, we return two values from the function, separated by a comma,
