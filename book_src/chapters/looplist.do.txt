@@ -294,7 +294,6 @@ having value 2, but they are not the same variable. The second statement
 `b`, `a` will not be affected. With lists, the situation is different, as illustrated
 by the following example:
 !bc pyshell
->>> l[0] = 2
 >>> a = [1,2,3,4]
 >>> b = a
 >>> b[-1] = 6

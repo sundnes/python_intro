@@ -4,6 +4,10 @@ A few bugs have been discovered in the code examples of the book. These
 have all been corrected in the source code files available here, but they
 are still present in the [published version](https://www.springer.com/gp/book/9783030503550):
 
+### Chapter 3
+* In the last code block on page 24, the first line of the interactive session is 'l[0] =2'. But
+  the variable 'l' has not been defined, and this line has nothing to do with the rest of the example. 
+
 ### Chapter 5
 * In the second code block on page 77, the f-string in the print statement includes the
   variable 'p' at the end. But 'p' is not defined, and should be replaced by 'r'
