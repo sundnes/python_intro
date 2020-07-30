@@ -1,0 +1,5 @@
+Tromso Norway 69.6351 18.9920 52436
+Molde Norway 62.7483 7.1833 18594
+Oslo Norway 59.9167 10.7500 835000
+Stockholm Sweden 59.3508 18.0973 1264000
+Uppsala Sweden 59.8601 17.6400 133117

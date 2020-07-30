@@ -447,8 +447,8 @@ We assume that we know in advance that there is one number per line, but we
 do not know the number of lines. How can we read these numbers into a Python program?
 
 # #if FORMAT == 'ipynb'
-# Have to make a tmp.txt file with the right content
 !bc pyhid
+#For the notebook to work we first make a file data.txt file with the right content
 f = open('data.txt', 'w')
 f.write("""21.8
 18.1
@@ -1135,8 +1135,8 @@ def test_all_functions():
         return abs(a - b) < tolerance
 
     success = float_eq(A_computed,  A)  and \
-              float_eq(A0_computed, A0) and \
-              float_eq(p_computed,  p)  and \
+              float_eq(P_computed, P) and \
+              float_eq(r_computed,  r)  and \
               float_eq(n_computed,  n)
     assert success  # could add message here if desired
 
