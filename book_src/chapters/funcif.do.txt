@@ -522,7 +522,7 @@ Hello [1, 2] True 0            # default values are used
 Hello [1, 2] Hi 0              # kwarg2 has default value
 
 >>> somefunc('Hello', [1,2], 'Hi', 6)
-Hello [1, 2] Hi 0              # kwarg2 has default value
+Hello [1, 2] Hi 6              # specify all args positionally
 
 >>> somefunc('Hello', [1,2], kwarg2='Hi') #kwarg2
 Hello [1, 2] True Hi           # kwarg1 has default value
