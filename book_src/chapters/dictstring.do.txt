@@ -103,7 +103,7 @@ A concrete example based on the example above could look like
 !bc pycod-t
 temps = {'Oslo': 13, 'London': 15.4, 'Paris': 17.5, 'Madrid': 26}
 for city in temps:
-    print(f'The {city} temperature is temps{city}')
+    print(f'The {city} temperature is temps[city]')
 !ec
 # #if FORMAT != 'ipynb'
 with the following output:
