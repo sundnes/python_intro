@@ -57,7 +57,7 @@ print(d['Norway'])
 !ec
 To extend the dictionary with new values, we can simply write
 !bc pycod
-d['Germany'] = Berlin
+d['Germany'] = 'Berlin'
 !ec
 Notice this important difference between a list and a dictionary. For a list we had to use `append()` to
 add new elements. A dictionary has no `append` method, and to extend it we simply introduce a new key
