@@ -1,0 +1,30 @@
+- Wrong variable names in the function test_all_functions in module interest.py
+
+- Array out of bounds i Numpy eksempel
+"""
+import numpy as np
+from math import cos
+x = np.linspace(0,1,11)
+
+for i in range(len(x)):
+    y[i] = cos(x[i])
+"""
+
+
+- Numpy kapittel: "Say we want to compute points on the curve described by the function..."
+
+
+- Account vs BankAccount i klassekapittelet
+- Mangler parentes i print i account-eksempelet
+- name vs last_name i constructor
+
+- Newton-eksempelet i klassekapittelet skriver ikke ut noe og tar heller ikke vare på resultatet
+
+OO:
+- bug i Midpoint-regel i num integrasjon, feil indentering på return
+- bug med print ++ i Simpsons regel
+- manglende np foran linspace, zeros
+
+page 92:  change "built-sin NumPy function" to "built-in NumPy function"
+
+page 88, line 9: change [tmin, tmax, ymin, ymax] to [xmin, xmax, ymin, ymax]
