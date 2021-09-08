@@ -13,7 +13,9 @@ are still present in the [published version](https://www.springer.com/gp/book/97
   call should read something like 'a0, r = amount(7,r)'.
 
 ### Chapter 5
-* In the second code block on page 77, the f-string in the print statement includes the
+* In the second code block on page 76, in line 'n = years(P, 2*P, p)', the variable 'p' is
+  not defined. It should be replaced by 'r'.
+* Similar to the above, in the second code block on page 77, the f-string in the print statement includes the
   variable 'p' at the end. But 'p' is not defined, and should be replaced by 'r'
 * On page 78, in the code block that starts on page 77, the assert statement uses
   the wrong variable names. 'A0' should be replace by 'P' and 'p' by 'r'.
