@@ -11,6 +11,9 @@ are still present in the [published version](https://www.springer.com/gp/book/97
 ### Chapter 4
 * In the code block on page 41, an argument is missing in the call to the function 'amount'. The
   call should read something like 'a0, r = amount(7,r)'.
+* There are some minor errors in the interactive session on page 44-45, which illustrates
+  the use of default arguments. Specifically, the third call to 'somefunc' is listed
+  with the wrong output and an incorrect comment. 
 
 ### Chapter 5
 * In the second code block on page 76, in line 'n = years(P, 2*P, p)', the variable 'p' is
