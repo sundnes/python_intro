@@ -13,7 +13,7 @@ are still present in the [published version](https://www.springer.com/gp/book/97
   call should read something like 'a0, r = amount(7,r)'.
 * There are some minor errors in the interactive session on page 44-45, which illustrates
   the use of default arguments. Specifically, the third call to 'somefunc' is listed
-  with the wrong output and an incorrect comment. 
+  with the wrong output and an incorrect comment.
 
 ### Chapter 5
 * In the second code block on page 76, in line 'n = years(P, 2*P, p)', the variable 'p' is
@@ -30,6 +30,10 @@ are still present in the [published version](https://www.springer.com/gp/book/97
 * In the formula at the top of page 86, the bounds for *x* are first defined in the
   formula and then again on the next line. The definition in the formula makes most
   sense, and is consistent with the code.
+* On page 88, a comment in the code block says '[tmin, tmax,... ]' where it should have
+  been '[xmin, xmax,... ]'.
+* In the last code block on page 90, in the line 't = np.linspace(0, 8, 201)',
+  't' should be replaced by 'x'.
 * In the code blocks on page 99, continued from page 98, the prefix 'np.' is missing
   in front of 'zeros', 'asarray' and other NumPy functions.
 
