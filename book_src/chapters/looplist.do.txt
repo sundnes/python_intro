@@ -400,7 +400,7 @@ Output is now nicely aligned:
 === A for loop can always be translated to a while loop. ===
 As described above, a while loop is more flexible than a for loop. A for loop
 can always be transformed into a while loop, but not all while loops can
-be expressed as for loops. A for loop always traverses traverses a list,
+be expressed as for loops. A for loop always traverses a list,
 carries out some processing on each element, and stops when it reaches
 the last one. This behavior is easy to mimic in a while loop using list
 indexing and the `len` function, which were both introduced above. A for loop

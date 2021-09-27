@@ -36,6 +36,9 @@ are still present in the [published version](https://www.springer.com/gp/book/97
   't' should be replaced by 'x'.
 * In the code blocks on page 99, continued from page 98, the prefix 'np.' is missing
   in front of 'zeros', 'asarray' and other NumPy functions.
+* In the last code block on page 99, in line 'a[a < 0] = a.max() # if a[i]<10, set a[i]=10', the
+   comment does not match the code. The code will replace all entries of 'a' below 0, but the comment
+   says below 10.
 
 ### Chapter 7
 * On page 102, there should be quotes around the word 'Berlin' in the code block in the middle.
