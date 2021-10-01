@@ -42,6 +42,8 @@ are still present in the [published version](https://www.springer.com/gp/book/97
 
 ### Chapter 7
 * On page 102, there should be quotes around the word 'Berlin' in the code block in the middle.
+* On page 103, in the second code block, the line 'print(f'The {city} temperature is temps{city}')'
+  should be 'print(f'The {city} temperature is {temps[city]})'
 * On page 103, the print statement in the second-to-last code block is missing parentheses.
 * On page 106, missing parantheses in the print statement in the last code block.
 * On page 109, the ':' that appear on the first lines of the first interactive example
