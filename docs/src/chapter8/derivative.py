@@ -9,7 +9,6 @@ class Derivative:
 
 from math import *
 df = Derivative(sin)
-x = pi
-df(x)
-
-cos(x)  # exact
+x = pi/4
+print(f'Approximate: {df(x)}')
+print(f'Exact: {cos(x)}')
