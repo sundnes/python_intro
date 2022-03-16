@@ -12,7 +12,7 @@ def bisection(f,a,b,tol= 1e-3):
             b = m
         else:
             a = m
-            m = (a+b)/2
+        m = (a+b)/2
     return m
 
 #call the method for f(x)= x**2-4*x+exp(-x)
