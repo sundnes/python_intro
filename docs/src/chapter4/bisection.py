@@ -13,7 +13,7 @@ def bisection(f,a,b,tol= 1e-3):
         else:
             a = m
             m = (a+b)/2
-        return m
+    return m
 
 #call the method for f(x)= x**2-4*x+exp(-x)
 f = lambda x: x**2-4*x+exp(-x)
