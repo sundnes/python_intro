@@ -53,6 +53,8 @@ are still present in the [published version](https://www.springer.com/gp/book/97
   's2 = s.replace(s[18],5)' to make the argument a string ('5') rather than an integer.
 
 ### Chapter 8
+ * On page 118, in class 'Barometric1' in the second code block, the
+   gas constant 'R' has the wrong value
  * The wrong class name is used in the interactive session at the bottom of page 121. To
    be consistent with the code above, 'Account' must be replaced by 'BankAccount'.
    For the session to work one should also include an import of 'BankAccount'.
